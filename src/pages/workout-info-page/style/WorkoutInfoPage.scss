@@ -68,9 +68,6 @@ body {
   }
 }
 
-.info {
-}
-
 .heading {
   color: $text-color;
   font-variant-numeric: lining-nums proportional-nums;
@@ -181,7 +178,8 @@ body {
   background: #f9ebff;
   position: relative;
   width: 1160px;
-  height: 300px;
+  min-height: 300px;
+  padding-bottom: 48px;
 
   &__container {
     display: flex;
