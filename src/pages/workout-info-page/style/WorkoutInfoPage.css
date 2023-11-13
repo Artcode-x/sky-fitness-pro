@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.wrapper {
+  max-width: 1920px;
+}
+
+.logo {
+  padding-top: 30px;
+}
+
+.skill-card {
+  position: relative;
+  margin-top: 75px;
+  margin-bottom: 75px;
+}
+.skill-card__img {
+  width: 1160px;
+  height: 310px;
+}
+.skill-card__title {
+  color: #000;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 72px;
+  letter-spacing: -0.8px;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+
+.reccomend__heading {
+  color: #000;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 48px;
+  padding-bottom: 40px;
+}
+.reccomend__items {
+  display: flex;
+  gap: 87px;
+}
+.reccomend__item {
+  display: flex;
+  gap: 24px;
+}
+.reccomend__item:last-child .reccomend__item-text {
+  width: 218px;
+}
+.reccomend__item-left {
+  position: relative;
+  width: 67px;
+  height: 67px;
+  display: flex;
+}
+.reccomend__item-text {
+  width: 244px;
+  color: #000;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+}
+.reccomend__num-bg {
+  width: 100%;
+}
+.reccomend__num {
+  width: 100%;
+  color: #000;
+  text-align: center;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}/*# sourceMappingURL=WorkoutInfoPage.css.map */
