@@ -19,6 +19,20 @@ a:visited {
   cursor: pointer;
 }
 
+@font-face {
+  font-family: 'StratosSkyeng';
+  src:
+    local('StratosSkyeng'),
+    local('StratosSkyeng'),
+    url('../../../../public/fonts/StratosSkyeng.woff2') format('woff2'),
+    url('../../../../public/fonts/StratosSkyeng.woff') format('woff');
+}
+
+html,
+body {
+  font-family: 'StratosSkyeng', sans-serif;
+}
+
 .wrapper {
   padding-left: calc(50% - 580px);
   padding-right: calc(50% - 580px);
@@ -202,7 +216,7 @@ a:visited {
   background: var(--palette-purple-90, #580ea2);
   color: #fff;
   font-variant-numeric: lining-nums proportional-nums;
-  font-family: StratosSkyeng;
+  font-family: 'StratosSkyeng', sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
