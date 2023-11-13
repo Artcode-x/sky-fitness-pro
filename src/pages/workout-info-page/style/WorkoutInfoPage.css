@@ -16,10 +16,11 @@ a:visited {
 }
 
 .wrapper {
-  max-width: 1920px;
+  padding-left: calc(50% - 580px);
+  padding-right: calc(50% - 580px);
 }
 
-.logo {
+.logo__top {
   padding-top: 30px;
 }
 
@@ -45,13 +46,16 @@ a:visited {
   left: 30px;
 }
 
-.reccomend__heading {
+.heading {
   color: #000;
   font-variant-numeric: lining-nums proportional-nums;
   font-size: 40px;
   font-style: normal;
   font-weight: 400;
   line-height: 48px;
+}
+
+.reccomend__heading {
   padding-bottom: 40px;
 }
 .reccomend__items {
@@ -96,4 +100,82 @@ a:visited {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.directions {
+  margin-top: 75px;
+  margin-bottom: 75px;
+}
+.directions__heading {
+  padding-bottom: 22px;
+}
+.directions__container {
+  display: flex;
+  gap: 170px;
+  color: #000;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+}
+.directions__items-left {
+  padding-left: 30px;
+}
+
+.motivation__text {
+  color: #000;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+.contacts {
+  display: flex;
+  margin-top: 75px;
+  margin-bottom: 95px;
+  border-radius: 30px;
+  background: #f9ebff;
+  position: relative;
+  width: 1160px;
+  height: 300px;
+}
+.contacts__container {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+  padding-left: 52px;
+}
+.contacts__text {
+  color: #000;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+  width: 823px;
+  padding-top: 46px;
+}
+.contacts__img {
+  width: 301px;
+  height: 304px;
+  position: absolute;
+  right: 0px;
+}
+
+.button {
+  width: 275px;
+  height: 52px;
+  border-radius: 46px;
+  background: var(--palette-purple-90, #580ea2);
+  color: #fff;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: StratosSkyeng;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.05px;
 }/*# sourceMappingURL=WorkoutInfoPage.css.map */

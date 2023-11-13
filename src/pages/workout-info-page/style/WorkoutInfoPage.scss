@@ -1,3 +1,5 @@
+$text-color: #000;
+
 * {
   margin: 0;
   padding: 0;
@@ -18,11 +20,14 @@ a:visited {
 }
 
 .wrapper {
-  max-width: 1920px;
+  padding-left: calc(50% - 580px);
+  padding-right: calc(50% - 580px);
 }
 
 .logo {
-  padding-top: 30px;
+  &__top {
+    padding-top: 30px;
+  }
 }
 
 .skill-card {
@@ -52,14 +57,17 @@ a:visited {
 .info {
 }
 
+.heading {
+  color: $text-color;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 48px;
+}
+
 .reccomend {
   &__heading {
-    color: #000;
-    font-variant-numeric: lining-nums proportional-nums;
-    font-size: 40px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 48px;
     padding-bottom: 40px;
   }
 
@@ -73,10 +81,10 @@ a:visited {
     gap: 24px;
 
     &:last-child {
-        .reccomend__item-text {
-            width: 218px;
-        }
+      .reccomend__item-text {
+        width: 218px;
       }
+    }
   }
 
   &__item-left {
@@ -88,7 +96,7 @@ a:visited {
 
   &__item-text {
     width: 244px;
-    color: #000;
+    color: $text-color;
     font-variant-numeric: lining-nums proportional-nums;
     font-size: 24px;
     font-style: normal;
@@ -114,4 +122,90 @@ a:visited {
     left: 50%;
     transform: translate(-50%, -50%);
   }
+}
+
+.directions {
+  margin-top: 75px;
+  margin-bottom: 75px;
+
+  &__heading {
+    padding-bottom: 22px;
+  }
+
+  &__container {
+    display: flex;
+    gap: 170px;
+    color: $text-color;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+  }
+
+  &__items-left {
+    padding-left: 30px;
+  }
+}
+
+.motivation {
+  &__text {
+    color: $text-color;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+  }
+}
+
+.contacts {
+  display: flex;
+  margin-top: 75px;
+  margin-bottom: 95px;
+  border-radius: 30px;
+  background: #f9ebff;
+  position: relative;
+  width: 1160px;
+  height: 300px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+    padding-left: 52px;
+  }
+
+  &__text {
+    color: #000;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 40px;
+    width: 823px;
+    padding-top: 46px;
+  }
+
+  &__img {
+    width: 301px;
+    height: 304px;
+    position: absolute;
+    right: 0px;
+  }
+}
+
+.button {
+  width: 275px;
+  height: 52px;
+  border-radius: 46px;
+  background: var(--palette-purple-90, #580ea2);
+  color: #fff;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: StratosSkyeng;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.05px;
 }
