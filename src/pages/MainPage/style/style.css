@@ -77,7 +77,7 @@
 .adv__img {
   display: flex;
   background-size: auto;
-  background-image: url(../../../public/img/cloud.svg);
+  background-image: url(../../../../public/img/cloud.svg);
   width: 229.27px;
   height: 191px;
   flex-shrink: 0;
@@ -97,7 +97,7 @@
   display: flex;
   width: 360px;
   height: 480px;
-  background-image: url(../../../public/img/card1c.svg);
+  background-image: url(../../../../public/img/card1c.svg);
   background-repeat: no-repeat;
   background-size: 100%;
 }
@@ -109,7 +109,7 @@
   display: flex;
   width: 360px;
   height: 480px;
-  background-image: url(../../../public/img/card2c.svg);
+  background-image: url(../../../../public/img/card2c.svg);
   background-repeat: no-repeat;
   background-size: 100%;
 }
@@ -121,7 +121,7 @@
   display: flex;
   width: 360px;
   height: 480px;
-  background-image: url(../../../public/img/card3.svg);
+  background-image: url(../../../../public/img/card3.svg);
   background-repeat: no-repeat;
   background-size: 100%;
 }
@@ -132,7 +132,7 @@
   display: flex;
   width: 360px;
   height: 480px;
-  background-image: url(../../../public/img/card4.svg);
+  background-image: url(../../../../public/img/card4.svg);
   background-repeat: no-repeat;
   background-size: 100%;
   transition: 1s;
@@ -145,7 +145,7 @@
   display: flex;
   width: 360px;
   height: 480px;
-  background-image: url(../../../public/img/card5.svg);
+  background-image: url(../../../../public/img/card5.svg);
   background-repeat: no-repeat;
   background-size: 100%;
 }
@@ -161,7 +161,7 @@
 .footer__button {
   width: 147px;
   height: 48px;
-  background-image: url(../../../public/img/Button.svg);
+  background-image: url(../../../../public/img/Button.svg);
   border-radius: 46px;
   background-repeat: no-repeat;
   border: none;
