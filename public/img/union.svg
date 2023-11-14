@@ -1,0 +1,17 @@
+<svg width="300" height="280" viewBox="0 0 300 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g style="mix-blend-mode:multiply" opacity="0.36" filter="url(#filter0_i_26_1377)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M250 0C233.431 0 220 13.4315 220 30V90C220 73.4315 206.569 60 190 60H170C153.431 60 140 73.4315 140 90V130C140 113.431 126.569 100 110 100H90C73.4315 100 60 113.431 60 130V180C60 163.431 46.5685 150 30 150C13.4315 150 0 163.431 0 180V280H60H140H220H300V30C300 13.4315 286.569 0 270 0H250Z" fill="white"/>
+</g>
+<defs>
+<filter id="filter0_i_26_1377" x="0" y="0" width="312" height="292" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="12" dy="12"/>
+<feGaussianBlur stdDeviation="6.5"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.678431 0 0 0 0 0.380392 0 0 0 0 1 0 0 0 0.5 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_26_1377"/>
+</filter>
+</defs>
+</svg>
