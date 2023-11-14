@@ -27,6 +27,7 @@ body {
 .wrapper {
   padding-left: calc(50% - 580px);
   padding-right: calc(50% - 580px);
+  background-color: #fafafa;
 }
 
 .logo__top {
@@ -179,7 +180,7 @@ body {
   width: 275px;
   height: 52px;
   border-radius: 46px;
-  background: var(--palette-purple-90, #580ea2);
+  background: rgb(88, 14, 162);
   color: #fff;
   font-variant-numeric: lining-nums proportional-nums;
   font-family: "StratosSkyeng", sans-serif;
@@ -188,5 +189,13 @@ body {
   font-weight: 400;
   line-height: 24px;
   letter-spacing: -0.05px;
+  outline: none;
+  border: none;
   cursor: pointer;
+}
+.button:hover {
+  background: #3f007d;
+}
+.button:active {
+  background: rgb(39, 26, 88);
 }/*# sourceMappingURL=WorkoutInfoPage.css.map */
