@@ -1,0 +1,193 @@
+* {   margin: 0;
+    padding: 0;
+}
+
+body{
+    /* margin-left: 10%;
+    margin-right: 10%; */
+    padding-left: calc(50% - 580px);
+    padding-right: calc(50% - 580px);
+    margin-top: 30px;
+}
+@font-face {
+    font-family: 'StratosSkyeng', sans-serif;
+    font-weight: 400;
+    src: url(public/fonts/StratosSkyeng.woff);
+    src: url(public/fonts/StratosSkyeng.woff2);
+}
+
+.main__big-heading {
+    color: #000;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: 'StratosSkyeng', sans-serif;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 56px;
+    margin-bottom: 40px;
+}
+
+.main__small-heading {
+    color: #000;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: 'StratosSkyeng', sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 40px;
+}
+
+.main__video-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.main__exercises {
+    display: grid;
+    grid-template-columns: (16, 1fr);
+    margin-top: 75px;
+    margin-bottom: 94px;
+}
+
+.main__progress {
+    background: #F2F2F2;
+    border-radius: 30px;
+    width: 638px;
+    height: 336px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    margin-bottom: 75px;
+}
+
+.header__user-info {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.main__text {
+    color: #000;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: 'StratosSkyeng', sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: -0.1px;
+}
+
+.button {
+    width: 275px;
+    height: 52px;
+    flex-shrink: 0;
+    border-radius: 46px;
+    background: var(--palette-purple-90, #580EA2);
+    color: #FAFAFA;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: 'StratosSkyeng', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 133.333% */
+    letter-spacing: -0.05px;
+}
+
+.percent {
+    color: #fff !important;
+    margin: 0px;
+    padding: 0px;
+    text-align: right;
+}
+
+.visual {
+    padding-left: 44px;
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.exercise-heading {
+    text-align: center;
+}
+
+.progress__visual {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.visual-container {
+    width: 278px;
+    height: 36px;
+    flex-shrink: 0;
+    border-radius: 22px;
+    margin-right: 55px;
+}
+
+.exercise-1 {
+    border: 2px solid #565EEF;
+    background: #EDECFF;
+}
+
+.exercise-2 {
+    border: 2px solid #FF6D00;
+    background: #FFF2E0;
+}
+
+.exercise-3 {
+    border: 2px solid #9A48F1;
+    background: #F9EBFF;
+}
+
+.progress-text {
+    margin: 0px;
+    padding: 0px;
+}
+
+.exercise {
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 7;
+}
+
+.inter-visual-container-1 {
+    width: 136px;
+    background-color: #565eef;
+    height: 36px;
+    border-top-left-radius: 22px;
+    border-bottom-left-radius: 22px;
+}
+
+.inter-visual-container-2 {
+    width: 136px;
+    background-color: #FF6D00;
+    height: 36px;
+    border-top-left-radius: 22px;
+    border-bottom-left-radius: 22px;
+}
+
+.inter-visual-container-3 {
+    width: 136px;
+    background-color: #9A48F1;
+    height: 36px;
+    border-top-left-radius: 22px;
+    border-bottom-left-radius: 22px;
+}
+
+.main__progress {
+    display: grid;
+    grid-column-start: 8;
+    grid-column-end: 17;
+}
+
+.main__ul {
+    padding-left: 40px;
+}
