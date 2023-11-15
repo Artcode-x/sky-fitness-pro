@@ -1,4 +1,5 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
+// import yoga from './workoutcard2.png'
 
 export const profileWrapper = styled.div`
   width: 100%;
@@ -89,19 +90,19 @@ flex-direction: row;
 align-items: flex-start;
 gap: 40px;
 `
-export const courseCard = styled.li`
-width: 360px;
-height: 480px;
-border-radius: 30px;
-background: rgba(205, 205, 205, 0.10);
-backdrop-filter: blur(14.51865291595459px);
-border-radius: 30px;
-background: #FFF;
-box-shadow: -10px 10px 15.99882px 0px rgba(0, 0, 0, 0.10), 10px -10px 16px 0px rgba(0, 0, 0, 0.10);
-// background-image: url('/public/img/sprite.svg#yoga');
+// export const courseCard = styled.li`
+// width: 360px;
+// height: 480px;
+// border-radius: 30px;
+// background: rgba(205, 205, 205, 0.10);
+// backdrop-filter: blur(14.51865291595459px);
+// border-radius: 30px;
+// background: #FFF;
+// box-shadow: -10px 10px 15.99882px 0px rgba(0, 0, 0, 0.10), 10px -10px 16px 0px rgba(0, 0, 0, 0.10);
+// background-image: url(${yoga});
 // background-repeat: no-repeat;
 // background-size: cover;
-`
+// `
 export const svg = styled.svg`
 width: 360px;
 height: 480px;
