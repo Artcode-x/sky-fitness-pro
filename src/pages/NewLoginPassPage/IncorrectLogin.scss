@@ -65,6 +65,7 @@ padding-bottom: 8px;
 border: none;
     border-bottom: 1px solid;
     stroke: #D0CECE;
+    outline: none;
     }
 }
   }
@@ -81,8 +82,6 @@ border: none;
         flex-shrink: 0;
         border-radius: 46px;
         background: var(--palette-purple-90, #580EA2);
-
-&-txt {
     color: #FFF;
 font-variant-numeric: lining-nums proportional-nums;
 font-family: StratosSkyeng;
@@ -91,6 +90,6 @@ font-style: normal;
 font-weight: 400;
 line-height: 24px; /* 133.333% */
 letter-spacing: -0.05px;
-}
+
     }
   }

@@ -64,6 +64,7 @@
   border: none;
   border-bottom: 1px solid;
   stroke: #D0CECE;
+  outline: none;
 }
 .input__pass-2 {
   color: #D0CECE;
@@ -78,6 +79,7 @@
   border: none;
   border-bottom: 1px solid;
   stroke: #D0CECE;
+  outline: none;
 }
 
 .footer {
@@ -91,8 +93,6 @@
   flex-shrink: 0;
   border-radius: 46px;
   background: var(--palette-purple-90, #580EA2);
-}
-.footer__button-txt {
   color: #FFF;
   font-variant-numeric: lining-nums proportional-nums;
   font-family: StratosSkyeng;
