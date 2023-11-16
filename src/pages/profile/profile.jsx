@@ -1,7 +1,7 @@
 import React from 'react'
 import * as S from './profile.styles'
 import { CourseCard } from '../../components/cards/card'
-// import logo from '../../../public/img/logo.svg'
+// import { ChangeUserInfo } from '../../components/modalChangeProfile/changeProfile'
 
 export const Profile = () => {
   return (
@@ -31,15 +31,25 @@ export const Profile = () => {
         </S.profileHeader>
         <S.userProfile>
           <S.profileTitle>Мой профиль</S.profileTitle>
-          <S.profileText>Логин: sergey.petrov96</S.profileText>
-          <S.profileText>Пароль: 4fkhdj880d</S.profileText>
+          <S.profileContent>
+            <S.profileText>Логин: sergey.petrov96</S.profileText>
+            <S.profileText>Пароль: 4fkhdj880d</S.profileText>
+          </S.profileContent>
+          <S.profileBtnBox>
+            <S.profileBtn>Редактировать логин</S.profileBtn>
+            <S.profileBtn>Редактировать пароль</S.profileBtn>
+          </S.profileBtnBox>
         </S.userProfile>
+        {/* <ChangeUserInfo/> */}
+
         <S.userCourses>
           <S.profileTitle>Мои курсы</S.profileTitle>
           <S.coursesList>
-            <CourseCard bgi='yoga'/>
-            <CourseCard/>
-            <CourseCard/>
+            <CourseCard bgi="yoga" name="Йога" />
+            <CourseCard bgi="stretching" name="Стретчинг" />
+            <CourseCard bgi="bodyflex" name="Бодифлекс" />
+            <CourseCard bgi="aerobic" name="Степ-аэробика" />
+            <CourseCard bgi="fitness" name="Танцевальный фитнес" />
           </S.coursesList>
         </S.userCourses>
       </S.profileDiv>
