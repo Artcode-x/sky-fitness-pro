@@ -19,13 +19,14 @@ const GlobalStyle = createGlobalStyle`
 a,
 a:visited {
   text-decoration: none;
-  font-family: 'stratosskyengweb-regular', sans-serif;
+  font-family: 'StratosLCWeb-Regular', sans-serif;
   cursor: pointer;
 }
 button {
-  font-family: 'stratosskyengweb-regular', sans-serif;
+  font-family: 'StratosLCWeb-Regular', sans-serif;
   font-weight: 400;
   font-style: normal;
+  cursor: pointer;
 }
 
 ul li {
@@ -33,14 +34,14 @@ ul li {
 }
 
 @font-face {
-  font-family: 'stratosskyengweb-regular';
-  src: url('../public/fonts/stratosskyengweb-regular.eot');
+  font-family: 'StratosLCWeb-Regular';
+  src: url('../public/fonts/StratosLCWeb-Regular.eot');
   src:
-    local('stratosskyengweb-regular'),
-    local('stratosskyengweb-regular'),
-    url('../public/fonts/stratosskyengweb-regular.eot?#iefix') format('embedded-opentype'), 
-    url('../public/fonts/stratosskyengweb-regular.woff2') format('woff2'),
-    url('../public/fonts/stratosskyengweb-regular.woff') format('woff');
+    local('StratosLCWeb-Regular'),
+    local('StratosLCWeb-Regular'),
+    url('../public/fonts/StratosLCWeb-Regular.eot?#iefix') format('embedded-opentype'), 
+    url('../public/fonts/StratosLCWeb-Regular.woff2') format('woff2'),
+    url('../public/fonts/StratosLCWeb-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
 }
@@ -49,7 +50,7 @@ html, body {
   margin: 0;
   width: 100%;
   height: 100%;
-  font-family: 'stratosskyengweb-regular', sans-serif;
+  font-family: 'StratosLCWeb-Regular', sans-serif;
   font-weight: 400;
   font-style: normal;
   color: #ffffff;

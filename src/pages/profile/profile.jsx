@@ -1,9 +1,11 @@
 import React from 'react'
+import { useState } from 'react'
 import * as S from './profile.styles'
 import { CourseCard } from '../../components/cards/card'
-// import { ChangeUserInfo } from '../../components/modalChangeProfile/changeProfile'
+import { ChangeUserInfo } from '../../components/modalChangeProfile/changeProfile'
 
 export const Profile = () => {
+  const [modal, setModal] = useState('')
   return (
     <S.profileWrapper>
       <S.profileDiv>
@@ -36,12 +38,15 @@ export const Profile = () => {
             <S.profileText>Пароль: 4fkhdj880d</S.profileText>
           </S.profileContent>
           <S.profileBtnBox>
-            <S.profileBtn>Редактировать логин</S.profileBtn>
-            <S.profileBtn>Редактировать пароль</S.profileBtn>
+            <S.profileBtn onClick={() => setModal('changeLog')}>
+              Редактировать логин
+            </S.profileBtn>
+            <S.profileBtn onClick={() => setModal('changePass')}>
+              Редактировать пароль
+            </S.profileBtn>
           </S.profileBtnBox>
         </S.userProfile>
-        {/* <ChangeUserInfo/> */}
-
+        {modal && <ChangeUserInfo mode={modal} closeModal={setModal} />}
         <S.userCourses>
           <S.profileTitle>Мои курсы</S.profileTitle>
           <S.coursesList>

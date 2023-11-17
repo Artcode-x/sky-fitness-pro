@@ -1,83 +1,236 @@
-import React from "react";
-import styled from "styled-components";
+import { useState, useEffect } from 'react'
+// import { useNavigate } from 'react-router-dom'
 
-const NewPasswordWrapper = styled.div`
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-`;
+import * as S from './changeProfile.styles'
 
-const PasswordDiv = styled.div`
-  background-color: #ffffff;
-  height: 401px;
-  position: relative;
-  width: 366px;
-`;
+export const ChangeUserInfo = ({
+  mode,
+  setData,
+  apiErrors,
+  loading,
+  closeModal,
+}) => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [control, setControl] = useState('')
+  const [usedEmailInput, setUsedEmailInput] = useState(false)
+  const [usedPasswordInput, setUsedPasswordInput] = useState(false)
+  const [usedControlInput, setUsedControlInput] = useState(false)
+  const [emailError, setEmailError] = useState('Введите электронную почту')
+  const [passwordError, setPasswordError] = useState('Введите пароль')
+  const [controlError, setControlError] = useState('Введите пароль повторно')
+  const [validForm, setValidForm] = useState(false)
+  // const navigate = useNavigate()
 
-const TextWrapper = styled.div`
-  color: #000000;
-  font-family: "StratosSkyeng-Regular", Helvetica;
-  font-size: 18px;
-  font-weight: 400;
-  left: 41px;
-  letter-spacing: -0.05px;
-  line-height: 24px;
-  position: absolute;
-  top: 105px;
-  white-space: nowrap;
-`;
+  useEffect(() => {
+    if ((mode = 'regForm')) {
+      if (emailError || passwordError || controlError) {
+        setValidForm(false)
+      } else {
+        setValidForm(true)
+      }
+    } else if (emailError || passwordError) {
+      setValidForm(false)
+    } else {
+      setValidForm(true)
+    }
+  }, [
+    emailError,
+    passwordError,
+    controlError,
+    setEmailError,
+    setPasswordError,
+    mode,
+  ])
 
-const VectorImage = styled.img`
-  height: 1px;
-  left: 40px;
-  object-fit: cover;
-  position: absolute;
-  top: ${(props) => (props.top ? props.top : '182px')};
-  width: 278px;
-`;
+  useEffect(() => {
+    if (apiErrors) {
+      if (apiErrors.email) {
+        setEmailError(apiErrors.email[0])
+      } else {
+        setEmailError('')
+      }
+      if (apiErrors.detail) {
+        setControlError(apiErrors.detail)
+      } else {
+        setControlError('')
+      }
+      if (apiErrors.password) {
+        if (apiErrors.password.length > 1) {
+          setControlError(apiErrors.password[1])
+          setPasswordError(apiErrors.password[0])
+        } else {
+          setPasswordError(apiErrors.password)
+        }
+      } else {
+        setPasswordError('')
+      }
+    }
+  }, [apiErrors, setEmailError, setPasswordError, setControlError])
 
-const LogoImage = styled.img`
-  height: 35px;
-  left: 73px;
-  position: absolute;
-  top: 33px;
-  width: 222px;
-`;
+  const emailHandler = (e) => {
+    setEmail(e.target.value)
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    if (!re.test(String(e.target.value).toLowerCase())) {
+      setEmailError('Некорректный email')
+      if (!e.target.value) {
+        setEmailError('Введите электронную почту')
+      }
+    } else {
+      setEmailError('')
+    }
+  }
 
-const GroupDiv = styled.div`
-  height: 52px;
-  left: 41px;
-  position: absolute;
-  top: 302px;
-  width: 280px;
-`;
+  const passwordHandler = (e) => {
+    setPassword(e.target.value)
+    if (e.target.value.length < 8) {
+      setPasswordError('Пароль не менее 8 символов')
+      if (!e.target.value) {
+        setPasswordError('Введите пароль')
+      }
+    } else {
+      setPasswordError('')
+    }
+  }
 
-const OverlapGroup = styled.div`
-  background-color: var(--palettepurple-90);
-  border-radius: 46px;
-  height: 52px;
-  position: relative;
-  width: 278px;
-`;
+  const controlHandler = (e) => {
+    setControl(e.target.value)
+    if (e.target.value === password) {
+      setControlError('')
+    } else {
+      setControlError('Пароли должны совпадать')
+      if (!e.target.value) {
+        setControlError('Введите пароль повторно')
+      }
+    }
+  }
+  const blurHanndler = (e) => {
+    switch (e.target.name) {
+      case 'email':
+        setUsedEmailInput(true)
+        break
+      case 'password':
+        setUsedPasswordInput(true)
+        break
+      case 'control':
+        setUsedControlInput(true)
+        break
+      default:
+        break
+    }
+  }
 
-export const ChangeUserInfo = () => {
+  const addNewUser = (e) => {
+    e.preventDefault()
+    const newUserData = (mode = 'regForm')
+      ? {
+          email,
+          password,
+          username: email,
+        }
+      : {
+          email,
+          password,
+        }
+    setData(newUserData)
+  }
+
+  const getBtnName = () => {
+    switch (mode) {
+      case 'regForm':
+        return 'Зарегистрироваться'
+      case 'logForm':
+        return 'Войти'
+      case 'changeLog':
+        return 'Сохранить'
+      case 'changePass':
+        return 'Сохранить'
+      default:
+        ''
+        break
+    }
+  }
+  const btnName = getBtnName()
+
   return (
-    <NewPasswordWrapper>
-      <PasswordDiv>
-        <TextWrapper>Новый пароль:</TextWrapper>
-        <VectorImage alt="Vector" src="vector-4053.svg" />
-        <VectorImage alt="Vector" src="vector-4054.svg" top="252px" />
-        <TextWrapper style={{ top: '149px' }}>Пароль</TextWrapper>
-        <TextWrapper style={{ top: '219px' }}>Повторите пароль</TextWrapper>
-        <LogoImage alt="Logo" src="logo.svg" />
-        <GroupDiv>
-          <OverlapGroup>
-            <TextWrapper style={{ top: '12px', left: '94px' }}>Сохранить</TextWrapper>
-          </OverlapGroup>
-        </GroupDiv>
-      </PasswordDiv>
-    </NewPasswordWrapper>
-  );
-};
+    <S.modalBG>
+      <S.modalFormLogin action="#">
+        <S.modalLogo onClick={() => closeModal('')}>
+          <img src="/img/logo.svg" alt="logo" />
+        </S.modalLogo>
+        {(mode == 'changeLog' || mode == 'changePass') && (
+          <S.changeDataText>
+            Новый {mode == 'changeLog' ? 'логин' : 'пароль'}:
+          </S.changeDataText>
+        )}
+        {mode !== 'changePass' && (
+          <S.modalInput
+            value={email}
+            onChange={(e) => emailHandler(e)}
+            type="text"
+            name="email"
+            placeholder="Логин"
+            onBlur={(e) => blurHanndler(e)}
+            $error={usedEmailInput && emailError}
+          />
+        )}
+        {usedEmailInput && emailError && (
+          <S.formError>{emailError}</S.formError>
+        )}
+        {/* {apiErrors && <S.apiError>{apiErrors.username[0]}</S.apiError>} */}
+        {mode !== 'changeLog' && (
+          <S.modalInput
+            value={password}
+            onChange={(e) => passwordHandler(e)}
+            type="password"
+            name="password"
+            placeholder="Пароль"
+            onBlur={(e) => blurHanndler(e)}
+            $error={usedPasswordInput && passwordError}
+          />
+        )}
+        {usedPasswordInput && passwordError && (
+          <S.formError>{passwordError}</S.formError>
+        )}
+        {/* {apiErrors && <S.apiError>{apiErrors.password[0]}</S.apiError>} */}
+        {(mode == 'regForm' || mode == 'changePass') && (
+          <S.modalInput
+            value={control}
+            onChange={(e) => controlHandler(e)}
+            type="password"
+            name="control"
+            placeholder="Повторите пароль"
+            onBlur={(e) => blurHanndler(e)}
+            $error={
+              mode == 'regForm'
+                ? usedControlInput && controlError
+                : apiErrors?.detail
+            }
+          />
+        )}
+        {(mode == 'regForm'
+          ? usedControlInput && controlError
+          : apiErrors?.detail) && <S.formError>{controlError}</S.formError>}
+        {/* {apiErrors && <S.apiError>{apiErrors.password[1]}</S.apiError>} */}
+
+        <S.modalBtnEnter
+          disabled={!validForm || loading}
+          type="submit"
+          onClick={addNewUser}
+        >
+          {btnName}
+        </S.modalBtnEnter>
+        {mode == 'logForm' && (
+          <S.modalBtnSignup
+            type="button"
+            as="button"
+            // onClick={() => navigate('/signup', { replace: false })}
+          >
+            Зарегистрироваться
+          </S.modalBtnSignup>
+        )}
+      </S.modalFormLogin>
+    </S.modalBG>
+  )
+}
