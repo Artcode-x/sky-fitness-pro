@@ -2,7 +2,7 @@ import * as S from './WorkoutInfoPage.styles'
 
 export const WorkoutInfoPage = () => {
   return (
-    <>
+    <S.Wrapper>
       <S.Header>
         <S.HeaderLogo src="/img/logo.svg" alt="logo" />
       </S.Header>
@@ -88,6 +88,6 @@ export const WorkoutInfoPage = () => {
           </S.Contacts>
         </S.Info>
       </S.Main>
-    </>
+    </S.Wrapper>
   )
 }
