@@ -3,9 +3,12 @@ import { useState } from 'react'
 import * as S from './profile.styles'
 import { CourseCard } from '../../components/cards/card'
 import { ChangeUserInfo } from '../../components/modalChangeProfile/changeProfile'
+import { ModalSelectWorkout } from '../../components/modalSelectWorkout/selectWorkout'
 
 export const Profile = () => {
   const [modal, setModal] = useState('')
+  const [workout, setWorkout] = useState('')
+ 
   return (
     <S.profileWrapper>
       <S.profileDiv>
@@ -55,6 +58,7 @@ export const Profile = () => {
             <CourseCard bgi="bodyflex" name="Бодифлекс" />
             <CourseCard bgi="aerobic" name="Степ-аэробика" />
             <CourseCard bgi="fitness" name="Танцевальный фитнес" />
+            {workout && <ModalSelectWorkout/>} 
           </S.coursesList>
         </S.userCourses>
       </S.profileDiv>

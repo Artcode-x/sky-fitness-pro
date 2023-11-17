@@ -13,11 +13,20 @@ position: fixed;
     justify-content: center;
 ` 
 export const selectWorkout = styled.div`
+position:relative;
 width: 444px;
 min-height: 300px;
 border-radius: 12px;
 background: #FFF;
 padding: 36px 53px;
+`
+export const closeBtn = styled.div`
+position: absolute;
+    z-index: 999;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    cursor: pointer;
 `
 export const selectWorkoutTitle = styled.h2`
 color: #000;

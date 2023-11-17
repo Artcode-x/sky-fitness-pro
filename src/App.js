@@ -7,7 +7,7 @@ import { ModalSelectWorkout } from "./components/modalSelectWorkout/selectWorkou
 function App() {
   return <div className='App'>
     <Profile/>
-    <ModalSelectWorkout/>
+   
   </div>;
 }
 
