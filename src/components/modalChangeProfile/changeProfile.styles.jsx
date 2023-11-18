@@ -1,17 +1,27 @@
 import { styled } from 'styled-components'
 export const modalBG = styled.div`
-position: fixed;
-    left: 0px;
-    top: 0px;
-    z-index: 999;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-` 
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+export const closeBtn = styled.div`
+  position: absolute;
+  z-index: 999;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  cursor: pointer;
+`
+
 export const modalFormLogin = styled.form`
+  position: relative;
   width: 366px;
   background: #fff;
   border-radius: 12px;
@@ -28,8 +38,8 @@ export const modalFormLogin = styled.form`
   padding: 33px 47px 47px 40px;
 `
 export const modalLogo = styled.div`
-width: 220px;
-height: 36px;
+  width: 220px;
+  height: 36px;
   margin-bottom: 34px;
   background-color: transparent;
   img {
@@ -39,13 +49,13 @@ height: 36px;
   cursor: pointer;
 `
 export const changeDataText = styled.p`
-color: #000;
-font-variant-numeric: lining-nums proportional-nums;
-font-size: 18px;
-line-height: 24px; /* 133.333% */
-letter-spacing: -0.05px;
-align-self: start;
-margin-bottom: 20px
+  color: #000;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-size: 18px;
+  line-height: 24px; /* 133.333% */
+  letter-spacing: -0.05px;
+  align-self: start;
+  margin-bottom: 20px;
 `
 export const modalInput = styled.input`
   width: 100%;
