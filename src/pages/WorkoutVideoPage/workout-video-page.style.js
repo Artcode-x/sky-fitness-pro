@@ -201,9 +201,10 @@ export const MainTextPercent = styled.p`
     font-style: normal;
     font-weight: 400;
     line-height: 32px;
-    letter-spacing: -0.1px;
+    letter-spacing: -0.05px;
     margin: 0px;
     padding: 0px;
     text-align: right;
     padding-right: 10px;
 `
+
