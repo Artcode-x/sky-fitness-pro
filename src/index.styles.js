@@ -38,9 +38,9 @@ ul li {
   src:
     local('stratosskyengweb-regular'),
     local('stratosskyengweb-regular'),
-    url('../public/fonts/stratosskyengweb-regular.eot?#iefix') format('embedded-opentype'), 
-    url('../public/fonts/stratosskyengweb-regular.woff2') format('woff2'),
-    url('../public/fonts/stratosskyengweb-regular.woff') format('woff');
+    url('/fonts/stratosskyengweb-regular.eot?#iefix') format('embedded-opentype'), 
+    url('/fonts/stratosskyengweb-regular.woff2') format('woff2'),
+    url('/fonts/stratosskyengweb-regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
 }
