@@ -30,9 +30,9 @@ export const WorkoutVideoPage = () => {
             <S.Exercise>
                 <S.MainSmallHeading>Упражнения</S.MainSmallHeading>
                 <S.MainUl>
-                    <li>Наклон вперед (10 повторений)</li>
-                    <li>Наклон назад (10 повторений)</li>
-                    <li>Поднятие ног, согнутых в коленях (5 повторений)</li>
+                    <S.MainLi>Наклон вперед (10 повторений)</S.MainLi>
+                    <S.MainLi>Наклон назад (10 повторений)</S.MainLi>
+                    <S.MainLi>Поднятие ног, согнутых в коленях (5 повторений)</S.MainLi>
                 </S.MainUl>
                 <S.Button>Заполнить свой прогресс</S.Button>
             </S.Exercise>

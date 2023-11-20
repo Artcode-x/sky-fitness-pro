@@ -62,7 +62,11 @@ export const MainUl = styled.ul`
     line-height: 32px;
     letter-spacing: -0.1px;
     padding-left: 40px;
-    list-style: square !important;
+    list-style: disc !important;
+`
+
+export const MainLi = styled.ul`
+    list-style: disc !important;
 `
 
 export const MainExercises = styled.div`
