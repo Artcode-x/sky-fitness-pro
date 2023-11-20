@@ -37,11 +37,7 @@ ul li {
   font-family: 'StratosLCWeb-Regular';
   src: url('../public/fonts/StratosLCWeb-Regular.eot');
   src:
-    local('StratosLCWeb-Regular'),
-    local('StratosLCWeb-Regular'),
-    url('../public/fonts/StratosLCWeb-Regular.eot?#iefix') format('embedded-opentype'), 
-    url('../public/fonts/StratosLCWeb-Regular.woff2') format('woff2'),
-    url('../public/fonts/StratosLCWeb-Regular.woff') format('woff');
+
   font-weight: 400;
   font-style: normal;
 }
