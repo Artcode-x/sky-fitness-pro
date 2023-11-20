@@ -45,7 +45,7 @@ export const WorkoutVideoPage = () => {
             src="https://www.youtube.com/embed/v-xTLFDhoD0?si=VodWNwqcr_f8ARK2"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
         </S.MainVideoContainer>
         <S.MainExercises>

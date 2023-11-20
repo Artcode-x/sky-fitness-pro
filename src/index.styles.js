@@ -30,19 +30,15 @@ button {
   cursor: pointer;
 }
 
-/* ul li {
-  list-style: none;
-} */
-
 @font-face {
-  font-family: 'stratosskyengweb-regular';
-  src: url('/fonts/stratosskyengweb-regular.eot');
+  font-family: 'StratosLCWeb-Regular';
+  src: url('/fonts/StratosLCWeb-Regular.eot');
   src:
-    local('stratosskyengweb-regular'),
-    local('stratosskyengweb-regular'),
-    url('/fonts/stratosskyengweb-regular.eot?#iefix') format('embedded-opentype'), 
-    url('/fonts/stratosskyengweb-regular.woff2') format('woff2'),
-    url('/fonts/stratosskyengweb-regular.woff') format('woff');
+    local('StratosLCWeb-Regular'),
+    local('StratosLCWeb-Regular'),
+    url('/fonts/StratosLCWeb-Regular.eot?#iefix') format('embedded-opentype'), 
+    url('/fonts/StratosLCWeb-Regular.woff2') format('woff2'),
+    url('/fonts/StratosLCWeb-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
 }
@@ -77,7 +73,7 @@ export const Button = css`
   background: rgb(88, 14, 162);
   color: #fff;
   font-variant-numeric: lining-nums proportional-nums;
-  font-family: 'stratosskyengweb-regular', sans-serif;
+  font-family: 'StratosLCWeb-Regular', sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
