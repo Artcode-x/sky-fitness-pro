@@ -80,12 +80,14 @@ export const userCourses = styled.div`
   margin-top: 25px;
 `
 export const coursesList = styled.ul`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   margin-top: 60px;
   width: 100%;
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: flex-start;
+  align-items: flex-start; */
   justify-content: center;
   gap: 40px;
 `

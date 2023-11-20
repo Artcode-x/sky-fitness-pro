@@ -1,6 +1,6 @@
 import styled, { createGlobalStyle, css } from 'styled-components'
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
 * {
   margin: 0;
   padding: 0;
@@ -30,9 +30,9 @@ button {
   cursor: pointer;
 }
 
-ul li {
+/* ul li {
   list-style: none;
-}
+} */
 
 @font-face {
   font-family: 'stratosskyengweb-regular';
@@ -94,6 +94,12 @@ export const Button = css`
   &:active {
     background: rgb(39, 26, 88);
   }
+`
+
+export const Wrapper = styled.div`
+  padding-left: calc(50% - 580px);
+  padding-right: calc(50% - 580px);
+  background: #fafafa;
 `
 
 export default GlobalStyle

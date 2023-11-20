@@ -61,11 +61,14 @@ export const cardBtn = styled.button`
   line-height: 115%; /* 23px */
   letter-spacing: -0.05px;
   transition: all 0.3s;
-&:hover{
-  background: #DAF289;
-    transform: scale(1.05);}
-&:active{
-  background: #EBFFAB;`
+  &:hover {
+    background: #daf289;
+    transform: scale(1.05);
+  }
+  &:active {
+    background: #ebffab;
+  }
+`
 
 export const cardTitle = styled.div`
   width: 290px;

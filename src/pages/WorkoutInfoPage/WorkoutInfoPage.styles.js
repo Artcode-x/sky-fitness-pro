@@ -6,11 +6,6 @@ const theme = {
   textColor: '#000',
 }
 
-export const Wrapper = styled.div`
-  padding-left: calc(50% - 580px);
-  padding-right: calc(50% - 580px);
-  background: #fafafa;
-`
 
 export const Header = styled.header``
 
