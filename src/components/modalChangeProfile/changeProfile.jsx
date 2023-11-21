@@ -265,7 +265,7 @@ export const ChangeUserInfo = ({
           <S.modalBtnSignup
             type="button"
             as="button"
-            // onClick={() => navigate('/signup', { replace: false })}
+            onClick={() => closeModal("regForm")}
           >
             Зарегистрироваться
           </S.modalBtnSignup>
