@@ -1,16 +1,10 @@
 import styled from 'styled-components'
 import { Heading } from '../../index.styles'
-import { Button } from '../../index.styles'
+import { MButton } from '../../index.styles'
 
 const theme = {
   textColor: '#000',
 }
-
-export const Wrapper = styled.div`
-  padding-left: calc(50% - 580px);
-  padding-right: calc(50% - 580px);
-  background: #fafafa;
-`
 
 export const Header = styled.header``
 
@@ -179,7 +173,7 @@ export const ContactsText = styled.p`
 `
 
 export const ContactsButton = styled.button`
-  ${Button}
+  ${MButton}
 `
 
 export const ContactsImg = styled.img`

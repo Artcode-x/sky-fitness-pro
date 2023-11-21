@@ -10,3 +10,14 @@ export const Body = styled.div`
 
   background-color: #271a58;
 `
+
+export const СoursesList = styled.ul`
+  margin-top: 60px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 40px;
+`
