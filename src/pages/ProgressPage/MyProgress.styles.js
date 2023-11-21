@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Button } from '../../index.styles'
+import { MButton } from '../../index.styles'
 
 export const Container = styled.div`
   display: flex;
@@ -69,7 +69,7 @@ export const ProgressForButton = styled.div`
 `
 
 export const ProgressButton = styled.button`
-  ${Button}
+  ${MButton}
 
   width: 278px;
   margin: 43px 0 44px 0;

@@ -66,7 +66,7 @@ export const Heading = css`
   font-weight: 400;
   line-height: 48px;
 `
-export const Button = css`
+export const MButton = css`
   width: 275px;
   height: 52px;
   border-radius: 46px;

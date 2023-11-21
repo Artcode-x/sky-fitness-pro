@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { MButton } from '../../index.styles'
 
 export const profileWrapper = styled.div`
   width: 100%;
@@ -99,23 +100,10 @@ export const profileBtnBox = styled.div`
 `
 
 export const profileBtn = styled.button`
-  width: 275px;
-  height: 52px;
-  flex-shrink: 0;
-  border: none;
-  border-radius: 46px;
-  background: var(--palette-purple-90, #580ea2);
-  color: #fff;
-  font-variant-numeric: lining-nums proportional-nums;
-  font-size: 18px;
-  line-height: 24px; /* 133.333% */
-  letter-spacing: -0.05px;
+  ${MButton}
   transition: all 0.3s;
   &:hover {
-    background: #3f007d;
+    
     transform: scale(1.05);
-  }
-  &:active {
-    background: var(--palette-purple-100, #271a58);
   }
 `
