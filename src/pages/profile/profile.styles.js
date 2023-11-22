@@ -27,6 +27,7 @@ export const logo = styled.div`
   width: 220px;
   height: 35px;
   flex-shrink: 0;
+  fill:none;
 `
 export const userInfo = styled.div`
   min-width: 170px;
@@ -106,4 +107,16 @@ export const profileBtn = styled.button`
     
     transform: scale(1.05);
   }
+`
+export const modalBG = styled.div`
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
