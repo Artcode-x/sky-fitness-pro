@@ -48,7 +48,11 @@ export const Profile = () => {
             </S.profileBtn>
           </S.profileBtnBox>
         </S.userProfile>
-        {modal && <ChangeUserInfo mode={modal} closeModal={setModal} />}
+        {modal && (
+          <S.modalBG>
+            <ChangeUserInfo mode={modal} closeModal={setModal} />
+          </S.modalBG>
+        )}
         <S.userCourses>
           <S.profileTitle>Мои курсы</S.profileTitle>
           <S.coursesList>

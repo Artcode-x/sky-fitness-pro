@@ -8,11 +8,11 @@ import { WorkoutVideoPage } from './pages/WorkoutVideoPage/WorkoutVideoPage'
 function App() {
   return (
     <>
-      {/* <MainPage /> */}
+      <MainPage />
       <Wrapper>
-        {/* <WorkoutInfoPage />
+        <WorkoutInfoPage />
         <WorkoutVideoPage />
-        <Profile /> */}
+        <Profile />
         <AuthPage/>
       </Wrapper>
     </>
