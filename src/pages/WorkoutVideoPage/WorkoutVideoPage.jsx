@@ -1,9 +1,19 @@
 import React from 'react'
 import * as S from './WorkoutVideoPage.styles'
+import { Wrapper } from '../../index.styles'
+import { MyProgress } from '../ProgressPage/MyProgress';
+import { useState } from 'react';
 
 export const WorkoutVideoPage = () => {
+
+  const [open, setOpen] = useState(false);
+
+  const popup = () => {
+    setOpen(!open);
+  };
+
   return (
-    <>
+    <Wrapper>
       <S.Header>
         <img src="/img/logo.svg" alt="logo"></img>
         <S.HeaderUserInfo>
@@ -58,7 +68,8 @@ export const WorkoutVideoPage = () => {
                 Поднятие ног, согнутых в коленях (5 повторений)
               </S.MainLi>
             </S.MainUl>
-            <S.Button>Заполнить свой прогресс</S.Button>
+            <S.Button onClick={popup}>Заполнить свой прогресс</S.Button>
+            {open ? <MyProgress/> : null}
           </S.Exercise>
           <S.MainProgress>
             <S.ExerciseHeading>Мой прогресс по тренировке 2:</S.ExerciseHeading>
@@ -93,6 +104,6 @@ export const WorkoutVideoPage = () => {
           </S.MainProgress>
         </S.MainExercises>
       </main>
-    </>
+    </Wrapper>
   )
 }

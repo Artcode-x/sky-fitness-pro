@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import * as S from './selectWorkout.styles'
 
 const Workout = ({ name, course, day, done }) => {
@@ -77,12 +78,14 @@ export const ModalSelectWorkout = ({ modalIsOpen }) => {
             day={1}
             done
           />
+          <Link to="/workout-video-page">
           <Workout
             name={'Красота и здоровье'}
             course={'Йога на каждый день'}
             day={2}
             done
           />
+          </Link>
           <Workout name={'Асаны стоя'} course={'Йога на каждый день'} day={3} />
           <Workout
             name={'Растягиваем мышцы бедра'}

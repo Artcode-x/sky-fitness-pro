@@ -1,5 +1,6 @@
 import React from 'react'
 import * as S from './courseCard.styles'
+import { Link } from 'react-router-dom'
 
 export const CourseCard = ({ bgi, name, openModal }) => {
   return (

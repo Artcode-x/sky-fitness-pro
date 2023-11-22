@@ -1,40 +1,21 @@
 import React from "react";
 import * as S from "./AuthPage.styles";
+import { Link, useNavigate } from "react-router-dom";
+import { ChangeUserInfo } from "../../components/modalChangeProfile/changeProfile";
 
 export const Login = () => {
   
+  const navigate = useNavigate();
+  const setUser = () => {
+    localStorage.setItem("user", "token");
+    navigate("/profile", { replace: true });
+  };
 
   return (
-    <S.PageContainer>
-      <S.ModalForm>
-
-          <S.ModalLogo>
-            <S.ModalLogoImage src="/img/logo.svg" alt="logo" />
-          </S.ModalLogo>
-
-                 <>
-            <S.Inputs>
-              <S.ModalInput
-              type="text"
-              name="login"
-              placeholder="Логин"
-              />
-              <S.ModalInput
-              type="password"
-              name="password"
-              placeholder="Пароль"
-              />
-            </S.Inputs>
-            <S.Buttons>
-              <S.PrimaryButton>
-                Войти
-              </S.PrimaryButton>
-
-                <S.SecondaryButton>Зарегистрироваться</S.SecondaryButton>
-
-            </S.Buttons>
-          </>
-      </S.ModalForm>
-    </S.PageContainer>
+    <ChangeUserInfo 
+    mode={'logForm'}
+    type={"button"}
+    as={"button"}
+    />
   );
 };

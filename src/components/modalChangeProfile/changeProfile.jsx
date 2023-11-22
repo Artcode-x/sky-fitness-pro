@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import * as S from './changeProfile.styles'
+import { Link } from 'react-router-dom'
 
 export const ChangeUserInfo = ({
   mode,
@@ -20,7 +21,11 @@ export const ChangeUserInfo = ({
   const [passwordError, setPasswordError] = useState('Введите пароль')
   const [controlError, setControlError] = useState('Введите пароль повторно')
   const [validForm, setValidForm] = useState(false)
-  // const navigate = useNavigate()
+  const navigate = useNavigate();
+  const setUser = () => {
+    localStorage.setItem("user", "token");
+    navigate("/profile", { replace: true });
+  };
 
   useEffect(() => {
     if ((mode = 'regForm')) {
@@ -254,21 +259,26 @@ export const ChangeUserInfo = ({
           : apiErrors?.detail) && <S.formError>{controlError}</S.formError>}
         {/* {apiErrors && <S.apiError>{apiErrors.password[1]}</S.apiError>} */}
 
+        <Link to="/profile">
         <S.modalBtnEnter
           disabled={!validForm || loading}
           type="submit"
-          onClick={addNewUser}
+          onClick={setUser}
         >
           {btnName}
         </S.modalBtnEnter>
+        </Link>
         {mode == 'logForm' && (
+          <Link to="/registration">
           <S.modalBtnSignup
             type="button"
             as="button"
+            onClick={setUser}
             // onClick={() => navigate('/signup', { replace: false })}
           >
             Зарегистрироваться
           </S.modalBtnSignup>
+          </Link>
         )}
       </S.modalFormLogin>
     </S.modalBG>
