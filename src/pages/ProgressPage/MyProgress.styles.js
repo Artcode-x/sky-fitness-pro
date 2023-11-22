@@ -2,13 +2,29 @@ import styled from 'styled-components'
 import { MButton } from '../../index.styles'
 
 export const Container = styled.div`
+--modal-width: 366px;
+--modal-height: 439px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100vw;
+  height: 1460px;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+  left: 0px;
+  top: 0px;
+  z-index: 10;
+  justify-content: center;
 `
 
 export const Progress = styled.div`
-  width: 361px;
+  width: 444px;
+  background-color: #fff;
+  position: absolute;
+  border-radius: 12px;
+  padding-left: 44px;
+  
 `
 
 export const ProgressTitle = styled.h1`

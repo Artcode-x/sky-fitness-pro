@@ -63,11 +63,11 @@ export const MainUl = styled.ul`
   line-height: 32px;
   letter-spacing: -0.1px;
   padding-left: 40px;
-  list-style: disc !important;
+  list-style: disc;
 `
 
-export const MainLi = styled.ul`
-  list-style: disc !important;
+export const MainLi = styled.li`
+  /* list-style: disc !important; */
 `
 
 export const MainExercises = styled.div`
@@ -168,6 +168,9 @@ export const InterVisualContainerFirst = styled.div`
   height: 36px;
   border-top-left-radius: 22px;
   border-bottom-left-radius: 22px;
+  position: relative;
+  top: -2px;
+  left: -2px;
 `
 
 export const InterVisualContainerSecond = styled.div`
@@ -176,6 +179,9 @@ export const InterVisualContainerSecond = styled.div`
   height: 36px;
   border-top-left-radius: 22px;
   border-bottom-left-radius: 22px;
+  position: relative;
+  top: -2px;
+  left: -2px;
 `
 
 export const InterVisualContainerThird = styled.div`
@@ -184,6 +190,9 @@ export const InterVisualContainerThird = styled.div`
   height: 36px;
   border-top-left-radius: 22px;
   border-bottom-left-radius: 22px;
+  position: relative;
+  top: -2px;
+  left: -2px;
 `
 
 export const MainTextPercent = styled.p`

@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
-// import { useNavigate } from 'react-router-dom'
+
+import { useNavigate } from 'react-router-dom'
+
 import * as S from './changeProfile.styles'
+import { Link } from 'react-router-dom'
 
 export const ChangeUserInfo = ({
   mode,
@@ -19,7 +22,11 @@ export const ChangeUserInfo = ({
   const [passwordError, setPasswordError] = useState('Введите пароль')
   const [controlError, setControlError] = useState('Введите пароль повторно')
   const [validForm, setValidForm] = useState(false)
-  // const navigate = useNavigate()
+  const navigate = useNavigate();
+  const setUser = () => {
+    localStorage.setItem("user", "token");
+    navigate("/profile", { replace: true });
+  };
 
   useEffect(() => {
     if ((mode == 'regForm')) {
@@ -183,6 +190,7 @@ export const ChangeUserInfo = ({
                 ></path>
               </g>
             </g>
+
           </g>
         </svg>
       </S.closeBtn>
@@ -250,5 +258,6 @@ export const ChangeUserInfo = ({
         </S.modalBtnSignup>
       )}
     </S.modalFormLogin>
+
   )
 }

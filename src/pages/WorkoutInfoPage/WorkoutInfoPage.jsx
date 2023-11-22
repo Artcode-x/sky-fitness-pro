@@ -1,8 +1,9 @@
+import { Wrapper } from '../../index.styles'
 import * as S from './WorkoutInfoPage.styles'
 
 export const WorkoutInfoPage = () => {
   return (
-    <>
+    <Wrapper>
       <S.Header>
         <S.HeaderLogo src="/img/logo.svg" alt="logo" />
       </S.Header>
@@ -88,6 +89,6 @@ export const WorkoutInfoPage = () => {
           </S.Contacts>
         </S.Info>
       </S.Main>
-    </>
+    </Wrapper>
   )
 }
