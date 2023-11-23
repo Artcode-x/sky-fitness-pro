@@ -1,6 +1,6 @@
-import { getCourses, getWorkouts } from 'api/api'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { getCourses, getWorkouts } from 'api/api'
 import { useGetCoursesQuery, useGetWorkoutsQuery } from 'services/courses'
 import { Wrapper } from '../../index.styles'
 import * as S from './WorkoutInfoPage.styles'
@@ -23,6 +23,8 @@ export const WorkoutInfoPage = () => {
   //   handleGetCourses()
   // }, [])
 
+  // console.log(courses.ab1c3a?.description)
+
   // useEffect(() => {
   //   async function handleGetWorkouts() {
   //     try {
@@ -38,10 +40,11 @@ export const WorkoutInfoPage = () => {
   // }, [])
 
   // const { data, isLoading, isError } = useGetCoursesQuery()
-  // console.log(data)
+  // const courseItems = (!isLoading && data.ab1c3a.description) || {}
+  // console.log(courseItems)
 
-  // const { data, isLoading, isError } = useGetWorkoutsQuery()
-  // console.log(data)
+  // const { data = {}, isLoading, isError } = useGetWorkoutsQuery()
+  // console.log(data.yoga?.feko2342?.exercises)
 
   return (
     <Wrapper>
