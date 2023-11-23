@@ -1,7 +1,48 @@
+import { getCourses, getWorkouts } from 'api/api'
+import { useState } from 'react'
+import { useEffect } from 'react'
+import { useGetCoursesQuery, useGetWorkoutsQuery } from 'services/courses'
 import { Wrapper } from '../../index.styles'
 import * as S from './WorkoutInfoPage.styles'
 
 export const WorkoutInfoPage = () => {
+  // const [courses, setCourses] = useState({})
+
+  // useEffect(() => {
+  //   async function handleGetCourses() {
+  //     try {
+  //       await getCourses().then((data) => {
+  //         console.log(data)
+  //         setCourses(data)
+  //       })
+  //     } catch (error) {
+  //       console.error(error.message)
+  //     }
+  //   }
+
+  //   handleGetCourses()
+  // }, [])
+
+  // useEffect(() => {
+  //   async function handleGetWorkouts() {
+  //     try {
+  //       await getWorkouts().then((data) => {
+  //         console.log(data)
+  //       })
+  //     } catch (error) {
+  //       console.error(error.message)
+  //     }
+  //   }
+
+  //   handleGetWorkouts()
+  // }, [])
+
+  // const { data, isLoading, isError } = useGetCoursesQuery()
+  // console.log(data)
+
+  // const { data, isLoading, isError } = useGetWorkoutsQuery()
+  // console.log(data)
+
   return (
     <Wrapper>
       <S.Header>
