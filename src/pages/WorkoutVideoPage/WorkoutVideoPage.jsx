@@ -3,6 +3,7 @@ import * as S from './WorkoutVideoPage.styles'
 import { Wrapper } from '../../index.styles'
 import { MyProgress } from '../ProgressPage/MyProgress';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export const WorkoutVideoPage = () => {
 
@@ -15,7 +16,9 @@ export const WorkoutVideoPage = () => {
   return (
     <Wrapper>
       <S.Header>
+        <Link to="/">
         <img src="/img/logo.svg" alt="logo"></img>
+        </Link>
         <S.HeaderUserInfo>
           <svg
             width="50"

@@ -9,12 +9,12 @@ import { MainPage } from './pages/MainPage/MainPage'
 import { WorkoutVideoPage } from './pages/WorkoutVideoPage/WorkoutVideoPage'
 
 function App() {
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
 
 
   return (
     <>
-      <AppRoutes user = {user}/>    
+      <AppRoutes/>    
     </>
   )
 }

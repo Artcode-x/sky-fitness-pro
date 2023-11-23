@@ -1,67 +1,10 @@
-import { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from 'firebase/auth'
-import { ChangeUserInfo } from '../../components/modalChangeProfile/changeProfile'
-import * as S from './Auth.styles'
-import { setUser } from '../../store/slices/userSlice'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from "react-router-dom"
+import * as S from "./NotFound.style"
 
-export const AuthPage = () => {
-  const [modal, setModal] = useState('logForm')
-  const [registrationData, setRegistrationData] = useState(null)
-  const [error, setError] = useState(null)
-  const dispatch = useDispatch()
-  const navigate = useNavigate();
-
-  const getRegistrationOrLogin = (email, password) => {
-    const auth = getAuth()
-    if (modal == 'logForm') {
-      signInWithEmailAndPassword(auth, email, password)
-        .then(({ user }) => {
-          localStorage.setItem("user", "token");
-          navigate("/profile", { replace: true });
-          dispatch(
-            setUser({
-              email: user.email,
-              id: user.uid,
-              token: user.accessToken,
-            }),
-          )
-        })
-        .catch((err) => {
-          setError(err.message)
-        })
-    }
-    if (modal == 'regForm') {
-      createUserWithEmailAndPassword(auth, email, password)
-        .then(({ user }) => {
-          localStorage.setItem("user", "token");
-          navigate("/profile", { replace: true });
-          dispatch(
-            setUser({
-              email: user.email,
-              id: user.uid,
-              token: user.accessToken,
-            }),
-          )
-        })
-        .catch((err) => {
-          setError(err.message)
-        })
-    }
-  }
-  useEffect(() => {
-    if (registrationData)
-      getRegistrationOrLogin(registrationData.email, registrationData.password)
-  }, [registrationData])
-
-  return (
+export const NotFound = () => {
+    return (
     <S.authWrap>
-      <Link to="/">
+        <Link to="/">
       <S.logo>
         <svg
           width="223"
@@ -178,12 +121,7 @@ export const AuthPage = () => {
         </svg>
       </S.logo>
       </Link>
-      <ChangeUserInfo
-        mode={modal}
-        closeModal={setModal}
-        setData={setRegistrationData}
-      />
-      {error && <S.errorBox>Произошла ошибка: {error}</S.errorBox>}
+        <h2>УПС! Кажется такой страницы не существует</h2>
     </S.authWrap>
-  )
+    )
 }
