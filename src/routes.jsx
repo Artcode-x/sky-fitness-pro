@@ -1,9 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { MainPage } from "./pages/MainPage/MainPage.jsx";
-// import { NotFound } from "./pages/not-found/NotFound";
-import { Login } from "./pages/AuthPage/Login.jsx";
-import { Registration } from "./pages/AuthPage/Registration.jsx";
+import { NotFound } from "./pages/NotFound/NotFound.jsx";
 import { Profile } from "./pages/profile/profile.jsx";
 import { WorkoutInfoPage } from "./pages/WorkoutInfoPage/WorkoutInfoPage.jsx";
 import { WorkoutVideoPage } from "./pages/WorkoutVideoPage/WorkoutVideoPage.jsx";
@@ -36,7 +34,7 @@ export const AppRoutes = () => {
           <WorkoutVideoPage />
           </ProtectedRoute>}></Route>
    
-      {/* <Route path="*" element={<NotFound />}></Route> */}
+      <Route path="*" element={<NotFound />}></Route>
     </Routes>
   );
 };
