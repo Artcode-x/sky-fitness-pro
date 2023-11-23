@@ -20,8 +20,16 @@ export const SkillCard = styled.div`
   margin-bottom: 72px;
 `
 export const SkillCardImg = styled.img`
-  width: 1160px;
-  height: 310px;
+  max-width: 100%;
+  height: auto;
+  max-height: 310px;
+`
+
+export const SmallDeviceSkillCardImg = styled(SkillCardImg)`
+  @media (max-width: 375px) {
+    max-width: 100%;
+    max-height: auto;
+  }
 `
 
 export const SkillCardTitle = styled.h1`
@@ -49,6 +57,7 @@ export const RecommendHeading = styled.h2`
 
 export const RecommendItems = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 87px;
 `
 
@@ -129,6 +138,10 @@ export const DirectionsItems = styled.ul`
   & li {
     padding-right: 182px;
   }
+
+  @media (max-width: 767px) {
+    columns: 1;
+  }
 `
 
 export const Motivation = styled.div``
@@ -148,10 +161,8 @@ export const Contacts = styled.div`
   margin-bottom: 95px;
   border-radius: 30px;
   background: #f9ebff;
-  position: relative;
-  width: 1160px;
+  max-width: 1160px;
   min-height: 300px;
-  padding-bottom: 48px;
 `
 
 export const ContactsContainer = styled.div`
@@ -168,7 +179,7 @@ export const ContactsText = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 40px;
-  width: 823px;
+  max-width: 823px;
   padding-top: 46px;
 `
 
@@ -179,6 +190,9 @@ export const ContactsButton = styled.button`
 export const ContactsImg = styled.img`
   width: 298px;
   height: 296px;
-  position: absolute;
   right: 0px;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
 `

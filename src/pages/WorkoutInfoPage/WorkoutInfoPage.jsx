@@ -1,8 +1,51 @@
+import { useState } from 'react'
+import { useEffect } from 'react'
+import { useGetCoursesQuery, useGetWorkoutsQuery } from 'services/courses'
 import { Link } from 'react-router-dom'
 import { Wrapper } from '../../index.styles'
 import * as S from './WorkoutInfoPage.styles'
 
 export const WorkoutInfoPage = () => {
+  // const [courses, setCourses] = useState({})
+
+  // useEffect(() => {
+  //   async function handleGetCourses() {
+  //     try {
+  //       await getCourses().then((data) => {
+  //         console.log(data)
+  //         setCourses(data)
+  //       })
+  //     } catch (error) {
+  //       console.error(error.message)
+  //     }
+  //   }
+
+  //   handleGetCourses()
+  // }, [])
+
+  // console.log(courses.ab1c3a?.description)
+
+  // useEffect(() => {
+  //   async function handleGetWorkouts() {
+  //     try {
+  //       await getWorkouts().then((data) => {
+  //         console.log(data)
+  //       })
+  //     } catch (error) {
+  //       console.error(error.message)
+  //     }
+  //   }
+
+  //   handleGetWorkouts()
+  // }, [])
+
+  // const { data, isLoading, isError } = useGetCoursesQuery()
+  // const courseItems = (!isLoading && data.ab1c3a.description) || {}
+  // console.log(courseItems)
+
+  // const { data = {}, isLoading, isError } = useGetWorkoutsQuery()
+  // console.log(data.yoga?.feko2342?.exercises)
+
   return (
     <Wrapper>
       <Link to="/">
