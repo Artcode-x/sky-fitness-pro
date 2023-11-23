@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useGetCoursesQuery, useGetWorkoutsQuery } from 'services/courses'
+import { Link } from 'react-router-dom'
 import { Wrapper } from '../../index.styles'
 import * as S from './WorkoutInfoPage.styles'
 
@@ -47,9 +48,11 @@ export const WorkoutInfoPage = () => {
 
   return (
     <Wrapper>
+      <Link to="/">
       <S.Header>
         <S.HeaderLogo src="/img/logo.svg" alt="logo" />
       </S.Header>
+      </Link>
       <S.Main>
         <S.SkillCard>
           <S.SkillCardImg src="/img/skill-card-bg.png" alt="skill-card" />
