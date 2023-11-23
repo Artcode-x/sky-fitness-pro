@@ -8,18 +8,22 @@ import {
 import { ChangeUserInfo } from '../../components/modalChangeProfile/changeProfile'
 import * as S from './Auth.styles'
 import { setUser } from '../../store/slices/userSlice'
+import { useNavigate } from 'react-router-dom'
 
 export const AuthPage = () => {
   const [modal, setModal] = useState('logForm')
   const [registrationData, setRegistrationData] = useState(null)
   const [error, setError] = useState(null)
   const dispatch = useDispatch()
+  const navigate = useNavigate();
 
   const getRegistrationOrLogin = (email, password) => {
     const auth = getAuth()
     if (modal == 'logForm') {
       signInWithEmailAndPassword(auth, email, password)
         .then(({ user }) => {
+          localStorage.setItem("user", "token");
+          navigate("/profile", { replace: true });
           dispatch(
             setUser({
               email: user.email,
@@ -35,6 +39,8 @@ export const AuthPage = () => {
     if (modal == 'regForm') {
       createUserWithEmailAndPassword(auth, email, password)
         .then(({ user }) => {
+          localStorage.setItem("user", "token");
+          navigate("/profile", { replace: true });
           dispatch(
             setUser({
               email: user.email,
