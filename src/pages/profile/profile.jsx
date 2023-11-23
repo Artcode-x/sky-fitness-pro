@@ -4,6 +4,7 @@ import * as S from './profile.styles'
 import { CourseCard } from '../../components/cards/card'
 import { ModalSelectWorkout } from '../../components/modalSelectWorkout/selectWorkout'
 import { ChangeUserInfo } from '../../components/modalChangeProfile/changeProfile'
+import { Link } from 'react-router-dom'
 
 export const Profile = () => {
   const [modal, setModal] = useState('')
@@ -12,9 +13,11 @@ export const Profile = () => {
     <S.profileWrapper>
       <S.profileDiv>
         <S.profileHeader>
+          <Link to="/">
           <S.logo>
             <img src="/img/logo.svg" alt="logo"></img>
           </S.logo>
+          </Link>
           <S.userInfo>
             <S.userImg />
             Сергей

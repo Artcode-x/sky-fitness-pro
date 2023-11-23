@@ -8,7 +8,7 @@ import {
 import { ChangeUserInfo } from '../../components/modalChangeProfile/changeProfile'
 import * as S from './Auth.styles'
 import { setUser } from '../../store/slices/userSlice'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export const AuthPage = () => {
   const [modal, setModal] = useState('logForm')
@@ -61,6 +61,7 @@ export const AuthPage = () => {
 
   return (
     <S.authWrap>
+      <Link to="/">
       <S.logo>
         <svg
           width="223"
@@ -176,6 +177,7 @@ export const AuthPage = () => {
           </defs>
         </svg>
       </S.logo>
+      </Link>
       <ChangeUserInfo
         mode={modal}
         closeModal={setModal}
