@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { getCourses, getWorkouts } from 'api/api'
 import { useGetCoursesQuery, useGetWorkoutsQuery } from 'services/courses'
 import { Wrapper } from '../../index.styles'
 import * as S from './WorkoutInfoPage.styles'
