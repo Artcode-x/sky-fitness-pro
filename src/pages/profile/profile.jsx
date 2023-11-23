@@ -5,22 +5,26 @@ import { CourseCard } from '../../components/cards/card'
 import { ModalSelectWorkout } from '../../components/modalSelectWorkout/selectWorkout'
 import { ChangeUserInfo } from '../../components/modalChangeProfile/changeProfile'
 import { Link } from 'react-router-dom'
+import { useAuth } from 'hooks/use-auth'
 
 export const Profile = () => {
   const [modal, setModal] = useState('')
   const [workout, setWorkout] = useState(false)
+  const { isAuth, email, token, id } = useAuth()
+  console.log(isAuth)
+
   return (
     <S.profileWrapper>
       <S.profileDiv>
         <S.profileHeader>
           <Link to="/">
-          <S.logo>
-            <img src="/img/logo.svg" alt="logo"></img>
-          </S.logo>
+            <S.logo>
+              <img src="/img/logo.svg" alt="logo"></img>
+            </S.logo>
           </Link>
           <S.userInfo>
             <S.userImg />
-            Сергей
+            {email}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="14"
@@ -34,12 +38,17 @@ export const Profile = () => {
                 strokeWidth="2"
               />
             </svg>
+            <S.userInfoPopUp >
+              <S.popUpItem>На главную</S.popUpItem>
+              <S.popUpItem>Профиль</S.popUpItem>
+              <S.popUpItem>Выйти</S.popUpItem>
+            </S.userInfoPopUp>
           </S.userInfo>
         </S.profileHeader>
         <S.userProfile>
           <S.profileTitle>Мой профиль</S.profileTitle>
           <S.profileContent>
-            <S.profileText>Логин: sergey.petrov96</S.profileText>
+            <S.profileText>Логин: {email}</S.profileText>
             <S.profileText>Пароль: 4fkhdj880d</S.profileText>
           </S.profileContent>
           <S.profileBtnBox>

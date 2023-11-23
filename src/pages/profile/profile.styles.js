@@ -30,6 +30,7 @@ export const logo = styled.div`
   fill:none;
 `
 export const userInfo = styled.div`
+position:relative;
   min-width: 170px;
   height: 50px;
   flex-shrink: 0;
@@ -37,6 +38,7 @@ export const userInfo = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
   color: #000;
   text-align: right;
   font-variant-numeric: lining-nums proportional-nums;
@@ -50,6 +52,33 @@ export const userImg = styled.div`
   height: 50px;
   width: 50px;
 `
+export const userInfoPopUp = styled.ul`
+list-style: none;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    position: absolute;
+    top: 2rem;
+    right: 0rem; 
+    width: 100%;
+    overflow: hidden;
+    transition: height 0.3s ease-in-out 0s;
+  height: 0rem;
+  /* &:focus-visible {
+    outline: -webkit-focus-ring-color auto 1px;
+} */
+`
+export const popUpItem = styled.li`
+width: inherit;
+    text-align: right;
+    cursor: pointer;
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: rgb(0, 0, 0);
+    &:hover {
+      color: rgb(208, 206, 206);  }
+`
+
 export const userProfile = styled.div`
   display: flex;
   flex-direction: column;
