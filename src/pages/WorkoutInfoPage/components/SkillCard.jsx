@@ -1,9 +1,10 @@
+import { getSvg } from '../utils/getSvg'
 import * as S from '../WorkoutInfoPage.styles'
 
 export const SkillCard = ({ selectedCourse }) => {
   return (
     <S.SkillCard>
-      <S.SkillCardImg src="/img/skill-card-bg.png" alt="skill-card" />
+      {getSvg(selectedCourse?.name)}
       <S.SkillCardTitle>{selectedCourse?.name}</S.SkillCardTitle>
     </S.SkillCard>
   )
