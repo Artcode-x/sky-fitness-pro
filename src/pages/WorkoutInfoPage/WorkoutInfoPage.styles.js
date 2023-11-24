@@ -153,6 +153,18 @@ export const MotivationText = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 32px;
+
+  &:not(:first-of-type) {
+    margin-top: 30px;
+  }
+`
+
+export const MotivationContainer = styled(DirectionsContainer)`
+  margin-top: 10px;
+`
+
+export const MotivationItems = styled.ul`
+  padding-left: 38px;
 `
 
 export const Contacts = styled.div`
@@ -195,4 +207,8 @@ export const ContactsImg = styled.img`
   @media (max-width: 767px) {
     display: none;
   }
+`
+
+export const TempErrorLoadingText = styled(DirectionsHeading)`
+  padding: 100px;
 `
