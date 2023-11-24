@@ -8,22 +8,29 @@ import { Directions } from './components/Directions'
 import { Motivation } from './components/Motivation'
 import { Contacts } from './components/Contacts'
 
-export const WorkoutInfoPage = ({ course = 'Стретчинг' }) => {
-  const { data, isLoading, isError } = useGetCoursesQuery()
-  const courseItems = (!isLoading && data) || []
-  const selectedCourse = courseItems.find((item) => item.name === course)
+export const WorkoutInfoPage = ({ course = 'Степ-аэробика' }) => {
+  const { data = [], isLoading, isError, error } = useGetCoursesQuery()
+  const selectedCourse = data.find((item) => item.name === course)
 
   return (
     <Wrapper>
       <Header />
       <S.Main>
-        <SkillCard selectedCourse={selectedCourse} />
-        <S.Info>
-          <Recommend selectedCourse={selectedCourse} />
-          <Directions selectedCourse={selectedCourse} />
-          <Motivation selectedCourse={selectedCourse} />
-          <Contacts />
-        </S.Info>
+        {isError ? (
+          <S.TempErrorLoadingText>Ошибка: {error.data}</S.TempErrorLoadingText>
+        ) : isLoading ? (
+          <S.TempErrorLoadingText>...Загрузка</S.TempErrorLoadingText>
+        ) : (
+          <>
+            <SkillCard selectedCourse={selectedCourse} />
+            <S.Info>
+              <Recommend selectedCourse={selectedCourse} />
+              <Directions selectedCourse={selectedCourse} />
+              <Motivation selectedCourse={selectedCourse} />
+              <Contacts />
+            </S.Info>
+          </>
+        )}
       </S.Main>
     </Wrapper>
   )
