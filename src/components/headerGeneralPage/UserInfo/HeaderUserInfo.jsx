@@ -10,3 +10,4 @@ export const HeaderUserInfo = () => {
     </S.HeaderButton>
   )
 }
+
