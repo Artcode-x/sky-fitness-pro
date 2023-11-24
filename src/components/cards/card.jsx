@@ -2,9 +2,9 @@ import React from 'react'
 import * as S from './courseCard.styles'
 import { Link } from 'react-router-dom'
 
-export const CourseCard = ({ bgi, name, openModal }) => {
+export const CourseCard = ({ name, openModal }) => {
   return (
-    <S.courseCard $bgi={bgi}>
+    <S.courseCard $bgi={name}>
       <S.cardTitle>{name}</S.cardTitle>
       {openModal && (
         <S.cardBtn
