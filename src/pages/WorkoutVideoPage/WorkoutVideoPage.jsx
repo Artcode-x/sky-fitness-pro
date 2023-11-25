@@ -35,9 +35,10 @@ export const WorkoutVideoPage = ({ course = '1', title = '' }) => {
 
   const { data=[], isLoading, isError } = useGetWorkoutsQuery();
   const workoutData = data[1];
+  const workoutName = workoutData[0]
   const selectedWorkout = workoutData.find((item) => item.title === 'Разогрев мышц 2.0');
   const exercises = selectedWorkout?.exercises;
-  // console.log(data[1]);
+  const youtubeLink = selectedWorkout.link_addition
   console.log(workoutData);
   console.log(selectedWorkout);
 
@@ -51,22 +52,22 @@ export const WorkoutVideoPage = ({ course = '1', title = '' }) => {
     <Wrapper>
        <Header></Header>
       <main>
-        <S.MainBigHeading>{workoutData[0].name}</S.MainBigHeading>
+        <S.MainBigHeading>{workoutName.name}</S.MainBigHeading>
         <S.MainSmallHeading>
-          {/* {' '}
-          Красота и здоровье / Йога на каждый день / 2 день */}
+
           {selectedWorkout.title}
         </S.MainSmallHeading>
-        <S.MainVideoContainer>
+        {<S.MainVideoContainer>
           <iframe
             width="1160"
             height="639"
-            src="https://www.youtube.com/embed/v-xTLFDhoD0?si=VodWNwqcr_f8ARK2"
+            src=`https://www.youtube.com/embed/${youtubeLink}`
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          ></iframe>
-        </S.MainVideoContainer>
+            allowFullScreen>
+
+          </iframe>
+        </S.MainVideoContainer>}
         <S.MainExercises>
           <S.Exercise>
             <S.MainSmallHeading>Упражнения</S.MainSmallHeading>
@@ -76,11 +77,6 @@ export const WorkoutVideoPage = ({ course = '1', title = '' }) => {
             <li key={index}>{item}</li>
           ))}
 
-              {/* <S.MainLi>Наклон вперед (10 повторений)</S.MainLi>
-              <S.MainLi>Наклон назад (10 повторений)</S.MainLi>
-              <S.MainLi>
-                Поднятие ног, согнутых в коленях (5 повторений)
-              </S.MainLi> */}
             </S.MainUl>
             <S.Button onClick={popup}>Заполнить свой прогресс</S.Button>
             {open ? <MyProgress/> : null}
@@ -100,32 +96,7 @@ export const WorkoutVideoPage = ({ course = '1', title = '' }) => {
           ))}</S.ProgressText>
                 
               </S.Visual>}
-              {/* <S.Visual>
-                <S.ProgressText>Наклоны вперед</S.ProgressText>
-                <S.VisualContainerFirst>
-                  <S.InterVisualContainerFirst id="container">
-                    <S.MainTextPercent>45%</S.MainTextPercent>
-                  </S.InterVisualContainerFirst>
-                </S.VisualContainerFirst>
-              </S.Visual>
-              <S.Visual>
-                <S.ProgressText>Наклоны назад</S.ProgressText>
-                <S.VisualContainerSecond>
-                  <S.InterVisualContainerSecond>
-                    <S.MainTextPercent>45%</S.MainTextPercent>
-                  </S.InterVisualContainerSecond>
-                </S.VisualContainerSecond>
-              </S.Visual>
-              <S.Visual>
-                <S.ProgressText>
-                  Поднятие ног, согнутых в коленях
-                </S.ProgressText>
-                <S.VisualContainerThird>
-                  <S.InterVisualContainerThird>
-                    <S.MainTextPercent>45%</S.MainTextPercent>
-                  </S.InterVisualContainerThird>
-                </S.VisualContainerThird>
-              </S.Visual> */}
+
             </S.ProgressVisual>
           </S.MainProgress>
         </S.MainExercises>

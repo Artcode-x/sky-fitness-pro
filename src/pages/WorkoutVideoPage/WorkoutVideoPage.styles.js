@@ -174,6 +174,7 @@ export const InterVisualContainerFirst = styled.div`
   position: relative;
   top: -2px;
   left: -2px;
+
 `
 
 export const InterVisualContainerSecond = styled.div`
