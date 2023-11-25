@@ -48,6 +48,7 @@ export const userInfo = styled.div`
   font-size: 24px;
   line-height: 32px; /* 133.333% */
   letter-spacing: -0.1px;
+  z-index: 999;
 `
 export const userImg = styled.div`
   background-color: #d9d9d9;

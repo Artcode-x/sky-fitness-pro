@@ -14,13 +14,13 @@ const cardBGIs = {
     background-image: url('${stretching}');
   `,
   "Бодифлекс": css`
-    background-image: url('${fitness}');
+    background-image: url('${bodyflex}');
   `,
   "Танцевальный фитнес": css`
-    background-image: url('${aerobic}');
+    background-image: url('${fitness}');
   `,
   "Степ-аэробика": css`
-    background-image: url('${bodyflex}');
+    background-image: url('${aerobic}');
   `,
 }
 
