@@ -4,8 +4,42 @@ import { Wrapper } from '../../index.styles'
 import { MyProgress } from '../ProgressPage/MyProgress';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useGetWorkoutsQuery, useGetCoursesQuery } from 'services/courses';
+import { workoutCourse } from 'components/modalSelectWorkout/selectWorkout.styles';
+import { Header } from 'pages/profile/profile';
 
-export const WorkoutVideoPage = () => {
+export const WorkoutVideoPage = ({ course = '1', title = '' }) => {
+  "Утренняя практика / Йога на каждый день / 1 день / Алексей Казубский"
+  "Красота и здоровье/ Йога на каждый день / 2 день / Алексей Казубский"
+  "Асаны стоя / Йога на каждый день / 3 день / Алексей Казубский"
+  "Растягиваем мышцы бедра / Йога на каждый день / 4 день / Алексей Казубский"
+  "Гибкость спины / Йога на каждый день / 5 день / Алексей Казубский"
+  "Основы стретчинга"
+  "Разогрев мышц"
+  "Разогрев мышц 2.0"
+  "Техника дыхания"
+  "Тренировка мышц бедер"
+  "Тренировка мышц ягодиц"
+  "Основы"
+  "Основные движения"
+  "Новые движения"
+  "Продвинутые движения"
+  "Мастер-класс"
+  "Степ-аэробика"
+  "Основы"
+  "Основные движения"
+  "Новые движения"
+  "Продвинутые движения"
+
+
+
+  const { data=[], isLoading, isError } = useGetWorkoutsQuery();
+  const workoutData = data[1];
+  const selectedWorkout = workoutData.find((item) => item.title === 'Разогрев мышц 2.0');
+  // const exercises = selectedWorkout?.exercises;
+  // console.log(data[1]);
+  console.log(workoutData);
+  console.log(selectedWorkout);
 
   const [open, setOpen] = useState(false);
 
@@ -15,41 +49,13 @@ export const WorkoutVideoPage = () => {
 
   return (
     <Wrapper>
-      <S.Header>
-        <Link to="/">
-        <img src="/img/logo.svg" alt="logo"></img>
-        </Link>
-        <S.HeaderUserInfo>
-          <svg
-            width="50"
-            height="50"
-            viewBox="0 0 50 50"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle cx="25" cy="25" r="25" fill="#D9D9D9" />
-          </svg>
-
-          <S.MainText>Сергей</S.MainText>
-          <svg
-            width="14"
-            height="9"
-            viewBox="0 0 14 9"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12.3553 1.03308L6.67773 6.7107L1.00012 1.03308"
-              stroke="black"
-            />
-          </svg>
-        </S.HeaderUserInfo>
-      </S.Header>
+       <Header></Header>
       <main>
-        <S.MainBigHeading>Йога</S.MainBigHeading>
+        {/* <S.MainBigHeading>{data[1][0].name}</S.MainBigHeading> */}
         <S.MainSmallHeading>
-          {' '}
-          Красота и здоровье / Йога на каждый день / 2 день
+          {/* {' '}
+          Красота и здоровье / Йога на каждый день / 2 день */}
+          {/* {data[1][1].title} */}
         </S.MainSmallHeading>
         <S.MainVideoContainer>
           <iframe
@@ -65,11 +71,16 @@ export const WorkoutVideoPage = () => {
           <S.Exercise>
             <S.MainSmallHeading>Упражнения</S.MainSmallHeading>
             <S.MainUl>
-              <S.MainLi>Наклон вперед (10 повторений)</S.MainLi>
+          
+              {/* {exercises[1]?.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))} */}
+
+              {/* <S.MainLi>Наклон вперед (10 повторений)</S.MainLi>
               <S.MainLi>Наклон назад (10 повторений)</S.MainLi>
               <S.MainLi>
                 Поднятие ног, согнутых в коленях (5 повторений)
-              </S.MainLi>
+              </S.MainLi> */}
             </S.MainUl>
             <S.Button onClick={popup}>Заполнить свой прогресс</S.Button>
             {open ? <MyProgress/> : null}
@@ -77,6 +88,7 @@ export const WorkoutVideoPage = () => {
           <S.MainProgress>
             <S.ExerciseHeading>Мой прогресс по тренировке 2:</S.ExerciseHeading>
             <S.ProgressVisual>
+              {}
               <S.Visual>
                 <S.ProgressText>Наклоны вперед</S.ProgressText>
                 <S.VisualContainerFirst>

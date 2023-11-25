@@ -24,7 +24,7 @@ export const ChangeUserInfo = ({
   const [validForm, setValidForm] = useState(false)
   const navigate = useNavigate();
   const setUser = () => {
-    localStorage.setItem("user", "token");
+    localStorage.setItem(user);
     navigate("/profile", { replace: true });
   };
 

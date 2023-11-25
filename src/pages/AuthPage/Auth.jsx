@@ -22,7 +22,7 @@ export const AuthPage = () => {
     if (modal == 'logForm') {
       signInWithEmailAndPassword(auth, email, password)
         .then(({ user }) => {
-          localStorage.setItem("user", "token");
+          localStorage.setItem('user', email);
           navigate("/profile", { replace: true });
           dispatch(
             setUser({
@@ -39,7 +39,7 @@ export const AuthPage = () => {
     if (modal == 'regForm') {
       createUserWithEmailAndPassword(auth, email, password)
         .then(({ user }) => {
-          localStorage.setItem("user", "token");
+          localStorage.setItem('user', email);
           navigate("/profile", { replace: true });
           dispatch(
             setUser({

@@ -12,6 +12,7 @@ export const WorkoutInfoPage = ({ course = 'Степ-аэробика' }) => {
   // Йога, Стретчинг, Бодифлекс, Танцевальный фитнес, Степ-аэробика
   const { data = [], isLoading, isError, error } = useGetCoursesQuery()
   const selectedCourse = data.find((item) => item.name === course)
+  console.log(selectedCourse);
 
   return (
     <Wrapper>
