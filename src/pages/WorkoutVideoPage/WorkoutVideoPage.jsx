@@ -36,7 +36,7 @@ export const WorkoutVideoPage = ({ course = '1', title = '' }) => {
   const { data=[], isLoading, isError } = useGetWorkoutsQuery();
   const workoutData = data[1];
   const selectedWorkout = workoutData.find((item) => item.title === 'Разогрев мышц 2.0');
-  // const exercises = selectedWorkout?.exercises;
+  const exercises = selectedWorkout?.exercises;
   // console.log(data[1]);
   console.log(workoutData);
   console.log(selectedWorkout);
@@ -51,11 +51,11 @@ export const WorkoutVideoPage = ({ course = '1', title = '' }) => {
     <Wrapper>
        <Header></Header>
       <main>
-        {/* <S.MainBigHeading>{data[1][0].name}</S.MainBigHeading> */}
+        <S.MainBigHeading>{workoutData[0].name}</S.MainBigHeading>
         <S.MainSmallHeading>
           {/* {' '}
           Красота и здоровье / Йога на каждый день / 2 день */}
-          {/* {data[1][1].title} */}
+          {selectedWorkout.title}
         </S.MainSmallHeading>
         <S.MainVideoContainer>
           <iframe
@@ -72,9 +72,9 @@ export const WorkoutVideoPage = ({ course = '1', title = '' }) => {
             <S.MainSmallHeading>Упражнения</S.MainSmallHeading>
             <S.MainUl>
           
-              {/* {exercises[1]?.map((item, index) => (
+              {exercises?.map((item, index) => (
             <li key={index}>{item}</li>
-          ))} */}
+          ))}
 
               {/* <S.MainLi>Наклон вперед (10 повторений)</S.MainLi>
               <S.MainLi>Наклон назад (10 повторений)</S.MainLi>
@@ -88,8 +88,19 @@ export const WorkoutVideoPage = ({ course = '1', title = '' }) => {
           <S.MainProgress>
             <S.ExerciseHeading>Мой прогресс по тренировке 2:</S.ExerciseHeading>
             <S.ProgressVisual>
-              {}
-              <S.Visual>
+              {<S.Visual>
+                <S.ProgressText>{exercises?.map((item, index) => (
+            <S.li key={index}>{item}
+            <S.VisualContainerFirst>
+                  <S.InterVisualContainerFirst id="container">
+                    <S.MainTextPercent>45%</S.MainTextPercent>
+                  </S.InterVisualContainerFirst>
+                </S.VisualContainerFirst>
+            </S.li>
+          ))}</S.ProgressText>
+                
+              </S.Visual>}
+              {/* <S.Visual>
                 <S.ProgressText>Наклоны вперед</S.ProgressText>
                 <S.VisualContainerFirst>
                   <S.InterVisualContainerFirst id="container">
@@ -114,7 +125,7 @@ export const WorkoutVideoPage = ({ course = '1', title = '' }) => {
                     <S.MainTextPercent>45%</S.MainTextPercent>
                   </S.InterVisualContainerThird>
                 </S.VisualContainerThird>
-              </S.Visual>
+              </S.Visual> */}
             </S.ProgressVisual>
           </S.MainProgress>
         </S.MainExercises>

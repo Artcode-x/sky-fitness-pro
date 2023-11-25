@@ -112,11 +112,14 @@ export const ProgressVisual = styled.div`
   flex-direction: column;
   gap: 30px;
 `
-export const Visual = styled.div`
+export const Visual = styled.ul`
   padding-left: 44px;
-  display: flex;
+  display: grid;
   justify-content: space-between;
   text-align: left;
+  columns: 2;
+  list-style: none;
+  
 `
 
 export const ProgressText = styled.p`
@@ -208,4 +211,7 @@ export const MainTextPercent = styled.p`
   padding: 0px;
   text-align: right;
   padding-right: 10px;
+`
+export const li = styled.li`
+  display: flex;
 `
