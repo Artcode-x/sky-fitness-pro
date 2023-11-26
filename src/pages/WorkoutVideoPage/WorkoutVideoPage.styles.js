@@ -119,7 +119,7 @@ export const Visual = styled.ul`
   text-align: left;
   columns: 2;
   list-style: none;
-  
+
 `
 
 export const ProgressText = styled.p`
@@ -143,6 +143,7 @@ export const VisualContainerFirst = styled.div`
   margin-right: 55px;
   border: 2px solid #565eef;
   background: #edecff;
+  
 `
 
 export const VisualContainerSecond = styled.div`
@@ -174,6 +175,7 @@ export const InterVisualContainerFirst = styled.div`
   position: relative;
   top: -2px;
   left: -2px;
+  
 
 `
 

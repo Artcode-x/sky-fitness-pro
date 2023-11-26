@@ -39,8 +39,11 @@ export const WorkoutVideoPage = ({ course = '1', title = '' }) => {
   const selectedWorkout = workoutData.find((item) => item.title === 'Разогрев мышц 2.0');
   const exercises = selectedWorkout?.exercises;
   const youtubeLink = selectedWorkout.link_addition
+  const link = `https://www.youtube.com/embed/${youtubeLink}`
   console.log(workoutData);
   console.log(selectedWorkout);
+  console.log(data);
+  console.log(youtubeLink);
 
   const [open, setOpen] = useState(false);
 
@@ -57,17 +60,17 @@ export const WorkoutVideoPage = ({ course = '1', title = '' }) => {
 
           {selectedWorkout.title}
         </S.MainSmallHeading>
-        {<S.MainVideoContainer>
+        <S.MainVideoContainer>
           <iframe
             width="1160"
             height="639"
-            src=`https://www.youtube.com/embed/${youtubeLink}`
+            src={link}
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen>
 
           </iframe>
-        </S.MainVideoContainer>}
+        </S.MainVideoContainer>
         <S.MainExercises>
           <S.Exercise>
             <S.MainSmallHeading>Упражнения</S.MainSmallHeading>
@@ -79,7 +82,7 @@ export const WorkoutVideoPage = ({ course = '1', title = '' }) => {
 
             </S.MainUl>
             <S.Button onClick={popup}>Заполнить свой прогресс</S.Button>
-            {open ? <MyProgress/> : null}
+            {open ? <MyProgress open={open} setOpen={setOpen}/> : null}
           </S.Exercise>
           <S.MainProgress>
             <S.ExerciseHeading>Мой прогресс по тренировке 2:</S.ExerciseHeading>
