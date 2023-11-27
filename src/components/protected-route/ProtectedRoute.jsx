@@ -8,9 +8,9 @@ export const ProtectedRoute = ({
   
 }) => {
   
-  const user = useSelector(state => state.user);
+  const {email, token, id} = useSelector(state => state.user);
 
-  if (!localStorage.getItem("user")) {
+  if (!email) {
     return <Navigate to={redirectPath} replace={true} />;
   }
 

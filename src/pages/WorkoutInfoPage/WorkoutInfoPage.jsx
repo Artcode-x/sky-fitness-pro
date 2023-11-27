@@ -14,9 +14,8 @@ export const WorkoutInfoPage = () => {
   // Йога, Стретчинг, Бодифлекс, Танцевальный фитнес, Степ-аэробика
   const { id } = useParams()
   const { data = [], isLoading, isError, error } = useGetCoursesQuery()
-  const selectedCourse = data.find((item) => item._id === id)
 
-  const [actualCourse, SetActualCourse] = useState('пробка')
+  const selectedCourse = data.find((item) => item._id === id)
 
   return (
     <Wrapper>
