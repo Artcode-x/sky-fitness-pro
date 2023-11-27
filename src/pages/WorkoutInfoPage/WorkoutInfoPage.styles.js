@@ -19,18 +19,6 @@ export const SkillCard = styled.div`
   margin-top: 71px;
   margin-bottom: 72px;
 `
-export const SkillCardImg = styled.img`
-  max-width: 100%;
-  height: auto;
-  max-height: 310px;
-`
-
-export const SmallDeviceSkillCardImg = styled(SkillCardImg)`
-  @media (max-width: 375px) {
-    max-width: 100%;
-    max-height: auto;
-  }
-`
 
 export const SkillCardTitle = styled.h1`
   color: #000;
