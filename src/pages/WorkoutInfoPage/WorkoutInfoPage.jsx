@@ -1,18 +1,21 @@
 import { useGetCoursesQuery } from 'services/courses'
 import { Wrapper } from '../../index.styles'
 import * as S from './WorkoutInfoPage.styles'
-import { Header } from './components/Header'
 import { SkillCard } from './components/SkillCard'
 import { Recommend } from './components/Recommend'
 import { Directions } from './components/Directions'
 import { Motivation } from './components/Motivation'
 import { Contacts } from './components/Contacts'
+import { useParams } from 'react-router-dom'
+import { Header } from 'pages/profile/profile'
+import { useState } from 'react'
 
-export const WorkoutInfoPage = ({ course = 'Степ-аэробика' }) => {
+export const WorkoutInfoPage = () => {
   // Йога, Стретчинг, Бодифлекс, Танцевальный фитнес, Степ-аэробика
+  const { id } = useParams()
   const { data = [], isLoading, isError, error } = useGetCoursesQuery()
-  const selectedCourse = data.find((item) => item.name === course)
-  console.log(selectedCourse);
+
+  const selectedCourse = data.find((item) => item._id === id)
 
   return (
     <Wrapper>
@@ -29,7 +32,7 @@ export const WorkoutInfoPage = ({ course = 'Степ-аэробика' }) => {
               <Recommend selectedCourse={selectedCourse} />
               <Directions selectedCourse={selectedCourse} />
               <Motivation selectedCourse={selectedCourse} />
-              <Contacts />
+              <Contacts selectedCourse={selectedCourse} SetActualCourse={SetActualCourse} />
             </S.Info>
           </>
         )}

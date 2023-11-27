@@ -1,3 +1,4 @@
+import { DirectionsHeading } from 'pages/WorkoutInfoPage/WorkoutInfoPage.styles'
 import styled, { css } from 'styled-components'
 
 export const Center = css`
@@ -11,7 +12,7 @@ export const Body = styled.div`
   background-color: #271a58;
 `
 
-export const СoursesList = styled.ul`
+export const CoursesList = styled.ul`
   margin-top: 60px;
   width: 100%;
   display: flex;
@@ -20,4 +21,8 @@ export const СoursesList = styled.ul`
   align-items: flex-start;
   justify-content: center;
   gap: 40px;
+`
+
+export const TempErrorLoadingText = styled(DirectionsHeading)`
+padding: 100px;
 `
