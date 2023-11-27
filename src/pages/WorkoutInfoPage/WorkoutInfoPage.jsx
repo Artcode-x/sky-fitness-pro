@@ -8,12 +8,15 @@ import { Motivation } from './components/Motivation'
 import { Contacts } from './components/Contacts'
 import { useParams } from 'react-router-dom'
 import { Header } from 'pages/profile/profile'
+import { useState } from 'react'
 
 export const WorkoutInfoPage = () => {
   // Йога, Стретчинг, Бодифлекс, Танцевальный фитнес, Степ-аэробика
   const { id } = useParams()
   const { data = [], isLoading, isError, error } = useGetCoursesQuery()
   const selectedCourse = data.find((item) => item._id === id)
+
+  const [actualCourse, SetActualCourse] = useState('пробка')
 
   return (
     <Wrapper>
@@ -30,7 +33,7 @@ export const WorkoutInfoPage = () => {
               <Recommend selectedCourse={selectedCourse} />
               <Directions selectedCourse={selectedCourse} />
               <Motivation selectedCourse={selectedCourse} />
-              <Contacts />
+              <Contacts selectedCourse={selectedCourse} SetActualCourse={SetActualCourse} />
             </S.Info>
           </>
         )}
