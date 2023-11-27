@@ -218,3 +218,7 @@ export const MainTextPercent = styled.p`
 export const li = styled.li`
   display: flex;
 `
+
+export const TempErrorLoadingText = styled.h2`
+  padding: 100px;
+`

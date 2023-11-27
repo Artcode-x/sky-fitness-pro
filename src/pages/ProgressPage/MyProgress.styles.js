@@ -122,3 +122,7 @@ export const closeBtn = styled.div`
   padding: 10px;
   cursor: pointer;
 `
+
+export const li = styled.li`
+  display: flex;
+`

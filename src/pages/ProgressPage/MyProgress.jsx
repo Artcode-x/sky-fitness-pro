@@ -1,6 +1,28 @@
 import * as S from './MyProgress.styles'
 
-export const MyProgress = ({open, setOpen}) => {
+export const MyProgress = ({open, setOpen, exercises}) => {
+
+// const getProgress = () => {
+//   const firstQuestionElement = document.getElementById('firstQuestion');
+//   const valueOfFirstQuestionElement = firstQuestionElement.value;
+
+//   console.log(valueOfFirstQuestionElement);
+  
+//   const secondQuestionElement = document.getElementById('secondQuestion');
+//   const valueOfSecondQuestionElement = secondQuestionElement.value;
+
+//   console.log(valueOfSecondQuestionElement);
+
+//   const thirdQuestionElement = document.getElementById('thirdQuestion');
+//   const valueOfThirdQuestionElement = thirdQuestionElement.value;
+
+//   console.log(valueOfThirdQuestionElement);
+
+//   localStorage.setItem('firstProgress', valueOfFirstQuestionElement)
+//   setOpen(!open)
+// }
+// getProgress();
+
   return (
     <S.Container>
 
@@ -47,20 +69,16 @@ export const MyProgress = ({open, setOpen}) => {
         </svg>
       </S.closeBtn>
         <S.ProgressTitle>Мой прогресс</S.ProgressTitle>
-        <S.ProgressForm>
+        {<S.ProgressForm> {exercises?.map((item, index) => (
+          <S.li key={index}>
           <S.ProgressText>
-            Сколько раз вы сделали наклоны вперед?
-          </S.ProgressText>
-          <S.ProgressInput type="number" placeholder="Введите значение" />
-          <S.ProgressText>Сколько раз вы сделали наклоны назад?</S.ProgressText>
-          <S.ProgressInput type="number" placeholder="Введите значение" />
-          <S.ProgressText>
-            Сколько раз вы сделали поднятие ног, согнутых в коленях?
-          </S.ProgressText>
-          <S.ProgressInput type="number" placeholder="Введите значение" />
-        </S.ProgressForm>
+            Сколько раз вы сделали {item}
+            </S.ProgressText>
+              <S.ProgressInput type="number" placeholder="Введите значение"/></S.li>
+            ))}? 
+          </S.ProgressForm>}
         <S.ProgressForButton>
-          <S.ProgressButton>Отправить</S.ProgressButton>
+          <S.ProgressButton onClick={() => setOpen(!open)}>Отправить</S.ProgressButton>
         </S.ProgressForButton>
       </S.Progress>
     </S.Container>

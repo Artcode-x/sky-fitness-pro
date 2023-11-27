@@ -2,7 +2,7 @@ import React from 'react'
 import * as S from './WorkoutVideoPage.styles'
 import { Wrapper } from '../../index.styles'
 import { MyProgress } from '../ProgressPage/MyProgress';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useGetWorkoutsQuery, useGetCoursesQuery } from 'services/courses';
 import { workoutCourse } from 'components/modalSelectWorkout/selectWorkout.styles';
@@ -34,15 +34,15 @@ export const WorkoutVideoPage = ({ course = '1', title = '' }) => {
 
 
   const { data=[], isLoading, isError } = useGetWorkoutsQuery();
-  const workoutData = data[1];
-  const workoutName = workoutData[0]
-  const selectedWorkout = workoutData.find((item) => item.title === 'Разогрев мышц 2.0');
+  console.log(data);
+  const workoutData = data[0] || [];
+  const workoutName = workoutData[0] || [];
+  const selectedWorkout = workoutData?.find((item) => item.title === "Асаны стоя / Йога на каждый день / 3 день / Алексей Казубский");
   const exercises = selectedWorkout?.exercises;
-  const youtubeLink = selectedWorkout.link_addition
+  const youtubeLink = selectedWorkout?.link_addition
   const link = `https://www.youtube.com/embed/${youtubeLink}`
   console.log(workoutData);
   console.log(selectedWorkout);
-  console.log(data);
   console.log(youtubeLink);
 
   const [open, setOpen] = useState(false);
@@ -51,9 +51,33 @@ export const WorkoutVideoPage = ({ course = '1', title = '' }) => {
     setOpen(!open);
   };
 
+  // useEffect(() => {
+  
+  //   const sum = localStorage.getItem('firstProgress')
+  //   const total = 15;
+  //   let percent = sum/total;
+  //   if (percent > 100) {
+  //     percent = 100;
+  //   }
+  //   console.log(sum);
+
+  //   const containerElement = document.getElementById('container');
+    
+    
+  //   let newWidth = percent*268;
+
+  //   containerElement.style.width = newWidth + 'px';
+  
+  // }, [MyProgress])
+  
   return (
     <Wrapper>
        <Header></Header>
+       {isError ? (
+          <S.TempErrorLoadingText>Ошибка: {error.data}</S.TempErrorLoadingText>
+        ) : isLoading ? (
+          <S.TempErrorLoadingText>...Загрузка</S.TempErrorLoadingText>
+        ) : (
       <main>
         <S.MainBigHeading>{workoutName.name}</S.MainBigHeading>
         <S.MainSmallHeading>
@@ -82,7 +106,7 @@ export const WorkoutVideoPage = ({ course = '1', title = '' }) => {
 
             </S.MainUl>
             <S.Button onClick={popup}>Заполнить свой прогресс</S.Button>
-            {open ? <MyProgress open={open} setOpen={setOpen}/> : null}
+            {open ? <MyProgress open={open} setOpen={setOpen} workoutData={workoutData} selectedWorkout={selectedWorkout} exercises={exercises}/> : null}
           </S.Exercise>
           <S.MainProgress>
             <S.ExerciseHeading>Мой прогресс по тренировке 2:</S.ExerciseHeading>
@@ -103,7 +127,7 @@ export const WorkoutVideoPage = ({ course = '1', title = '' }) => {
             </S.ProgressVisual>
           </S.MainProgress>
         </S.MainExercises>
-      </main>
+      </main>)}
     </Wrapper>
   )
 }
