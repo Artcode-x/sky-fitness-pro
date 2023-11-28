@@ -10,7 +10,7 @@ export const CourseCard = ({ name, openModal }) => {
         <S.cardBtn
           onClick={(e) => {
             e.stopPropagation()
-            openModal(true)
+            openModal(name)
           }}
         >
           Перейти →

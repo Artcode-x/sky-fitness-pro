@@ -1,7 +1,8 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as S from './profile.styles'
+import { setUser } from 'store/slices/userSlice'
 import { CourseCard } from '../../components/cards/card'
 import { removeUser } from 'store/slices/userSlice'
 import { ModalSelectWorkout } from '../../components/modalSelectWorkout/selectWorkout'
@@ -11,6 +12,13 @@ import { ChangeUserInfo } from '../../components/modalChangeProfile/changeProfil
 import { Link } from 'react-router-dom'
 import { useAuth } from 'hooks/use-auth'
 import { HeaderUserInfo } from 'components/headerGeneralPage/UserInfo/HeaderUserInfo'
+import {
+  getAuth,
+  updateEmail,
+  updatePassword,
+  reauthenticateWithCredential,
+  EmailAuthProvider,
+} from 'firebase/auth'
 
 export const Header = ({ main }) => {
   const [visible, setVisible] = useState(false)
@@ -47,7 +55,6 @@ export const Header = ({ main }) => {
               strokeWidth="2"
             />
           </S.svg>
-
           <S.userInfoPopUp $visible={visible}>
             <S.popUpItem
               $main={main}
@@ -75,11 +82,54 @@ export const Header = ({ main }) => {
 
 export const Profile = () => {
   const [modal, setModal] = useState('')
-  const [workout, setWorkout] = useState(false)
+  const [workout, setWorkout] = useState('')
   const { isAuth, email, token, id } = useAuth()
-
   const { data, isLoading, isError } = useGetCoursesQuery()
-  // const courseItems = (!isLoading && data.ab1c3a.description) || {}
+  const dispatch = useDispatch()
+  const [loading, setLoading] = useState(false)
+  const [authErrors, setAuthErrors] = useState(null)
+  const [newCredentials, setNewCredentials] = useState(null)
+
+  const auth = getAuth()
+  const user = auth.currentUser
+  const changeCredentials = (newCredential, confirm) => {
+    setLoading(true)
+    const credential = EmailAuthProvider.credential(user.email, confirm)
+    reauthenticateWithCredential(user, credential)
+      .then(() => {
+        if (modal == 'changeLog') {
+          updateEmail(user, newCredential)
+        }
+        if (modal == 'changePass') {
+          updatePassword(user, newCredential)
+        }
+      })
+      .then(() => {
+        setLoading(false)
+        setModal('')
+        console.log('Credential successfully changed')
+        dispatch(
+          setUser({
+            email: auth.currentUser.email,
+            id: auth.currentUser.uid,
+            token: auth.currentUser.accessToken,
+          }),
+        )
+      })
+      .catch((error) => {
+        setAuthErrors(error.message)
+        setLoading(false)
+      })
+  }
+
+  useEffect(() => {
+    if (newCredentials && modal == 'changeLog') {
+      changeCredentials(newCredentials.email, newCredentials.confirm)
+    }
+    if (newCredentials && modal == 'changePass') {
+      changeCredentials(newCredentials.password, newCredentials.confirm)
+    }
+  }, [newCredentials, setNewCredentials])
 
   return (
     <S.profileWrapper>
@@ -89,9 +139,9 @@ export const Profile = () => {
           <S.profileTitle>Мой профиль</S.profileTitle>
           <S.profileContent>
             <S.profileText>Логин: {email}</S.profileText>
-            <S.profileText style={{ color: 'red' }}>
+            {/* <S.profileText style={{ color: 'red' }}>
               Пароль: 4fkhdj880d
-            </S.profileText>
+            </S.profileText> */}
           </S.profileContent>
           <S.profileBtnBox>
             <S.profileBtn onClick={() => setModal('changeLog')}>
@@ -104,7 +154,13 @@ export const Profile = () => {
         </S.userProfile>
         {modal && (
           <S.modalBG>
-            <ChangeUserInfo mode={modal} closeModal={setModal} />
+            <ChangeUserInfo
+              mode={modal}
+              closeModal={setModal}
+              setData={setNewCredentials}
+              loading={loading}
+              apiErrors={authErrors}
+            />
           </S.modalBG>
         )}
         <S.userCourses>
@@ -119,33 +175,13 @@ export const Profile = () => {
                 />
               ))
             ) : (
-              <div>Вы еще не приобрели ни одного курса
-              </div>
+              <div>Вы еще не приобрели ни одного курса</div>
             )}
-            {/* <CourseCard bgi="yoga" name="Йога" openModal={setWorkout} />
-            <CourseCard
-              bgi="stretching"
-              name="Стретчинг"
-              openModal={setWorkout}
-            />
-            <CourseCard
-              bgi="bodyflex"
-              name="Бодифлекс"
-              openModal={setWorkout}
-            />
-            <CourseCard
-              bgi="aerobic"
-              name="Степ-аэробика"
-              openModal={setWorkout}
-            />
-            <CourseCard
-              bgi="fitness"
-              name="Танцевальный фитнес"
-              openModal={setWorkout}
-            /> */}
           </S.coursesList>
         </S.userCourses>
-        {workout && <ModalSelectWorkout modalIsOpen={setWorkout} />}
+        {workout && (
+          <ModalSelectWorkout modalIsOpen={workout} closeModal={setWorkout} />
+        )}
       </S.profileDiv>
     </S.profileWrapper>
   )
