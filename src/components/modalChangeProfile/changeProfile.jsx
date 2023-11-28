@@ -26,6 +26,7 @@ export const ChangeUserInfo = ({
   const [controlError, setControlError] = useState('Введите пароль повторно')
   const [validForm, setValidForm] = useState(false)
   const navigate = useNavigate();
+
   // const setUser = () => {
   //   localStorage.setItem("user", "token");
   //   navigate("/profile", { replace: true });

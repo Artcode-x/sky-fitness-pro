@@ -2,10 +2,48 @@ import React from 'react'
 import * as S from './WorkoutVideoPage.styles'
 import { Wrapper } from '../../index.styles'
 import { MyProgress } from '../ProgressPage/MyProgress';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useGetWorkoutsQuery, useGetCoursesQuery } from 'services/courses';
+import { workoutCourse } from 'components/modalSelectWorkout/selectWorkout.styles';
+import { Header } from 'pages/profile/profile';
 
-export const WorkoutVideoPage = () => {
+export const WorkoutVideoPage = ({ course = '1', title = '' }) => {
+  "Утренняя практика / Йога на каждый день / 1 день / Алексей Казубский"
+  "Красота и здоровье/ Йога на каждый день / 2 день / Алексей Казубский"
+  "Асаны стоя / Йога на каждый день / 3 день / Алексей Казубский"
+  "Растягиваем мышцы бедра / Йога на каждый день / 4 день / Алексей Казубский"
+  "Гибкость спины / Йога на каждый день / 5 день / Алексей Казубский"
+  "Основы стретчинга"
+  "Разогрев мышц"
+  "Разогрев мышц 2.0"
+  "Техника дыхания"
+  "Тренировка мышц бедер"
+  "Тренировка мышц ягодиц"
+  "Основы"
+  "Основные движения"
+  "Новые движения"
+  "Продвинутые движения"
+  "Мастер-класс"
+  "Степ-аэробика"
+  "Основы"
+  "Основные движения"
+  "Новые движения"
+  "Продвинутые движения"
+
+
+
+  const { data=[], isLoading, isError } = useGetWorkoutsQuery();
+  console.log(data);
+  const workoutData = data[0] || [];
+  const workoutName = workoutData[0] || [];
+  const selectedWorkout = workoutData?.find((item) => item.title === "Асаны стоя / Йога на каждый день / 3 день / Алексей Казубский");
+  const exercises = selectedWorkout?.exercises;
+  const youtubeLink = selectedWorkout?.link_addition
+  const link = `https://www.youtube.com/embed/${youtubeLink}`
+  console.log(workoutData);
+  console.log(selectedWorkout);
+  console.log(youtubeLink);
 
   const [open, setOpen] = useState(false);
 
@@ -13,100 +51,83 @@ export const WorkoutVideoPage = () => {
     setOpen(!open);
   };
 
+  // useEffect(() => {
+  
+  //   const sum = localStorage.getItem('firstProgress')
+  //   const total = 15;
+  //   let percent = sum/total;
+  //   if (percent > 100) {
+  //     percent = 100;
+  //   }
+  //   console.log(sum);
+
+  //   const containerElement = document.getElementById('container');
+    
+    
+  //   let newWidth = percent*268;
+
+  //   containerElement.style.width = newWidth + 'px';
+  
+  // }, [MyProgress])
+  
   return (
     <Wrapper>
-      <S.Header>
-        <Link to="/">
-        <img src="/img/logo.svg" alt="logo"></img>
-        </Link>
-        <S.HeaderUserInfo>
-          <svg
-            width="50"
-            height="50"
-            viewBox="0 0 50 50"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle cx="25" cy="25" r="25" fill="#D9D9D9" />
-          </svg>
-
-          <S.MainText>Сергей</S.MainText>
-          <svg
-            width="14"
-            height="9"
-            viewBox="0 0 14 9"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12.3553 1.03308L6.67773 6.7107L1.00012 1.03308"
-              stroke="black"
-            />
-          </svg>
-        </S.HeaderUserInfo>
-      </S.Header>
+       <Header></Header>
+       {isError ? (
+          <S.TempErrorLoadingText>Ошибка: {error.data}</S.TempErrorLoadingText>
+        ) : isLoading ? (
+          <S.TempErrorLoadingText>...Загрузка</S.TempErrorLoadingText>
+        ) : (
       <main>
-        <S.MainBigHeading>Йога</S.MainBigHeading>
+        <S.MainBigHeading>{workoutName.name}</S.MainBigHeading>
         <S.MainSmallHeading>
-          {' '}
-          Красота и здоровье / Йога на каждый день / 2 день
+
+          {selectedWorkout.title}
         </S.MainSmallHeading>
         <S.MainVideoContainer>
           <iframe
             width="1160"
             height="639"
-            src="https://www.youtube.com/embed/v-xTLFDhoD0?si=VodWNwqcr_f8ARK2"
+            src={link}
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          ></iframe>
+            allowFullScreen>
+
+          </iframe>
         </S.MainVideoContainer>
         <S.MainExercises>
           <S.Exercise>
             <S.MainSmallHeading>Упражнения</S.MainSmallHeading>
             <S.MainUl>
-              <S.MainLi>Наклон вперед (10 повторений)</S.MainLi>
-              <S.MainLi>Наклон назад (10 повторений)</S.MainLi>
-              <S.MainLi>
-                Поднятие ног, согнутых в коленях (5 повторений)
-              </S.MainLi>
+          
+              {exercises?.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+
             </S.MainUl>
             <S.Button onClick={popup}>Заполнить свой прогресс</S.Button>
-            {open ? <MyProgress/> : null}
+            {open ? <MyProgress open={open} setOpen={setOpen} workoutData={workoutData} selectedWorkout={selectedWorkout} exercises={exercises}/> : null}
           </S.Exercise>
           <S.MainProgress>
             <S.ExerciseHeading>Мой прогресс по тренировке 2:</S.ExerciseHeading>
             <S.ProgressVisual>
-              <S.Visual>
-                <S.ProgressText>Наклоны вперед</S.ProgressText>
-                <S.VisualContainerFirst>
+              {<S.Visual>
+                <S.ProgressText>{exercises?.map((item, index) => (
+            <S.li key={index}>{item}
+            <S.VisualContainerFirst>
                   <S.InterVisualContainerFirst id="container">
                     <S.MainTextPercent>45%</S.MainTextPercent>
                   </S.InterVisualContainerFirst>
                 </S.VisualContainerFirst>
-              </S.Visual>
-              <S.Visual>
-                <S.ProgressText>Наклоны назад</S.ProgressText>
-                <S.VisualContainerSecond>
-                  <S.InterVisualContainerSecond>
-                    <S.MainTextPercent>45%</S.MainTextPercent>
-                  </S.InterVisualContainerSecond>
-                </S.VisualContainerSecond>
-              </S.Visual>
-              <S.Visual>
-                <S.ProgressText>
-                  Поднятие ног, согнутых в коленях
-                </S.ProgressText>
-                <S.VisualContainerThird>
-                  <S.InterVisualContainerThird>
-                    <S.MainTextPercent>45%</S.MainTextPercent>
-                  </S.InterVisualContainerThird>
-                </S.VisualContainerThird>
-              </S.Visual>
+            </S.li>
+          ))}</S.ProgressText>
+                
+              </S.Visual>}
+
             </S.ProgressVisual>
           </S.MainProgress>
         </S.MainExercises>
-      </main>
+      </main>)}
     </Wrapper>
   )
 }

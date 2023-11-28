@@ -24,7 +24,7 @@ export const AppRoutes = () => {
           </ProtectedRoute>
         }
       ></Route>
-      <Route path="/workout-info-page" element={<WorkoutInfoPage />}></Route>
+      <Route path="/workout-info-page/:id" element={<WorkoutInfoPage />}></Route>
       <Route
         path="/workout-video-page/:id"
         element={

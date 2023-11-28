@@ -12,14 +12,15 @@ const cardBGIs = {
   Стретчинг: css`
     background-image: url('${stretching}');
   `,
-  Бодифлекс: css`
+
+  "Бодифлекс": css`
+    background-image: url('${bodyflex}');
+  `,
+  "Танцевальный фитнес": css`
     background-image: url('${fitness}');
   `,
-  'Танцевальный фитнес': css`
+  "Степ-аэробика": css`
     background-image: url('${aerobic}');
-  `,
-  'Степ-аэробика': css`
-    background-image: url('${bodyflex}');
   `,
 }
 

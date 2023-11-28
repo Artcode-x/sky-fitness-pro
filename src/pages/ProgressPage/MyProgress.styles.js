@@ -114,3 +114,15 @@ export const ProgressPopupImg = styled.img`
   height: 226px;
   padding-top: 7px;
 `
+export const closeBtn = styled.div`
+  position: absolute;
+  z-index: 999;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  cursor: pointer;
+`
+
+export const li = styled.li`
+  display: flex;
+`
