@@ -92,7 +92,7 @@ export const MainProgress = styled.div`
   background: #f2f2f2;
   border-radius: 30px;
   width: 638px;
-  height: 336px;
+  min-height: 336px;
 `
 
 export const ExerciseHeading = styled.h3`
@@ -138,7 +138,7 @@ export const ProgressText = styled.p`
   padding: 0px;
 `
 
-export const VisualContainerFirst = styled.li`
+export const VisualContainerFirst = styled.div`
   width: 278px;
   height: 36px;
   flex-shrink: 0;
@@ -225,6 +225,10 @@ export const MainTextPercent = styled.p`
 `
 export const li = styled.li`
   display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding-bottom: 25px;
+  padding-top: 12px;
 `
 
 export const TempErrorLoadingText = styled.h2`

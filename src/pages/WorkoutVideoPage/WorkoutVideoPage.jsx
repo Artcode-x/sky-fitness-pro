@@ -2,53 +2,29 @@ import React from 'react'
 import * as S from './WorkoutVideoPage.styles'
 import { Wrapper } from '../../index.styles'
 import { MyProgress } from '../ProgressPage/MyProgress';
-import { useState, useEffect, useParams } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { useGetWorkoutsQuery, useGetCoursesQuery } from 'services/courses';
 import { workoutCourse } from 'components/modalSelectWorkout/selectWorkout.styles';
 import { Header } from 'pages/profile/profile';
+import './WorkoutVideoPage.css';
 
-export const WorkoutVideoPage = ({ course = '1', title = '' }) => {
-  "Утренняя практика / Йога на каждый день / 1 день / Алексей Казубский"
-  "Красота и здоровье/ Йога на каждый день / 2 день / Алексей Казубский"
-  "Асаны стоя / Йога на каждый день / 3 день / Алексей Казубский"
-  "Растягиваем мышцы бедра / Йога на каждый день / 4 день / Алексей Казубский"
-  "Гибкость спины / Йога на каждый день / 5 день / Алексей Казубский"
-  "Основы стретчинга"
-  "Разогрев мышц"
-  "Разогрев мышц 2.0"
-  "Техника дыхания"
-  "Тренировка мышц бедер"
-  "Тренировка мышц ягодиц"
-  "Основы"
-  "Основные движения"
-  "Новые движения"
-  "Продвинутые движения"
-  "Мастер-класс"
-  "Степ-аэробика"
-  "Основы"
-  "Основные движения"
-  "Новые движения"
-  "Продвинутые движения"
-
-  // const { id } = useParams()
+export const WorkoutVideoPage = () => {
+  const { id } = useParams()
 
 
 
   const { data=[], isLoading, isError } = useGetWorkoutsQuery();
   console.log(data);
   console.log(data[0]);
-  // const workoutData = data[0] || [];
-  // const workoutName = workoutData[0] || [];
-  const selectedWorkout = data?.find((item) => item.title === "Асаны стоя / Йога на каждый день / 3 день / Алексей Казубский");
-  // const selectedWorkout = data?.find((item) => item._id === id)
+
+  const selectedWorkout = data?.find((item) => item._id === id);
+  
   const exercises = selectedWorkout?.exercises;
   const workout = selectedWorkout?.exercises_without;
   const youtubeLink = selectedWorkout?.link_addition
   const link = `https://www.youtube.com/embed/${youtubeLink}`
-  // console.log(workoutData);
-  // console.log(selectedWorkout);
-  // console.log(youtubeLink);
+
 
   const [open, setOpen] = useState(false);
 
@@ -78,12 +54,13 @@ export const WorkoutVideoPage = ({ course = '1', title = '' }) => {
   return (
     <Wrapper>
        <Header></Header>
-       {isError ? (
+       <main>
+        {isError ? (
           <S.TempErrorLoadingText>Ошибка: {error.data}</S.TempErrorLoadingText>
         ) : isLoading ? (
           <S.TempErrorLoadingText>...Загрузка</S.TempErrorLoadingText>
         ) : (
-      <main>
+          <>
         <S.MainBigHeading>{selectedWorkout.name}</S.MainBigHeading>
         <S.MainSmallHeading>
 
@@ -133,7 +110,8 @@ export const WorkoutVideoPage = ({ course = '1', title = '' }) => {
             </S.ProgressVisual>
           </S.MainProgress>
         </S.MainExercises>
-      </main>)}
+        </>)}
+      </main>
     </Wrapper>
   )
 }
