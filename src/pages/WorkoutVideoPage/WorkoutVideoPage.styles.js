@@ -111,6 +111,8 @@ export const ProgressVisual = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
+
+  
 `
 export const Visual = styled.ul`
   padding-left: 44px;
@@ -118,7 +120,8 @@ export const Visual = styled.ul`
   justify-content: space-between;
   text-align: left;
   columns: 2;
-  list-style: none;
+  list-style: none;  
+
 
 `
 
@@ -135,15 +138,20 @@ export const ProgressText = styled.p`
   padding: 0px;
 `
 
-export const VisualContainerFirst = styled.div`
+export const VisualContainerFirst = styled.li`
   width: 278px;
   height: 36px;
   flex-shrink: 0;
   border-radius: 22px;
   margin-right: 55px;
+ 
   border: 2px solid #565eef;
   background: #edecff;
-  
+&:nth-child(2){
+  border: 2px solid #9a48f1;
+  background: #f9ebff;
+}
+
 `
 
 export const VisualContainerSecond = styled.div`

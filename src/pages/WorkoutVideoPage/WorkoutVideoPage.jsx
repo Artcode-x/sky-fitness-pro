@@ -2,7 +2,7 @@ import React from 'react'
 import * as S from './WorkoutVideoPage.styles'
 import { Wrapper } from '../../index.styles'
 import { MyProgress } from '../ProgressPage/MyProgress';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useParams } from 'react';
 import { Link } from 'react-router-dom';
 import { useGetWorkoutsQuery, useGetCoursesQuery } from 'services/courses';
 import { workoutCourse } from 'components/modalSelectWorkout/selectWorkout.styles';
@@ -31,19 +31,24 @@ export const WorkoutVideoPage = ({ course = '1', title = '' }) => {
   "Новые движения"
   "Продвинутые движения"
 
+  // const { id } = useParams()
+
 
 
   const { data=[], isLoading, isError } = useGetWorkoutsQuery();
   console.log(data);
-  const workoutData = data[0] || [];
-  const workoutName = workoutData[0] || [];
-  const selectedWorkout = workoutData?.find((item) => item.title === "Асаны стоя / Йога на каждый день / 3 день / Алексей Казубский");
+  console.log(data[0]);
+  // const workoutData = data[0] || [];
+  // const workoutName = workoutData[0] || [];
+  const selectedWorkout = data?.find((item) => item.title === "Асаны стоя / Йога на каждый день / 3 день / Алексей Казубский");
+  // const selectedWorkout = data?.find((item) => item._id === id)
   const exercises = selectedWorkout?.exercises;
+  const workout = selectedWorkout?.exercises_without;
   const youtubeLink = selectedWorkout?.link_addition
   const link = `https://www.youtube.com/embed/${youtubeLink}`
-  console.log(workoutData);
-  console.log(selectedWorkout);
-  console.log(youtubeLink);
+  // console.log(workoutData);
+  // console.log(selectedWorkout);
+  // console.log(youtubeLink);
 
   const [open, setOpen] = useState(false);
 
@@ -79,7 +84,7 @@ export const WorkoutVideoPage = ({ course = '1', title = '' }) => {
           <S.TempErrorLoadingText>...Загрузка</S.TempErrorLoadingText>
         ) : (
       <main>
-        <S.MainBigHeading>{workoutName.name}</S.MainBigHeading>
+        <S.MainBigHeading>{selectedWorkout.name}</S.MainBigHeading>
         <S.MainSmallHeading>
 
           {selectedWorkout.title}
@@ -106,21 +111,22 @@ export const WorkoutVideoPage = ({ course = '1', title = '' }) => {
 
             </S.MainUl>
             <S.Button onClick={popup}>Заполнить свой прогресс</S.Button>
-            {open ? <MyProgress open={open} setOpen={setOpen} workoutData={workoutData} selectedWorkout={selectedWorkout} exercises={exercises}/> : null}
+            {open ? <MyProgress open={open} setOpen={setOpen} selectedWorkout={selectedWorkout} workout={workout}/> : null}
           </S.Exercise>
           <S.MainProgress>
             <S.ExerciseHeading>Мой прогресс по тренировке 2:</S.ExerciseHeading>
             <S.ProgressVisual>
               {<S.Visual>
-                <S.ProgressText>{exercises?.map((item, index) => (
-            <S.li key={index}>{item}
-            <S.VisualContainerFirst>
-                  <S.InterVisualContainerFirst id="container">
-                    <S.MainTextPercent>45%</S.MainTextPercent>
+                <S.ProgressText>{workout?.map((item, index) => {
+              return (<S.li key={index}>{item}
+            <S.VisualContainerFirst key={index}>
+                  <S.InterVisualContainerFirst key={index} id="container">
+                    <S.MainTextPercent >45%</S.MainTextPercent>
                   </S.InterVisualContainerFirst>
                 </S.VisualContainerFirst>
             </S.li>
-          ))}</S.ProgressText>
+              )
+          })}</S.ProgressText>
                 
               </S.Visual>}
 
