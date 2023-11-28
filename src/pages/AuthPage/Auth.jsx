@@ -22,7 +22,8 @@ export const AuthPage = () => {
     if (modal == 'logForm') {
       signInWithEmailAndPassword(auth, email, password)
         .then(({ user }) => {
-          localStorage.setItem("user", "token");
+          console.log(user);
+          // localStorage.setItem("user", "token");
           navigate("/profile", { replace: true });
           dispatch(
             setUser({

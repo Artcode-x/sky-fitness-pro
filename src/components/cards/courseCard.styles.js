@@ -6,20 +6,19 @@ import aerobic from './backgrounds/aerobicBG.png'
 import bodyflex from './backgrounds/bodyflexBG.png'
 
 const cardBGIs = {
-  
-"Йога": css`
+  Йога: css`
     background-image: url('${yoga}');
   `,
-  "Стретчинг": css`
+  Стретчинг: css`
     background-image: url('${stretching}');
   `,
-  "Бодифлекс": css`
+  Бодифлекс: css`
     background-image: url('${fitness}');
   `,
-  "Танцевальный фитнес": css`
+  'Танцевальный фитнес': css`
     background-image: url('${aerobic}');
   `,
-  "Степ-аэробика": css`
+  'Степ-аэробика': css`
     background-image: url('${bodyflex}');
   `,
 }

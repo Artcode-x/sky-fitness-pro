@@ -15,18 +15,21 @@ export const ChangeUserInfo = ({
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [control, setControl] = useState('')
+  const [confirm, setConfirm] = useState('')
   const [usedEmailInput, setUsedEmailInput] = useState(false)
   const [usedPasswordInput, setUsedPasswordInput] = useState(false)
   const [usedControlInput, setUsedControlInput] = useState(false)
+  const [usedConfirmInput, setUsedConfirmInput] = useState(false)
   const [emailError, setEmailError] = useState('Введите электронную почту')
   const [passwordError, setPasswordError] = useState('Введите пароль')
+  const [confirmError, setConfirmError] = useState('Введите пароль')
   const [controlError, setControlError] = useState('Введите пароль повторно')
   const [validForm, setValidForm] = useState(false)
   const navigate = useNavigate();
-  const setUser = () => {
-    localStorage.setItem("user", "token");
-    navigate("/profile", { replace: true });
-  };
+  // const setUser = () => {
+  //   localStorage.setItem("user", "token");
+  //   navigate("/profile", { replace: true });
+  // };
 
   useEffect(() => {
     if ((mode == 'regForm')) {
@@ -44,14 +47,14 @@ export const ChangeUserInfo = ({
       }
     } 
     if ((mode == 'changePass')) {
-      if (controlError || passwordError) {
+      if (controlError || passwordError || confirmError) {
         setValidForm(false)
       } else {
         setValidForm(true)
       }
     } 
     if ((mode == 'changeLog')) {
-      if (emailError) {
+      if (emailError || confirmError) {
         setValidForm(false)
       } else {
         setValidForm(true)
@@ -64,6 +67,7 @@ export const ChangeUserInfo = ({
     setEmailError,
     setPasswordError,
     mode,
+    confirmError
   ])
 
   const emailHandler = (e) => {
@@ -91,7 +95,17 @@ export const ChangeUserInfo = ({
       setPasswordError('')
     }
   }
-
+  const confirmHandler = (e) => {
+    setConfirm(e.target.value)
+    if (e.target.value.length < 8) {
+      setConfirmError('Пароль не менее 8 символов')
+      if (!e.target.value) {
+        setConfirmError('Введите пароль')
+      }
+    } else {
+      setConfirmError('')
+    }
+  }
   const controlHandler = (e) => {
     setControl(e.target.value)
     if (e.target.value === password) {
@@ -114,6 +128,10 @@ export const ChangeUserInfo = ({
       case 'control':
         setUsedControlInput(true)
         break
+        case 'confirm':
+          setUsedConfirmInput(true)
+          break
+  
       default:
         break
     }
@@ -121,17 +139,18 @@ export const ChangeUserInfo = ({
 
   const addNewUser = (e) => {
     e.preventDefault()
-    const newUserData = (mode = 'regForm')
+    const newUserData = (mode == 'changeLog' || mode == 'changePass')
       ? {
           email,
           password,
-          username: email,
+          confirm
         }
       : {
           email,
           password,
         }
     setData(newUserData)
+    // closeModal('')
   }
 
   const getBtnName = () => {
@@ -197,6 +216,7 @@ export const ChangeUserInfo = ({
       <S.modalLogo>
         <img src="/img/logo.svg" alt="logo" />
       </S.modalLogo>
+      
       {(mode == 'changeLog' || mode == 'changePass') && (
         <S.changeDataText>
           Новый {mode == 'changeLog' ? 'логин' : 'пароль'}:
@@ -241,12 +261,26 @@ export const ChangeUserInfo = ({
         />
       )}
       {usedControlInput && controlError && <S.formError>{controlError}</S.formError>}
+      {(mode == 'changeLog' || mode == 'changePass') && (
+         <><S.changeDataText>
+          Подтвердить изменения:
+        </S.changeDataText><S.modalInput
+            value={confirm}
+            onChange={(e) => confirmHandler(e)}
+            type="password"
+            name="confirm"
+            placeholder="Действующий пароль"
+            onBlur={(e) => blurHanndler(e)}
+            $error={usedConfirmInput && confirmError} /></>
+      )}
+      {usedConfirmInput && confirmError && <S.formError>{confirmError}</S.formError>}
+      {apiErrors && (<S.changeDataText style={{color: "red",}}>{apiErrors}</S.changeDataText>)}
       <S.modalBtnEnter
         disabled={!validForm || loading}
         type="submit"
         onClick={addNewUser}
       >
-        {btnName}
+        {loading? "Выполняется загрузка" : btnName}
       </S.modalBtnEnter>
       {mode == 'logForm' && (
         <S.modalBtnSignup
@@ -257,6 +291,7 @@ export const ChangeUserInfo = ({
           Зарегистрироваться
         </S.modalBtnSignup>
       )}
+
     </S.modalFormLogin>
 
   )

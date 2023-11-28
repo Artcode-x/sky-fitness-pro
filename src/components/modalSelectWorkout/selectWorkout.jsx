@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import * as S from './selectWorkout.styles'
+import { useGetWorkoutsQuery } from 'services/courses'
+
 
 const Workout = ({ name, course, day, done }) => {
   return (
@@ -20,17 +22,29 @@ const Workout = ({ name, course, day, done }) => {
       </S.doneIcon>
       <S.workoutName>{name}</S.workoutName>
       <S.workoutCourse>
-        {course} / {day} день{' '}
+        {course} / {day}
       </S.workoutCourse>
     </S.workoutsListItem>
   )
 }
 
-export const ModalSelectWorkout = ({ modalIsOpen }) => {
+export const ModalSelectWorkout = ({ modalIsOpen, closeModal }) => {
+  const { data, isLoading, error } = useGetWorkoutsQuery()
+  // console.log(data);
+  const preparedArr = data
+    ?.filter((item) => item.name == modalIsOpen)
+    .map((item) => ({
+      id: item._id,
+      name: item.title.split(' / ')[0],
+      course: item.title.split(' / ')[1],
+      day: item.title.split(' / ')[2],
+    }))
+  // console.log(preparedArr)
+
   return (
     <S.modalBG>
       <S.selectWorkout>
-        <S.closeBtn onClick={() => modalIsOpen(false)}>
+        <S.closeBtn onClick={() => closeModal('')}>
           <svg
             width="20px"
             height="20px"
@@ -72,32 +86,11 @@ export const ModalSelectWorkout = ({ modalIsOpen }) => {
         </S.closeBtn>
         <S.selectWorkoutTitle>Выберите тренировку</S.selectWorkoutTitle>
         <S.workoutsList>
-          <Workout
-            name={'Утренняя практика'}
-            course={'Йога на каждый день'}
-            day={1}
-            done
-          />
-          <Link to="/workout-video-page">
-          <Workout
-            name={'Красота и здоровье'}
-            course={'Йога на каждый день'}
-            day={2}
-            done
-          />
-          </Link>
-          <Workout name={'Асаны стоя'} course={'Йога на каждый день'} day={3} />
-          <Workout
-            name={'Растягиваем мышцы бедра'}
-            course={'Йога на каждый день'}
-            day={4}
-            dne
-          />
-          <Workout
-            name={'Гибкость спины'}
-            course={'Йога на каждый день'}
-            day={5}
-          />
+          {preparedArr?.map((item) => (
+            <Link key={item.id} to={`/workout-video-page/${item.id}`}>
+              <Workout name={item.name} course={item.course} day={item.day}/>
+            </Link>
+          ))}
         </S.workoutsList>
       </S.selectWorkout>
     </S.modalBG>

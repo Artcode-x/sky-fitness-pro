@@ -26,7 +26,7 @@ export const AppRoutes = () => {
       ></Route>
       <Route path="/workout-info-page" element={<WorkoutInfoPage />}></Route>
       <Route
-        path="/workout-video-page"
+        path="/workout-video-page/:id"
         element={
           <ProtectedRoute isAllowed={Boolean(user)}>
             <WorkoutVideoPage />
