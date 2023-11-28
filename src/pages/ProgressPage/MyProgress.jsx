@@ -1,6 +1,6 @@
 import * as S from './MyProgress.styles'
 
-export const MyProgress = ({open, setOpen, exercises}) => {
+export const MyProgress = ({open, setOpen, workout}) => {
 
 // const getProgress = () => {
 //   const firstQuestionElement = document.getElementById('firstQuestion');
@@ -69,7 +69,7 @@ export const MyProgress = ({open, setOpen, exercises}) => {
         </svg>
       </S.closeBtn>
         <S.ProgressTitle>Мой прогресс</S.ProgressTitle>
-        {<S.ProgressForm> {exercises?.map((item, index) => (
+        {<S.ProgressForm> {workout?.map((item, index) => (
           <S.li key={index}>
           <S.ProgressText>
             Сколько раз вы сделали {item}

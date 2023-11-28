@@ -92,7 +92,7 @@ export const MainProgress = styled.div`
   background: #f2f2f2;
   border-radius: 30px;
   width: 638px;
-  height: 336px;
+  min-height: 336px;
 `
 
 export const ExerciseHeading = styled.h3`
@@ -111,6 +111,8 @@ export const ProgressVisual = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
+
+  
 `
 export const Visual = styled.ul`
   padding-left: 44px;
@@ -118,7 +120,8 @@ export const Visual = styled.ul`
   justify-content: space-between;
   text-align: left;
   columns: 2;
-  list-style: none;
+  list-style: none;  
+
 
 `
 
@@ -141,9 +144,14 @@ export const VisualContainerFirst = styled.div`
   flex-shrink: 0;
   border-radius: 22px;
   margin-right: 55px;
+ 
   border: 2px solid #565eef;
   background: #edecff;
-  
+&:nth-child(2){
+  border: 2px solid #9a48f1;
+  background: #f9ebff;
+}
+
 `
 
 export const VisualContainerSecond = styled.div`
@@ -217,6 +225,10 @@ export const MainTextPercent = styled.p`
 `
 export const li = styled.li`
   display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding-bottom: 25px;
+  padding-top: 12px;
 `
 
 export const TempErrorLoadingText = styled.h2`

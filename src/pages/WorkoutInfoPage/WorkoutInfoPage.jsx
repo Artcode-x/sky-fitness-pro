@@ -32,7 +32,7 @@ export const WorkoutInfoPage = () => {
               <Recommend selectedCourse={selectedCourse} />
               <Directions selectedCourse={selectedCourse} />
               <Motivation selectedCourse={selectedCourse} />
-              <Contacts selectedCourse={selectedCourse} SetActualCourse={SetActualCourse} />
+              <Contacts selectedCourse={selectedCourse} />
             </S.Info>
           </>
         )}
