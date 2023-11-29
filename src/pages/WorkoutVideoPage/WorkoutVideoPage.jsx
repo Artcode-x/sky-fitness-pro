@@ -10,34 +10,16 @@ import { useAuth } from 'hooks/use-auth'
 
 export const WorkoutVideoPage = () => {
   const { data = [], isLoading, isError, error } = useGetWorkoutsQuery()
-  console.log(data)
-  console.log(data[0])
 
   const { id } = useParams()
 
   const selectedWorkout = data?.find((item) => item._id === id)
 
   const selectedWorkoutId = data.indexOf(selectedWorkout)
-  console.log(selectedWorkoutId)
-
-  // РАЗДЕЛЕНИЕ СТРОКИ НА ДО И ПОСЛЕ (). Останется только подкрутить стили!
-
-  // let stringArray = selectedWorkout?.exercises[0].match(/\(([^)]+)\)/)
-  // console.log(stringArray)
-  // let beforeParentheses = selectedWorkout?.exercises[0]
-  //   .substring(0, stringArray.index)
-  //   .trim()
-  // console.log(beforeParentheses)
-  // let afterParentheses = stringArray[0]
-  // console.log(afterParentheses)
-  // const findString = (string) => {
-  //   let stringArray = string.match(/\(([^)]+)\)/)
-  //   let beforeParentheses = string.substring(0, stringArray.index).trim()
-  //   return beforeParentheses
-  // }
-  //       КОНЕЦ
 
   const exercises = selectedWorkout?.exercises
+  const exercisesNumber = selectedWorkout?.repeat
+  console.log(exercisesNumber)
   const workout = selectedWorkout?.exercises_without
   const youtubeLink = selectedWorkout?.link_addition
   const link = `https://www.youtube.com/embed/${youtubeLink}`
@@ -48,26 +30,33 @@ export const WorkoutVideoPage = () => {
     setOpen(!open)
   }
 
-  const getUserId = (userId) => {
-    const { id } = useAuth()
-    return (userId = id)
-  }
-  const userId = getUserId()
+  const { id: userId } = useAuth()
 
-  const getProgressItemsFromDb = () => {
-    if (selectedWorkout?.users) {
-      const userProgress = Object.keys(selectedWorkout?.users)[0]
-      if (userProgress === userId) {
-        const progressArray = Object.values(
-          Object.values(selectedWorkout?.users)[0],
-        )
-        return progressArray
-      }
+  const calculatePercentage = (count, total) => {
+    if (count >= total) {
+      return 100
+    } else {
+      return Math.round((count / total) * 100)
     }
   }
 
-  const progress = getProgressItemsFromDb()
-  console.log(progress)
+  const getWorkoutResults = (workoutName) => {
+    if (selectedWorkout?.users) {
+      const userDBId = Object.keys(selectedWorkout?.users)[0]
+
+      if (userDBId === userId) {
+        const userWorkouts = Object.values(selectedWorkout.users)[0]
+
+        if (userWorkouts.hasOwnProperty(workoutName)) {
+          const result = userWorkouts[workoutName]
+
+          return result
+        }
+      }
+    }
+
+    return 0
+  }
 
   return (
     <Wrapper>
@@ -125,7 +114,13 @@ export const WorkoutVideoPage = () => {
                               key={index}
                               id="container"
                             >
-                              <S.MainTextPercent>{progress}</S.MainTextPercent>
+                              <S.MainTextPercent>
+                                {calculatePercentage(
+                                  getWorkoutResults(item),
+                                  exercisesNumber[index],
+                                )}{' '}
+                                %
+                              </S.MainTextPercent>
                             </S.InterVisualContainerFirst>
                           </S.VisualContainerFirst>
                         </S.li>

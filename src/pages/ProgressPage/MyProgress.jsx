@@ -1,9 +1,15 @@
-import axios from "axios";
-import { useAuth } from "hooks/use-auth";
-import { useState } from "react";
-import * as S from "./MyProgress.styles";
+import axios from 'axios'
+import { useAuth } from 'hooks/use-auth'
+import { useState } from 'react'
+import * as S from './MyProgress.styles'
 
-export const MyProgress = ({ open, setOpen, workout, exercises, selectedWorkoutId }) => {
+export const MyProgress = ({
+  open,
+  setOpen,
+  workout,
+  exercises,
+  selectedWorkoutId,
+}) => {
   // const getProgress = () => {
   //   const firstQuestionElement = document.getElementById('firstQuestion');
   //   const valueOfFirstQuestionElement = firstQuestionElement.value;
@@ -26,20 +32,20 @@ export const MyProgress = ({ open, setOpen, workout, exercises, selectedWorkoutI
   // getProgress();
 
   const baseUrl =
-    "https://fitness-pro-21689-default-rtdb.europe-west1.firebasedatabase.app/workouts/";
+    'https://fitness-pro-21689-default-rtdb.europe-west1.firebasedatabase.app/workouts/'
 
-  const [exerciseResults, setExerciseResults] = useState({});
+  const [exerciseResults, setExerciseResults] = useState({})
 
-  const { id } = useAuth();
+  const { id } = useAuth()
 
-  console.log(exerciseResults);
+  console.log(exerciseResults)
 
   const handleInputChange = (exerciseName, value) => {
     setExerciseResults((prevResults) => ({
       ...prevResults,
       [exerciseName]: value,
-    }));
-  };
+    }))
+  }
 
   const handleSendResults = async () => {
     try {
@@ -47,14 +53,14 @@ export const MyProgress = ({ open, setOpen, workout, exercises, selectedWorkoutI
         `${baseUrl}${selectedWorkoutId}/users.json`,
         {
           [id]: exerciseResults,
-        }
-      );
-      setOpen(!open);
-      console.log(response);
+        },
+      )
+      setOpen(!open)
+      window.location.reload()
     } catch (error) {
-      console.log(error.message);
+      console.log(error.message)
     }
-  };
+  }
 
   return (
     <S.Container>
