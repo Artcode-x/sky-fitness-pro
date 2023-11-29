@@ -21,7 +21,7 @@ export const MainPage = () => {
       ) : (
         <S.CoursesList>
           {data &&
-            data.map((course) => (
+            data?.map((course) => (
               <Link to={`/workout-info-page/${course._id}`} key={course._id}>
                 <CourseCard name={course.name} />
               </Link>

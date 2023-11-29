@@ -19,7 +19,11 @@ body{
 }
 
 .inter4 {
-    background-color: #ff1;
+    background-color: rgb(5, 126, 69);
+}
+
+.inter5 {
+  background-color: rgb(126, 5, 116);
 }
 
 
@@ -44,6 +48,11 @@ body{
   }
 
   .container4 {
-    border: 2px solid #ff1;
-    background: #edecaa;
+    border: 2px solid rgb(5, 126, 69);
+    background: #cfddce;
+  }
+
+  .container5 {
+    border: 2px solid rgb(126, 5, 116);
+    background: #dbcedd;
   }

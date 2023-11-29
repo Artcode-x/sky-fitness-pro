@@ -106,6 +106,26 @@ export const WorkoutVideoPage = () => {
           })}</S.ProgressText>
                 
               </S.Visual>}
+              {/* {<S.Visual>
+                <S.ProgressText>{workout?.map((item, index) => {
+                return (<S.li key={index}>{item}
+                </S.li>
+              )
+          })}</S.ProgressText>
+                
+              </S.Visual>}
+
+
+            {<S.Container>
+              {workout?.map((item, index) => {
+                return (<S.VisualContainerFirst key={index} className={'container' + index}>
+                  <S.InterVisualContainerFirst className={'inter' + index}>
+                    <S.MainTextPercent>45%</S.MainTextPercent>
+                  </S.InterVisualContainerFirst>
+                </S.VisualContainerFirst>
+                )
+              })}
+            </S.Container>} */}
 
             </S.ProgressVisual>
           </S.MainProgress>

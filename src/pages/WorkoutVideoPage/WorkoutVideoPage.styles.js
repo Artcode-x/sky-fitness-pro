@@ -99,7 +99,6 @@ export const ExerciseHeading = styled.h3`
 
 export const ProgressVisual = styled.div`
   display: flex;
-  flex-direction: column;
   gap: 30px;
 
   
@@ -181,8 +180,8 @@ export const MainTextPercent = styled.p`
 export const li = styled.li`
   display: flex;
   justify-content: space-between;
-  gap: 15px;
-  padding-top: 35px;
+  /* gap: 15px; */
+  padding-top: 30px;
 `
 
 export const TempErrorLoadingText = styled.h2`
@@ -191,4 +190,12 @@ export const TempErrorLoadingText = styled.h2`
 
 export const Main = styled.main`
   margin-bottom: 100px;
+`
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+    text-align: left;
+    padding-top: 20px;
 `
