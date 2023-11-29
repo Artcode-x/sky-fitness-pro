@@ -7,7 +7,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useGetWorkoutsQuery, useGetCoursesQuery } from 'services/courses';
 import { workoutCourse } from 'components/modalSelectWorkout/selectWorkout.styles';
 import { Header } from 'pages/profile/profile';
-import './WorkoutVideoPage.css';
+import './workoutVideoPage.css';
 
 export const WorkoutVideoPage = () => {
   const { id } = useParams()
@@ -54,7 +54,7 @@ export const WorkoutVideoPage = () => {
   return (
     <Wrapper>
        <Header></Header>
-       <main>
+       <S.Main>
         {isError ? (
           <S.TempErrorLoadingText>Ошибка: {error.data}</S.TempErrorLoadingText>
         ) : isLoading ? (
@@ -96,9 +96,9 @@ export const WorkoutVideoPage = () => {
               {<S.Visual>
                 <S.ProgressText>{workout?.map((item, index) => {
               return (<S.li key={index}>{item}
-            <S.VisualContainerFirst key={index}>
-                  <S.InterVisualContainerFirst key={index} id="container">
-                    <S.MainTextPercent >45%</S.MainTextPercent>
+            <S.VisualContainerFirst key={index} className={'container' + index}>
+                  <S.InterVisualContainerFirst className={'inter' + index}>
+                    <S.MainTextPercent>45%</S.MainTextPercent>
                   </S.InterVisualContainerFirst>
                 </S.VisualContainerFirst>
             </S.li>
@@ -111,7 +111,7 @@ export const WorkoutVideoPage = () => {
           </S.MainProgress>
         </S.MainExercises>
         </>)}
-      </main>
+      </S.Main>
     </Wrapper>
   )
 }

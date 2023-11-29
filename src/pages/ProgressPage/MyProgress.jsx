@@ -72,7 +72,7 @@ export const MyProgress = ({open, setOpen, workout}) => {
         {<S.ProgressForm> {workout?.map((item, index) => (
           <S.li key={index}>
           <S.ProgressText>
-            Сколько раз вы сделали {item}
+            Сколько раз вы сделали упражнение &ldquo; {item} &rdquo;
             </S.ProgressText>
               <S.ProgressInput type="number" placeholder="Введите значение"/></S.li>
             ))}? 

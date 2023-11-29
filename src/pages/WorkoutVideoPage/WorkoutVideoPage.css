@@ -1,4 +1,49 @@
-.1{
+body{
+    background: #ccc;
+}
+
+.inter0 {
+    background-color: #565eef;
+}
+
+.inter1 {
+    background-color: #ff6d00;
+}
+
+.inter2 {
+    background-color: #9a48f1;
+}
+
+.inter3 {
+    background-color: #9e4111;
+}
+
+.inter4 {
+    background-color: #ff1;
+}
+
+
+.container0 {
+  border: 2px solid #565eef;
+  background: #edecff;
+}
+
+.container1 {
+    border: 2px solid #ff6d00;
+    background: #fff2e0;
+  }
+
+  .container2 {
     border: 2px solid #9a48f1;
     background: #f9ebff;
-}
+  }
+
+  .container3 {
+    border: 2px solid #9e4111;
+    background: #f9ecf0;
+  }
+
+  .container4 {
+    border: 2px solid #ff1;
+    background: #edecaa;
+  }
