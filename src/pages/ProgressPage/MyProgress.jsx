@@ -84,6 +84,7 @@ export const MyProgress = ({ open, setOpen, workout, selectedWorkoutId }) => {
                 </g>
               </g>
             </g>
+
           </svg>
         </S.closeBtn>
         {okPopupOpen ? (

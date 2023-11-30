@@ -28,6 +28,7 @@ export const WorkoutVideoPage = () => {
   const [open, setOpen] = useState(false)
 
   const popup = () => {
+
     setOpen(!open)
   }
 
