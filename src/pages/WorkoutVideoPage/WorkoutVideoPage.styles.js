@@ -19,8 +19,6 @@ export const HeaderUserInfo = styled.div`
 
 export const MainText = styled.p`
   color: #000;
-  font-variant-numeric: lining-nums proportional-nums;
-  font-family: 'StratosSkyeng', sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
@@ -30,19 +28,16 @@ export const MainText = styled.p`
 
 export const MainBigHeading = styled.h2`
   color: #000;
-  font-variant-numeric: lining-nums proportional-nums;
-  font-family: 'StratosSkyeng', sans-serif;
   font-size: 48px;
   font-style: normal;
   font-weight: 400;
   line-height: 56px;
+  margin-top: 45px;
   margin-bottom: 40px;
 `
 
 export const MainSmallHeading = styled.h3`
   color: #000;
-  font-variant-numeric: lining-nums proportional-nums;
-  font-family: 'StratosSkyeng', sans-serif;
   font-size: 32px;
   font-style: normal;
   font-weight: 400;
@@ -55,15 +50,12 @@ export const MainVideoContainer = styled.div`
 `
 export const MainUl = styled.ul`
   color: #000;
-  font-variant-numeric: lining-nums proportional-nums;
-  font-family: 'StratosSkyeng', sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
   line-height: 32px;
   letter-spacing: -0.1px;
-  padding-left: 40px;
-  list-style: disc;
+  padding-left: 35px;
 `
 
 export const MainLi = styled.li`
@@ -92,13 +84,11 @@ export const MainProgress = styled.div`
   background: #f2f2f2;
   border-radius: 30px;
   width: 638px;
-  height: 336px;
+  min-height: 336px;
 `
 
 export const ExerciseHeading = styled.h3`
   color: #000;
-  font-variant-numeric: lining-nums proportional-nums;
-  font-family: 'StratosSkyeng', sans-serif;
   font-size: 32px;
   font-style: normal;
   font-weight: 400;
@@ -109,7 +99,6 @@ export const ExerciseHeading = styled.h3`
 
 export const ProgressVisual = styled.div`
   display: flex;
-  flex-direction: column;
   gap: 30px;
 `
 export const Visual = styled.ul`
@@ -119,13 +108,10 @@ export const Visual = styled.ul`
   text-align: left;
   columns: 2;
   list-style: none;
-
 `
 
 export const ProgressText = styled.p`
   color: #000;
-  font-variant-numeric: lining-nums proportional-nums;
-  font-family: 'StratosSkyeng', sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
@@ -143,59 +129,13 @@ export const VisualContainerFirst = styled.div`
   margin-right: 55px;
   border: 2px solid #565eef;
   background: #edecff;
-  
-`
-
-export const VisualContainerSecond = styled.div`
-  width: 278px;
-  height: 36px;
-  flex-shrink: 0;
-  border-radius: 22px;
-  margin-right: 55px;
-  border: 2px solid #ff6d00;
-  background: #fff2e0;
-`
-
-export const VisualContainerThird = styled.div`
-  width: 278px;
-  height: 36px;
-  flex-shrink: 0;
-  border-radius: 22px;
-  margin-right: 55px;
-  border: 2px solid #9a48f1;
-  background: #f9ebff;
 `
 
 export const InterVisualContainerFirst = styled.div`
-  width: 136px;
-  background-color: #565eef;
+  width: ${(props) => props.$percent === 100 ? props.$percent + 1 : props.$percent}%;
+  background-color: ${(props) => props.$colors};
   height: 36px;
-  border-top-left-radius: 22px;
-  border-bottom-left-radius: 22px;
-  position: relative;
-  top: -2px;
-  left: -2px;
-  
-
-`
-
-export const InterVisualContainerSecond = styled.div`
-  width: 136px;
-  background-color: #ff6d00;
-  height: 36px;
-  border-top-left-radius: 22px;
-  border-bottom-left-radius: 22px;
-  position: relative;
-  top: -2px;
-  left: -2px;
-`
-
-export const InterVisualContainerThird = styled.div`
-  width: 136px;
-  background-color: #9a48f1;
-  height: 36px;
-  border-top-left-radius: 22px;
-  border-bottom-left-radius: 22px;
+  border-radius: 22px;
   position: relative;
   top: -2px;
   left: -2px;
@@ -203,8 +143,6 @@ export const InterVisualContainerThird = styled.div`
 
 export const MainTextPercent = styled.p`
   color: #fff !important;
-  font-variant-numeric: lining-nums proportional-nums;
-  font-family: 'StratosSkyeng', sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
@@ -217,6 +155,9 @@ export const MainTextPercent = styled.p`
 `
 export const li = styled.li`
   display: flex;
+  justify-content: space-between;
+  /* gap: 15px; */
+  padding-top: 30px;
 `
 
 export const TempErrorLoadingText = styled.h2`

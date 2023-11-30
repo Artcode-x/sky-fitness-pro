@@ -48,7 +48,6 @@ export const ModalSelectWorkout = ({ modalIsOpen, closeModal }) => {
       day: item.title.split(' / ')[2],
       done: getResults(item.exercises_without, item.repeat, item.users)
     }))
-  console.log(preparedArr)
 
   return (
     <S.modalBG>
