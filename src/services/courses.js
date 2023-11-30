@@ -6,7 +6,7 @@ export const coursesApi = createApi({
   reducerPath: 'coursesApi',
   baseQuery: fetchBaseQuery({
     baseUrl:
-      'https://sky-fitness-pro-abc-default-rtdb.asia-southeast1.firebasedatabase.app/',
+      'https://fitness-pro-21689-default-rtdb.europe-west1.firebasedatabase.app/',
   }),
   endpoints: (build) => ({
     getCourses: build.query({
@@ -25,7 +25,22 @@ export const coursesApi = createApi({
         method: 'PATCH',
       }),
     }),
+    addCourseToUser: build.mutation({
+      query: ({courseIndex, id}) => ({
+        url: `courses/${courseIndex}/users.json`,
+        method: 'POST',
+        // headers: {
+        //   'content-type': 'application/json',
+        // },
+        body: id,
+      }),
+    }),
   }),
 })
 
-export const { useGetCoursesQuery, useGetWorkoutsQuery, useAddCoursesMutation } = coursesApi
+export const {
+  useGetCoursesQuery,
+  useGetWorkoutsQuery,
+  useAddCoursesMutation,
+  useAddCourseToUserMutation
+} = coursesApi

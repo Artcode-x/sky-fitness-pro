@@ -1,17 +1,17 @@
 import { useAddCoursesMutation } from 'services/courses'
 import * as S from '../WorkoutInfoPage.styles'
 
-export const Contacts = ({ selectedCourse, SetActualCourse }) => {
-  const [addCourses] = useAddCoursesMutation()
+export const Contacts = ({onBtnClick}) => {
+  // const [addCourses] = useAddCoursesMutation()
 
-  const newArray = []
-  const signUpForTraining = async () => {
-    await addCourses({ name: '1' }).unwrap()
+  // const newArray = []
+  // const signUpForTraining = async () => {
+  //   await addCourses({ name: '1' }).unwrap()
     // newArray.push({ name: '1' })
-    console.log(newArray)
-  }
-  console.log(selectedCourse.userCourses)
-  console.log(newArray)
+  //   console.log(newArray)
+  // }
+  // console.log(selectedCourse.userCourses)
+  // console.log(newArray)
 
   return (
     <S.Contacts>
@@ -21,7 +21,7 @@ export const Contacts = ({ selectedCourse, SetActualCourse }) => {
           выбором направления и тренера, с которым тренировки принесут здоровье
           и радость!
         </S.ContactsText>
-        <S.ContactsButton onClick={signUpForTraining}>
+        <S.ContactsButton onClick={() => onBtnClick()}>
           Записаться на тренировку
         </S.ContactsButton>
       </S.ContactsContainer>
