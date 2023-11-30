@@ -14,7 +14,6 @@ export const MainPage = () => {
       <Header main={true} />
       <MainAdv />
       {isError ? (
-        // сделать единый компонент для обработки ошибок и загрузки
         <S.TempErrorLoadingText>Ошибка: {error.data}</S.TempErrorLoadingText>
       ) : isLoading ? (
         <S.TempErrorLoadingText>...Загрузка</S.TempErrorLoadingText>

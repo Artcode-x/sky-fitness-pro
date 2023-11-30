@@ -8,10 +8,8 @@ import { Motivation } from './components/Motivation'
 import { Contacts } from './components/Contacts'
 import { useParams } from 'react-router-dom'
 import { Header } from 'pages/profile/profile'
-import { useState } from 'react'
 
 export const WorkoutInfoPage = () => {
-  // Йога, Стретчинг, Бодифлекс, Танцевальный фитнес, Степ-аэробика
   const { id } = useParams()
   const { data = [], isLoading, isError, error } = useGetCoursesQuery()
 
