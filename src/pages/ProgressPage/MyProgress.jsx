@@ -14,6 +14,9 @@ export const MyProgress = ({ open, setOpen, workout, selectedWorkoutId }) => {
   const { id } = useAuth()
 
   const handleInputChange = (exerciseName, value) => {
+    if (value < 0) {
+      value = 0
+    }
     setExerciseResults((prevResults) => ({
       ...prevResults,
       [exerciseName]: value,
@@ -35,15 +38,10 @@ export const MyProgress = ({ open, setOpen, workout, selectedWorkoutId }) => {
         setOpen(!open)
         window.location.reload()
       }, 1000)
-
-      // setOpen(!open)
     } catch (error) {
       console.log(error.message)
     }
   }
-
-  // 1)Подключить popup окно "Прогресс засчитан"
-  // 2)Передать completed : true если все тренировки 100%
 
   return (
     <S.Container>
