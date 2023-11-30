@@ -30,7 +30,6 @@ const Workout = ({ name, course, day, done }) => {
 
 export const ModalSelectWorkout = ({ modalIsOpen, closeModal }) => {
   const { data, isLoading, error } = useGetWorkoutsQuery()
-  // console.log(data);
   const preparedArr = data
     ?.filter((item) => item.name == modalIsOpen)
     .map((item) => ({
@@ -39,7 +38,6 @@ export const ModalSelectWorkout = ({ modalIsOpen, closeModal }) => {
       course: item.title.split(' / ')[1],
       day: item.title.split(' / ')[2],
     }))
-  // console.log(preparedArr)
 
   return (
     <S.modalBG>

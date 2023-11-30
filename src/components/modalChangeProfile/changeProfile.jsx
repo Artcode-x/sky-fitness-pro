@@ -27,11 +27,6 @@ export const ChangeUserInfo = ({
   const [validForm, setValidForm] = useState(false)
   const navigate = useNavigate();
 
-  // const setUser = () => {
-  //   localStorage.setItem("user", "token");
-  //   navigate("/profile", { replace: true });
-  // };
-
   useEffect(() => {
     if ((mode == 'regForm')) {
       if (emailError || passwordError || controlError) {
@@ -151,7 +146,6 @@ export const ChangeUserInfo = ({
           password,
         }
     setData(newUserData)
-    // closeModal('')
   }
 
   const getBtnName = () => {

@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components'
 
 export const Parent = styled.div`
-  padding-top: 35px;
   display: flex;
 `
 
@@ -12,7 +11,6 @@ export const Center = css`
 
 export const Adv = styled.section`
   /* ${Center} */
-  padding-top: 35px;
   display: flex;
 `
 
@@ -25,8 +23,8 @@ export const AdvText = styled.div`
 export const AdvTextSmall = styled.div`
   display: flex;
   color: var(--monochrome-white-20, #fff);
+  opacity: 0.5;
   font-variant-numeric: lining-nums proportional-nums;
-  font-family: StratosSkyeng;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
@@ -38,7 +36,6 @@ export const AdvTextBig = styled.div`
   padding-top: 17px;
   color: #f4f4ff;
   font-variant-numeric: lining-nums proportional-nums;
-  font-family: StratosSkyeng;
   font-size: 60px;
   font-style: normal;
   font-weight: 400;

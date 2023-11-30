@@ -12,7 +12,6 @@ import { useState } from 'react'
 import { Loader } from 'components/loader/Loader'
 
 export const WorkoutInfoPage = () => {
-  // Йога, Стретчинг, Бодифлекс, Танцевальный фитнес, Степ-аэробика
   const { id } = useParams()
   const { data = [], isLoading, isError, error } = useGetCoursesQuery()
 

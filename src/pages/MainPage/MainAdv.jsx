@@ -6,7 +6,7 @@ export const MainAdv = () => {
         <S.AdvText>
           <S.AdvTextSmall>Онлайн-тренировки для занятий дома</S.AdvTextSmall>
           <S.AdvTextBig>
-            Начните заниматься спортом и улучшите качество жизни
+            Начните заниматься спортом<br /> и улучшите качество жизни
           </S.AdvTextBig>
         </S.AdvText>
       </S.Adv>
