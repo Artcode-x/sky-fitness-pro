@@ -24,6 +24,7 @@ export const Progress = styled.div`
   position: absolute;
   border-radius: 12px;
   padding-left: 44px;
+  padding-right: 43px;
 `
 
 export const ProgressTitle = styled.h1`
@@ -127,4 +128,5 @@ export const closeBtn = styled.div`
 
 export const li = styled.li`
   display: flex;
+  flex-direction: column;
 `
