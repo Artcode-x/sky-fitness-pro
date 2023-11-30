@@ -2,11 +2,10 @@ import React from 'react'
 import * as S from './WorkoutVideoPage.styles'
 import { Wrapper } from '../../index.styles'
 import { MyProgress } from '../ProgressPage/MyProgress';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useGetWorkoutsQuery} from 'services/courses';
 import { Header } from 'pages/profile/profile';
-import './workoutVideoPage.css';
 
 export const WorkoutVideoPage = () => {
   const { id } = useParams()

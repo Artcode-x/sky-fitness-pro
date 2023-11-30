@@ -129,10 +129,13 @@ export const VisualContainerFirst = styled.div`
   flex-shrink: 0;
   border-radius: 22px;
   margin-right: 55px;
+  border: 2px solid #565eef;
+  background: #edecff;
 `
 
 export const InterVisualContainerFirst = styled.div`
   width: 136px;
+  background-color: #565eef;
   height: 36px;
   border-top-left-radius: 22px;
   border-bottom-left-radius: 22px;
