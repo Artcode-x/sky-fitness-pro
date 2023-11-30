@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import * as S from './MainPage.styles'
 
 export const MainPage = () => {
-  const { data, isLoading, isError, error } = useGetCoursesQuery()
+  const { data = [], isLoading, isError, error } = useGetCoursesQuery()
 
   return (
     <S.Body>

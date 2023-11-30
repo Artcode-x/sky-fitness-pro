@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import { MButton } from '../../index.styles'
 
 export const Container = styled.div`
---modal-width: 366px;
---modal-height: 439px;
+  --modal-width: 366px;
+  --modal-height: 439px;
 
   display: flex;
   flex-direction: column;
@@ -24,7 +24,7 @@ export const Progress = styled.div`
   position: absolute;
   border-radius: 12px;
   padding-left: 44px;
-  
+  padding-right: 43px;
 `
 
 export const ProgressTitle = styled.h1`
@@ -94,8 +94,11 @@ export const ProgressButton = styled.button`
 // progress popup
 export const ProgressPopup = styled.div`
   display: flex;
+  align-items: center;
   flex-direction: column;
-  margin-top: 41px;
+  padding-top: 41px;
+  background: #fff;
+  width: 444px;
 `
 
 export const ProgressPopupTitle = styled.h1`
@@ -125,4 +128,5 @@ export const closeBtn = styled.div`
 
 export const li = styled.li`
   display: flex;
+  flex-direction: column;
 `

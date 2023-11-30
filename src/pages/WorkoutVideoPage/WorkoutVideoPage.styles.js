@@ -100,8 +100,6 @@ export const ExerciseHeading = styled.h3`
 export const ProgressVisual = styled.div`
   display: flex;
   gap: 30px;
-
-  
 `
 export const Visual = styled.ul`
   padding-left: 44px;
@@ -109,7 +107,7 @@ export const Visual = styled.ul`
   justify-content: space-between;
   text-align: left;
   columns: 2;
-  list-style: none;  
+  list-style: none;
 `
 
 export const ProgressText = styled.p`
@@ -134,35 +132,10 @@ export const VisualContainerFirst = styled.div`
 `
 
 export const InterVisualContainerFirst = styled.div`
-  width: 136px;
-  background-color: #565eef;
+  width: ${(props) => props.$percent === 100 ? props.$percent + 1 : props.$percent}%;
+  background-color: ${(props) => props.$colors};
   height: 36px;
-  border-top-left-radius: 22px;
-  border-bottom-left-radius: 22px;
-  position: relative;
-  top: -2px;
-  left: -2px;
-  
-
-`
-
-export const InterVisualContainerSecond = styled.div`
-  width: 136px;
-  background-color: #ff6d00;
-  height: 36px;
-  border-top-left-radius: 22px;
-  border-bottom-left-radius: 22px;
-  position: relative;
-  top: -2px;
-  left: -2px;
-`
-
-export const InterVisualContainerThird = styled.div`
-  width: 136px;
-  background-color: #9a48f1;
-  height: 36px;
-  border-top-left-radius: 22px;
-  border-bottom-left-radius: 22px;
+  border-radius: 22px;
   position: relative;
   top: -2px;
   left: -2px;
@@ -189,12 +162,4 @@ export const li = styled.li`
 
 export const TempErrorLoadingText = styled.h2`
   padding: 100px;
-`
-
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 35px;
-    text-align: left;
-    padding-top: 35px;
 `
