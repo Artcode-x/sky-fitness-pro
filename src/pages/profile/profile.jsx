@@ -19,6 +19,9 @@ import {
   reauthenticateWithCredential,
   EmailAuthProvider,
 } from 'firebase/auth'
+import { getDatabase, ref, onValue } from "firebase/database";
+
+
 
 export const Header = ({ main }) => {
   const [visible, setVisible] = useState(false)
@@ -89,9 +92,19 @@ export const Profile = () => {
   const [loading, setLoading] = useState(false)
   const [authErrors, setAuthErrors] = useState(null)
   const [newCredentials, setNewCredentials] = useState(null)
-
+// console.log(data);
   const auth = getAuth()
   const user = auth.currentUser
+
+  // const db = getDatabase();
+  // const coursesRef = ref(db, 'courses');
+  // onValue(coursesRef, (snapshot) => {
+  //   const data = snapshot.val();
+  //   updateStarCount(postElement, data);
+  //   console.log(snapshot);
+
+  // });
+
   const changeCredentials = (newCredential, confirm) => {
     setLoading(true)
     const credential = EmailAuthProvider.credential(user.email, confirm)
@@ -167,7 +180,7 @@ export const Profile = () => {
           <S.profileTitle>Мои курсы</S.profileTitle>
           <S.coursesList>
             {data?.length > 0 ? (
-              data.map((course) => (
+              data.filter((item) => item?.users?.includes(id)).map((course) => (
                 <CourseCard
                   key={course._id}
                   name={course.name}

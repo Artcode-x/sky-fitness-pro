@@ -11,14 +11,11 @@ export const Contacts = ({ selectedCourse }) => {
   const { data, isLoading, isError } = useGetCoursesQuery()
   // получаем id выбранного курса
   const selectedCourseID = data.indexOf(selectedCourse)
-
   const { isAuth, email, token, id } = useAuth()
   const userID = { id }
-
   const navigate = useNavigate()
   const [disabled, setDisabled] = useState(false)
   const [hide, setHide] = useState(true)
-
   const signUpForTraining = async () => {
     if (!userID) {
       navigate('/auth')
@@ -67,7 +64,6 @@ export const Contacts = ({ selectedCourse }) => {
       }
     }
   }
-
 
   return (
     <S.Contacts>
