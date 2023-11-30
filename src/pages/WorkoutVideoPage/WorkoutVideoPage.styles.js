@@ -188,14 +188,10 @@ export const TempErrorLoadingText = styled.h2`
   padding: 100px;
 `
 
-export const Main = styled.main`
-  margin-bottom: 100px;
-`
-
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 35px;
     text-align: left;
-    padding-top: 20px;
+    padding-top: 35px;
 `

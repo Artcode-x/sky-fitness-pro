@@ -3,9 +3,8 @@ import * as S from './WorkoutVideoPage.styles'
 import { Wrapper } from '../../index.styles'
 import { MyProgress } from '../ProgressPage/MyProgress';
 import { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { useGetWorkoutsQuery, useGetCoursesQuery } from 'services/courses';
-import { workoutCourse } from 'components/modalSelectWorkout/selectWorkout.styles';
+import { useParams } from 'react-router-dom';
+import { useGetWorkoutsQuery} from 'services/courses';
 import { Header } from 'pages/profile/profile';
 import './workoutVideoPage.css';
 
@@ -31,30 +30,11 @@ export const WorkoutVideoPage = () => {
   const popup = () => {
     setOpen(!open);
   };
-
-  // useEffect(() => {
-  
-  //   const sum = localStorage.getItem('firstProgress')
-  //   const total = 15;
-  //   let percent = sum/total;
-  //   if (percent > 100) {
-  //     percent = 100;
-  //   }
-  //   console.log(sum);
-
-  //   const containerElement = document.getElementById('container');
-    
-    
-  //   let newWidth = percent*268;
-
-  //   containerElement.style.width = newWidth + 'px';
-  
-  // }, [MyProgress])
   
   return (
     <Wrapper>
        <Header></Header>
-       <S.Main>
+       <main>
         {isError ? (
           <S.TempErrorLoadingText>Ошибка: {error.data}</S.TempErrorLoadingText>
         ) : isLoading ? (
@@ -80,12 +60,10 @@ export const WorkoutVideoPage = () => {
         <S.MainExercises>
           <S.Exercise>
             <S.MainSmallHeading>Упражнения</S.MainSmallHeading>
-            <S.MainUl>
-          
+            <S.MainUl>       
               {exercises?.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-
+                <li key={index}>{item}</li>
+              ))}
             </S.MainUl>
             <S.Button onClick={popup}>Заполнить свой прогресс</S.Button>
             {open ? <MyProgress open={open} setOpen={setOpen} selectedWorkout={selectedWorkout} workout={workout}/> : null}
@@ -104,34 +82,12 @@ export const WorkoutVideoPage = () => {
             </S.li>
               )
           })}</S.ProgressText>
-                
               </S.Visual>}
-              {/* {<S.Visual>
-                <S.ProgressText>{workout?.map((item, index) => {
-                return (<S.li key={index}>{item}
-                </S.li>
-              )
-          })}</S.ProgressText>
-                
-              </S.Visual>}
-
-
-            {<S.Container>
-              {workout?.map((item, index) => {
-                return (<S.VisualContainerFirst key={index} className={'container' + index}>
-                  <S.InterVisualContainerFirst className={'inter' + index}>
-                    <S.MainTextPercent>45%</S.MainTextPercent>
-                  </S.InterVisualContainerFirst>
-                </S.VisualContainerFirst>
-                )
-              })}
-            </S.Container>} */}
-
             </S.ProgressVisual>
           </S.MainProgress>
         </S.MainExercises>
         </>)}
-      </S.Main>
+      </main>
     </Wrapper>
   )
 }
