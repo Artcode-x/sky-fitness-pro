@@ -2,16 +2,13 @@ import axios from 'axios'
 import { useAuth } from 'hooks/use-auth'
 import { useState } from 'react'
 import * as S from './MyProgress.styles'
+import { MyProgressPopup } from './MyProgressPopup'
 
-export const MyProgress = ({
-  open,
-  setOpen,
-  workout,
-  selectedWorkoutId,
-}) => {
-  const baseUrl =
-    'https://fitness-pro-21689-default-rtdb.europe-west1.firebasedatabase.app/workouts/'
+const baseUrl =
+  'https://fitness-pro-21689-default-rtdb.europe-west1.firebasedatabase.app/workouts/'
 
+export const MyProgress = ({ open, setOpen, workout, selectedWorkoutId }) => {
+  const [okPopupOpen, setOkPopupOpen] = useState(false)
   const [exerciseResults, setExerciseResults] = useState({})
 
   const { id } = useAuth()
@@ -31,12 +28,22 @@ export const MyProgress = ({
           [id]: exerciseResults,
         },
       )
-      setOpen(!open)
-      window.location.reload()
+
+      setOkPopupOpen(true)
+
+      setTimeout(() => {
+        setOpen(!open)
+        window.location.reload()
+      }, 1000)
+
+      // setOpen(!open)
     } catch (error) {
       console.log(error.message)
     }
   }
+
+  // 1)Подключить popup окно "Прогресс засчитан"
+  // 2)Передать completed : true если все тренировки 100%
 
   return (
     <S.Container>
@@ -81,26 +88,34 @@ export const MyProgress = ({
             </g>
           </svg>
         </S.closeBtn>
-        <S.ProgressTitle>Мой прогресс</S.ProgressTitle>
-        {
-          <S.ProgressForm>
-            {workout?.map((item, index) => (
-              <S.li key={index}>
-                <S.ProgressText>Сколько раз вы сделали {item}</S.ProgressText>
-                <S.ProgressInput
-                  type="number"
-                  placeholder="Введите значение"
-                  onChange={(e) => handleInputChange(item, e.target.value)}
-                />
-              </S.li>
-            ))}
-          </S.ProgressForm>
-        }
-        <S.ProgressForButton>
-          <S.ProgressButton onClick={() => handleSendResults()}>
-            Отправить
-          </S.ProgressButton>
-        </S.ProgressForButton>
+        {okPopupOpen ? (
+          <MyProgressPopup />
+        ) : (
+          <>
+            <S.ProgressTitle>Мой прогресс</S.ProgressTitle>
+            {
+              <S.ProgressForm>
+                {workout?.map((item, index) => (
+                  <S.li key={index}>
+                    <S.ProgressText>
+                      Сколько раз вы сделали {item}
+                    </S.ProgressText>
+                    <S.ProgressInput
+                      type="number"
+                      placeholder="Введите значение"
+                      onChange={(e) => handleInputChange(item, e.target.value)}
+                    />
+                  </S.li>
+                ))}
+              </S.ProgressForm>
+            }
+            <S.ProgressForButton>
+              <S.ProgressButton onClick={() => handleSendResults()}>
+                Отправить
+              </S.ProgressButton>
+            </S.ProgressForButton>
+          </>
+        )}
       </S.Progress>
     </S.Container>
   )

@@ -35,17 +35,16 @@ export const WorkoutVideoPage = () => {
 
   const getWorkoutResults = (workoutName) => {
     if (selectedWorkout?.users) {
-      const userDBId = Object.keys(selectedWorkout?.users).find(((id) => id === userId))
+      const userDBId = Object.keys(selectedWorkout?.users).find(
+        (id) => id === userId,
+      )
+      const userWorkouts = selectedWorkout?.users[userDBId]
+      if (userWorkouts?.hasOwnProperty(workoutName)) {
+        const result = userWorkouts[workoutName]
 
-        const userWorkouts = selectedWorkout?.users[userDBId]
-
-        if (userWorkouts?.hasOwnProperty(workoutName)) {
-          const result = userWorkouts[workoutName]
-
-          return result
-        }
+        return result
+      }
     }
-
     return 0
   }
 
@@ -108,7 +107,9 @@ export const WorkoutVideoPage = () => {
                               )}
                               key={index}
                               id="container"
-                              $colors={progressColors[index % progressColors.length]}
+                              $colors={
+                                progressColors[index % progressColors.length]
+                              }
                             >
                               <S.MainTextPercent>
                                 {calculatePercentage(
