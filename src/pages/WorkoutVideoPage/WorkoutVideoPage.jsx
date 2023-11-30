@@ -8,6 +8,7 @@ import { useGetWorkoutsQuery } from 'services/courses'
 import { Header } from 'pages/profile/profile'
 import { useAuth } from 'hooks/use-auth'
 import { calculatePercentage } from 'pages/WorkoutInfoPage/utils/calculatePercent'
+import { Loader } from 'components/loader/Loader'
 
 const progressColors = ['#565EEF', '#FF6D00', '#9A48F1']
 
@@ -56,7 +57,7 @@ export const WorkoutVideoPage = () => {
         {isError ? (
           <S.TempErrorLoadingText>Ошибка: {error.data}</S.TempErrorLoadingText>
         ) : isLoading ? (
-          <S.TempErrorLoadingText>...Загрузка</S.TempErrorLoadingText>
+          <Loader />
         ) : (
           <>
             <S.MainBigHeading>{selectedWorkout.name}</S.MainBigHeading>

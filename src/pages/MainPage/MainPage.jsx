@@ -5,6 +5,7 @@ import { useGetCoursesQuery } from 'services/courses'
 import { MainAdv } from './MainAdv'
 import { Link } from 'react-router-dom'
 import * as S from './MainPage.styles'
+import { Loader } from 'components/loader/Loader'
 
 export const MainPage = () => {
   const { data = [], isLoading, isError, error } = useGetCoursesQuery()
@@ -16,7 +17,7 @@ export const MainPage = () => {
       {isError ? (
         <S.TempErrorLoadingText>Ошибка: {error.data}</S.TempErrorLoadingText>
       ) : isLoading ? (
-        <S.TempErrorLoadingText>...Загрузка</S.TempErrorLoadingText>
+        <Loader />
       ) : (
         <S.CoursesList>
           {data &&
