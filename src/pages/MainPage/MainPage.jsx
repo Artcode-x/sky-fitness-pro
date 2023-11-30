@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import * as S from './MainPage.styles'
 
 export const MainPage = () => {
-  const { data, isLoading, isError, error } = useGetCoursesQuery()
+  const { data = [], isLoading, isError, error } = useGetCoursesQuery()
 
   return (
     <S.Body>
@@ -21,7 +21,7 @@ export const MainPage = () => {
       ) : (
         <S.CoursesList>
           {data &&
-            data.map((course) => (
+            data?.map((course) => (
               <Link to={`/workout-info-page/${course._id}`} key={course._id}>
                 <CourseCard name={course.name} />
               </Link>
