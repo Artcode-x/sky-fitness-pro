@@ -7,38 +7,14 @@ export const MyProgress = ({
   open,
   setOpen,
   workout,
-  exercises,
   selectedWorkoutId,
 }) => {
-  // const getProgress = () => {
-  //   const firstQuestionElement = document.getElementById('firstQuestion');
-  //   const valueOfFirstQuestionElement = firstQuestionElement.value;
-
-  //   console.log(valueOfFirstQuestionElement);
-
-  //   const secondQuestionElement = document.getElementById('secondQuestion');
-  //   const valueOfSecondQuestionElement = secondQuestionElement.value;
-
-  //   console.log(valueOfSecondQuestionElement);
-
-  //   const thirdQuestionElement = document.getElementById('thirdQuestion');
-  //   const valueOfThirdQuestionElement = thirdQuestionElement.value;
-
-  //   console.log(valueOfThirdQuestionElement);
-
-  //   localStorage.setItem('firstProgress', valueOfFirstQuestionElement)
-  //   setOpen(!open)
-  // }
-  // getProgress();
-
   const baseUrl =
     'https://fitness-pro-21689-default-rtdb.europe-west1.firebasedatabase.app/workouts/'
 
   const [exerciseResults, setExerciseResults] = useState({})
 
   const { id } = useAuth()
-
-  console.log(exerciseResults)
 
   const handleInputChange = (exerciseName, value) => {
     setExerciseResults((prevResults) => ({

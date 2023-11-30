@@ -7,6 +7,9 @@ import { useParams } from 'react-router-dom'
 import { useGetWorkoutsQuery } from 'services/courses'
 import { Header } from 'pages/profile/profile'
 import { useAuth } from 'hooks/use-auth'
+import { calculatePercentage } from 'pages/WorkoutInfoPage/utils/calculatePercent'
+
+const progressColors = ['#565EEF', '#FF6D00', '#9A48F1']
 
 export const WorkoutVideoPage = () => {
   const { data = [], isLoading, isError, error } = useGetWorkoutsQuery()
@@ -14,12 +17,10 @@ export const WorkoutVideoPage = () => {
   const { id } = useParams()
 
   const selectedWorkout = data?.find((item) => item._id === id)
-
   const selectedWorkoutId = data.indexOf(selectedWorkout)
 
   const exercises = selectedWorkout?.exercises
   const exercisesNumber = selectedWorkout?.repeat
-  console.log(exercisesNumber)
   const workout = selectedWorkout?.exercises_without
   const youtubeLink = selectedWorkout?.link_addition
   const link = `https://www.youtube.com/embed/${youtubeLink}`
@@ -32,27 +33,17 @@ export const WorkoutVideoPage = () => {
 
   const { id: userId } = useAuth()
 
-  const calculatePercentage = (count, total) => {
-    if (count >= total) {
-      return 100
-    } else {
-      return Math.round((count / total) * 100)
-    }
-  }
-
   const getWorkoutResults = (workoutName) => {
     if (selectedWorkout?.users) {
-      const userDBId = Object.keys(selectedWorkout?.users)[0]
+      const userDBId = Object.keys(selectedWorkout?.users).find(((id) => id === userId))
 
-      if (userDBId === userId) {
-        const userWorkouts = Object.values(selectedWorkout.users)[0]
+        const userWorkouts = selectedWorkout?.users[userDBId]
 
-        if (userWorkouts.hasOwnProperty(workoutName)) {
+        if (userWorkouts?.hasOwnProperty(workoutName)) {
           const result = userWorkouts[workoutName]
 
           return result
         }
-      }
     }
 
     return 0
@@ -111,14 +102,19 @@ export const WorkoutVideoPage = () => {
                           <S.ProgressText>{item}</S.ProgressText>
                           <S.VisualContainerFirst key={index}>
                             <S.InterVisualContainerFirst
+                              $percent={calculatePercentage(
+                                getWorkoutResults(item),
+                                exercisesNumber[index],
+                              )}
                               key={index}
                               id="container"
+                              $colors={progressColors[index % progressColors.length]}
                             >
                               <S.MainTextPercent>
                                 {calculatePercentage(
                                   getWorkoutResults(item),
                                   exercisesNumber[index],
-                                )}{' '}
+                                )}
                                 %
                               </S.MainTextPercent>
                             </S.InterVisualContainerFirst>
