@@ -9,6 +9,7 @@ import { Contacts } from './components/Contacts'
 import { useParams } from 'react-router-dom'
 import { Header } from 'pages/profile/profile'
 import { useState } from 'react'
+import { Loader } from 'components/loader/Loader'
 
 export const WorkoutInfoPage = () => {
   // Йога, Стретчинг, Бодифлекс, Танцевальный фитнес, Степ-аэробика
@@ -24,7 +25,7 @@ export const WorkoutInfoPage = () => {
         {isError ? (
           <S.TempErrorLoadingText>Ошибка: {error.data}</S.TempErrorLoadingText>
         ) : isLoading ? (
-          <S.TempErrorLoadingText>...Загрузка</S.TempErrorLoadingText>
+          <Loader />
         ) : (
           <>
             <SkillCard selectedCourse={selectedCourse} />
