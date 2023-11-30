@@ -1,9 +1,10 @@
+
 import { useAddCoursesMutation, useGetCoursesQuery } from 'services/courses'
+
 import * as S from '../WorkoutInfoPage.styles'
 import { useAuth } from 'hooks/use-auth'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-
 import axios from 'axios'
 
 export const Contacts = ({ selectedCourse }) => {
@@ -67,6 +68,7 @@ export const Contacts = ({ selectedCourse }) => {
     }
   }
 
+
   return (
     <S.Contacts>
       <S.ContactsContainer>
@@ -75,6 +77,7 @@ export const Contacts = ({ selectedCourse }) => {
           выбором направления и тренера, с которым тренировки принесут здоровье
           и радость!
         </S.ContactsText>
+
         {hide ? (
           <S.ContactsButton disabled={disabled} onClick={signUpForTraining}>
             Записаться на тренировку
