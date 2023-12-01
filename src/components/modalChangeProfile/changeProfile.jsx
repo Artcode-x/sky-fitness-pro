@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 import { useNavigate } from 'react-router-dom'
-
+import { Loader } from 'components/loader/Loader'
 import * as S from './changeProfile.styles'
 import { Link } from 'react-router-dom'
 
@@ -211,7 +211,7 @@ export const ChangeUserInfo = ({
       <S.modalLogo>
         <img src="/img/logo.svg" alt="logo" />
       </S.modalLogo>
-      
+      {loading? <Loader/> : <>
       {(mode == 'changeLog' || mode == 'changePass') && (
         <S.changeDataText>
           Новый {mode == 'changeLog' ? 'логин' : 'пароль'}:
@@ -270,7 +270,7 @@ export const ChangeUserInfo = ({
       )}
       {usedConfirmInput && confirmError && <S.formError>{confirmError}</S.formError>}
       {apiErrors && (<S.changeDataText style={{color: "red",}}>{apiErrors}</S.changeDataText>)}
-      <S.modalBtnEnter
+      </>}<S.modalBtnEnter
         disabled={!validForm || loading}
         type="submit"
         onClick={addNewUser}

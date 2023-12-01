@@ -18,10 +18,10 @@ import {
   updatePassword,
   reauthenticateWithCredential,
   EmailAuthProvider,
+  onAuthStateChanged,
 } from 'firebase/auth'
-import { getDatabase, ref, onValue } from "firebase/database";
-
-
+import { Loader } from 'components/loader/Loader'
+// import { getDatabase, ref, onValue } from 'firebase/database'
 
 export const Header = ({ main }) => {
   const [visible, setVisible] = useState(false)
@@ -92,42 +92,57 @@ export const Profile = () => {
   const [loading, setLoading] = useState(false)
   const [authErrors, setAuthErrors] = useState(null)
   const [newCredentials, setNewCredentials] = useState(null)
-// console.log(data);
-  const auth = getAuth()
-  const user = auth.currentUser
 
+  // console.log(data);
   // const db = getDatabase();
-  // const coursesRef = ref(db, 'courses');
+  // const coursesRef = ref(db, 'courses/0/users');
   // onValue(coursesRef, (snapshot) => {
   //   const data = snapshot.val();
-  //   updateStarCount(postElement, data);
-  //   console.log(snapshot);
-
+  //   // updateStarCount(postElement, data);
+  //   console.log(data);
   // });
+// const data = []
 
+  const auth = getAuth()
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      dispatch(
+        setUser({
+          email: user.email,
+          id: user.uid,
+          token: user.accessToken,
+        }),
+      )
+    } else {
+      console.log('User is signed out')
+    }
+  })
   const changeCredentials = (newCredential, confirm) => {
     setLoading(true)
-    const credential = EmailAuthProvider.credential(user.email, confirm)
-    reauthenticateWithCredential(user, credential)
+    const credential = EmailAuthProvider.credential(
+      auth.currentUser.email,
+      confirm,
+    )
+    reauthenticateWithCredential(auth.currentUser, credential)
       .then(() => {
         if (modal == 'changeLog') {
-          updateEmail(user, newCredential)
+          updateEmail(auth.currentUser, newCredential)
         }
         if (modal == 'changePass') {
-          updatePassword(user, newCredential)
+          updatePassword(auth.currentUser, newCredential)
         }
       })
       .then(() => {
         setLoading(false)
         setModal('')
         console.log('Credential successfully changed')
-        dispatch(
-          setUser({
-            email: auth.currentUser.email,
-            id: auth.currentUser.uid,
-            token: auth.currentUser.accessToken,
-          }),
-        )
+        // dispatch(
+        //   setUser({
+        //     email: auth.currentUser.email,
+        //     id: auth.currentUser.uid,
+        //     token: auth.currentUser.accessToken,
+        //   }),
+        // )
       })
       .catch((error) => {
         setAuthErrors(error.message)
@@ -179,17 +194,20 @@ export const Profile = () => {
         <S.userCourses>
           <S.profileTitle>Мои курсы</S.profileTitle>
           <S.coursesList>
+          { ( isLoading)? <Loader/> :<>
             {data?.length > 0 ? (
-              data.filter((item) => item?.users?.includes(id)).map((course) => (
-                <CourseCard
-                  key={course._id}
-                  name={course.name}
-                  openModal={setWorkout}
-                />
-              ))
+              data
+                .filter((item) => item?.users?.includes(id))
+                .map((course) => (
+                  <CourseCard
+                    key={course._id}
+                    name={course.name}
+                    openModal={setWorkout}
+                  />
+                ))
             ) : (
-              <div>Вы еще не приобрели ни одного курса</div>
-            )}
+              <S.profileTitle>Вы еще не приобрели ни одного курса</S.profileTitle>
+            )}</>}
           </S.coursesList>
         </S.userCourses>
         {workout && (
