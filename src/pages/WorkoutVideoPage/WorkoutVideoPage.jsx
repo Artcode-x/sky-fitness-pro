@@ -26,6 +26,8 @@ export const WorkoutVideoPage = () => {
   const youtubeLink = selectedWorkout?.link_addition
   const link = `https://www.youtube.com/embed/${youtubeLink}`
 
+  let numberPattern = /\d+/g;
+
   const [open, setOpen] = useState(false)
 
   const popup = () => {
@@ -93,7 +95,7 @@ export const WorkoutVideoPage = () => {
               </S.Exercise>
               <S.MainProgress>
                 <S.ExerciseHeading>
-                  Мой прогресс по тренировке 2:
+                  Мой прогресс по тренировке {selectedWorkout?.title.match( numberPattern )}:
                 </S.ExerciseHeading>
                 <S.ProgressVisual>
                   {
