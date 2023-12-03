@@ -66,13 +66,28 @@ export const MainExercises = styled.div`
   display: grid;
   grid-template-columns: (16, 1fr);
   margin-top: 75px;
-  margin-bottom: 94px;
+  /* margin-bottom: 94px; */
+  @media (max-width: 1200px) {
+    display: flex;  
+    gap: 30px;
+  }
+  @media (max-width: 767px) {
+    display: flex;  
+    flex-wrap: wrap;
+    gap: 30px;
+  }
 `
 
 export const Exercise = styled.div`
   display: grid;
   grid-column-start: 1;
   grid-column-end: 7;
+  @media (max-width: 1200px) {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 35px;
+  }
 `
 export const Button = styled.button`
   ${MButton}
@@ -85,6 +100,13 @@ export const MainProgress = styled.div`
   border-radius: 30px;
   width: 638px;
   min-height: 336px;
+  padding-bottom: 32px;
+  @media (max-width: 1200px) {
+    display: flex;  
+    flex-wrap: wrap;
+    max-width: 638px;
+    padding-left: 44px;
+  }
 `
 
 export const ExerciseHeading = styled.h3`
@@ -107,7 +129,14 @@ export const Visual = styled.ul`
   justify-content: space-between;
   text-align: left;
   columns: 2;
-  list-style: none;
+  list-style: none;  
+  @media (max-width: 1200px) {
+    display: flex;
+    flex-direction: column;
+  justify-content: space-between;
+  padding-top: 30px;
+  padding-left: 14px;
+  }
 `
 
 export const ProgressText = styled.p`
@@ -133,9 +162,9 @@ flex-shrink: 0;
 `
 
 export const InterVisualContainerFirst = styled.div`
-  width: ${(props) =>  props.$percent}%;
-  background-color: ${(props) => props.$colors};
-  height: 100%;
+  width: ${(props) => props.$percent === 100 ? props.$percent + 1 : props.$percent}%;
+    background-color: ${(props) => props.$colors};
+    height: 100%;
   border-radius: 22px;
 
 `
@@ -155,9 +184,20 @@ export const MainTextPercent = styled.p`
 export const li = styled.li`
   display: flex;
   justify-content: space-between;
-  /* gap: 15px; */
+/* gap: 15px; */
   padding-top: 30px;
-  align-items: center;
+  @media (max-width: 1200px) {
+    display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+    align-items: center;
+  }
+  @media (max-width: 676px) {
+    display: flex;
+ flex-wrap: wrap;
+ gap: 30px;
+  }
+
 `
 
 export const TempErrorLoadingText = styled.h2`
