@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useAuth } from 'hooks/use-auth'
 import * as S from './selectWorkout.styles'
 import { useGetWorkoutsQuery } from 'services/courses'
+import { Loader } from 'components/loader/Loader'
 
 const Workout = ({ name, course, day, done }) => {
   return (
@@ -31,12 +32,16 @@ const Workout = ({ name, course, day, done }) => {
 export const ModalSelectWorkout = ({ modalIsOpen, closeModal }) => {
   const { id: userId } = useAuth()
   const { data, isLoading, error } = useGetWorkoutsQuery()
-  console.log(data)
+  // console.log(data)
 
   const getResults = (names, plan, fact) => {
-    const userResults = (fact && userId in fact)? fact[userId] : null
-    const resultArr = names.map((item, index) => (userResults)? userResults[item] / plan[index] : 0)
-    return (resultArr.every(result => { return result >= 1}))
+    const userResults = fact && userId in fact ? fact[userId] : null
+    const resultArr = names?.map((item, index) =>
+      userResults ? userResults[item] / plan[index] : 0,
+    )
+    return resultArr?.every((result) => {
+      return result >= 1
+    })
   }
 
   const preparedArr = data
@@ -46,7 +51,7 @@ export const ModalSelectWorkout = ({ modalIsOpen, closeModal }) => {
       name: item.title.split(' / ')[0],
       course: item.title.split(' / ')[1],
       day: item.title.split(' / ')[2],
-      done: getResults(item.exercises_without, item.repeat, item.users)
+      done: getResults(item.exercises_without, item.repeat, item.users),
     }))
 
   return (
@@ -94,11 +99,23 @@ export const ModalSelectWorkout = ({ modalIsOpen, closeModal }) => {
         </S.closeBtn>
         <S.selectWorkoutTitle>Выберите тренировку</S.selectWorkoutTitle>
         <S.workoutsList>
-          {preparedArr?.map((item) => (
-            <Link key={item.id} to={`/workout-video-page/${item.id}`}>
-              <Workout name={item.name} course={item.course} day={item.day} done={item.done}/>
-            </Link>
-          ))}
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <>
+              {' '}
+              {preparedArr?.map((item) => (
+                <Link key={item.id} to={`/workout-video-page/${item.id}`}>
+                  <Workout
+                    name={item.name}
+                    course={item.course}
+                    day={item.day}
+                    done={item.done}
+                  />
+                </Link>
+              ))}
+            </>
+          )}
         </S.workoutsList>
       </S.selectWorkout>
     </S.modalBG>

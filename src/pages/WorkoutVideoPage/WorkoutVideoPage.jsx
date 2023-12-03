@@ -103,7 +103,9 @@ export const WorkoutVideoPage = () => {
                       {workout?.map((item, index) => (
                         <S.li key={index}>
                           <S.ProgressText>{item}</S.ProgressText>
-                          <S.VisualContainerFirst key={index}>
+                          <S.VisualContainerFirst key={index} $colors={
+                                progressColors[index % progressColors.length]
+                              }>
                             <S.InterVisualContainerFirst
                               $percent={calculatePercentage(
                                 getWorkoutResults(item),

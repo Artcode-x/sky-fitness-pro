@@ -1,4 +1,3 @@
-
 import { useAddCoursesMutation, useGetCoursesQuery } from 'services/courses'
 
 import * as S from '../WorkoutInfoPage.styles'
@@ -28,7 +27,7 @@ export const Contacts = ({ selectedCourse }) => {
           const response = await axios.get(
             `https://fitness-pro-21689-default-rtdb.europe-west1.firebasedatabase.app/courses/${selectedCourseID}/users.json`,
           )
-          console.log(response.data)
+          // console.log(response.data)
           // возвр-ем нужную нам инфо
           return response.data
         }
@@ -52,6 +51,9 @@ export const Contacts = ({ selectedCourse }) => {
         } else {
           // добавляем в базу
           sendUserId(res)
+          setTimeout(() => {
+            window.location.reload()
+          }, 500)
         }
       } catch (error) {
         console.log(error.message)

@@ -153,11 +153,12 @@ export const ProgressText = styled.p`
 export const VisualContainerFirst = styled.div`
   width: 278px;
   height: 36px;
-  flex-shrink: 0;
   border-radius: 22px;
   margin-right: 55px;
-  border: 2px solid #565eef;
+  border: 2px solid ;
   background: #edecff;
+  border-color: ${(props) => props.$colors};
+flex-shrink: 0;
 `
 
 export const InterVisualContainerFirst = styled.div`
@@ -165,9 +166,7 @@ export const InterVisualContainerFirst = styled.div`
     background-color: ${(props) => props.$colors};
     height: 100%;
   border-radius: 22px;
-  position: relative;
-  top: -2px;
-  left: -2px;
+
 `
 
 export const MainTextPercent = styled.p`
@@ -191,12 +190,14 @@ export const li = styled.li`
     display: flex;
   justify-content: space-between;
   padding-top: 30px;
+    align-items: center;
   }
   @media (max-width: 676px) {
     display: flex;
  flex-wrap: wrap;
  gap: 30px;
   }
+
 `
 
 export const TempErrorLoadingText = styled.h2`
