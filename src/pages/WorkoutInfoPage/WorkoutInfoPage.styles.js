@@ -158,7 +158,6 @@ export const MotivationItems = styled.ul`
 export const Contacts = styled.div`
   display: flex;
   margin-top: 75px;
-  margin-bottom: 95px;
   border-radius: 30px;
   background: #f9ebff;
   max-width: 1160px;

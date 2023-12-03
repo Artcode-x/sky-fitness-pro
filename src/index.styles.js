@@ -96,6 +96,7 @@ export const Wrapper = styled.div`
   padding-left: calc(50% - 580px);
   padding-right: calc(50% - 580px);
   background: #fafafa;
+  padding-bottom: 95px;
 `
 
 export default GlobalStyle
