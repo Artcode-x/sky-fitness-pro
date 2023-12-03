@@ -18,10 +18,11 @@ import {
   updatePassword,
   reauthenticateWithCredential,
   EmailAuthProvider,
+  onAuthStateChanged,
 } from 'firebase/auth'
-import { getDatabase, ref, onValue } from "firebase/database";
-
-
+import { Loader } from 'components/loader/Loader'
+import { async } from 'q'
+// import { getDatabase, ref, onValue } from 'firebase/database'
 
 export const Header = ({ main }) => {
   const [visible, setVisible] = useState(false)
@@ -41,7 +42,8 @@ export const Header = ({ main }) => {
         </S.logo>
       </Link>
       {isAuth ? (
-        <S.userInfo onMouseLeave={() => setVisible(false)} $main={main}>
+        <S.userInfo onMouseLeave={() => setVisible(false)} $main={main} onClick={() => setVisible(!visible)}
+        >
           <S.userImg />
           {email}
           <S.svg
@@ -51,7 +53,6 @@ export const Header = ({ main }) => {
             height="9"
             viewBox="0 0 14 9"
             fill="none"
-            onClick={() => setVisible(!visible)}
           >
             <path
               d="M12.3552 1.03308L6.67761 6.7107L0.999999 1.03308"
@@ -88,46 +89,60 @@ export const Profile = () => {
   const [workout, setWorkout] = useState('')
   const { isAuth, email, token, id } = useAuth()
   const { data, isLoading, isError } = useGetCoursesQuery()
-  const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
   const [authErrors, setAuthErrors] = useState(null)
   const [newCredentials, setNewCredentials] = useState(null)
-// console.log(data);
+  const dispatch = useDispatch()
   const auth = getAuth()
-  const user = auth.currentUser
 
+  // console.log(data);
   // const db = getDatabase();
-  // const coursesRef = ref(db, 'courses');
+  // const coursesRef = ref(db, 'courses/0/users');
   // onValue(coursesRef, (snapshot) => {
   //   const data = snapshot.val();
-  //   updateStarCount(postElement, data);
-  //   console.log(snapshot);
-
+  //   // updateStarCount(postElement, data);
+  //   console.log(data);
   // });
+// const data = []
 
-  const changeCredentials = (newCredential, confirm) => {
+  const changeCredentials = async(newCredential, confirm) => {
     setLoading(true)
-    const credential = EmailAuthProvider.credential(user.email, confirm)
-    reauthenticateWithCredential(user, credential)
+  
+    const credential = EmailAuthProvider.credential(
+      auth?.currentUser?.email,
+      confirm,
+    )
+    reauthenticateWithCredential(auth?.currentUser, credential)
       .then(() => {
         if (modal == 'changeLog') {
-          updateEmail(user, newCredential)
+          updateEmail(auth?.currentUser, newCredential)
         }
         if (modal == 'changePass') {
-          updatePassword(user, newCredential)
+          updatePassword(auth?.currentUser, newCredential)
         }
       })
       .then(() => {
         setLoading(false)
         setModal('')
         console.log('Credential successfully changed')
-        dispatch(
-          setUser({
-            email: auth.currentUser.email,
-            id: auth.currentUser.uid,
-            token: auth.currentUser.accessToken,
-          }),
-        )
+        onAuthStateChanged(auth, (user) => {
+            console.log(user);
+            dispatch(
+              setUser({
+                email: user?.email,
+                id: user?.uid,
+                token: user?.accessToken,
+              }),
+            )
+        })
+    
+        // dispatch(
+        //   setUser({
+        //     email: auth.currentUser.email,
+        //     id: auth.currentUser.uid,
+        //     token: auth.currentUser.accessToken,
+        //   }),
+        // )
       })
       .catch((error) => {
         setAuthErrors(error.message)
@@ -179,17 +194,20 @@ export const Profile = () => {
         <S.userCourses>
           <S.profileTitle>Мои курсы</S.profileTitle>
           <S.coursesList>
+          { ( isLoading)? <Loader/> :<>
             {data?.length > 0 ? (
-              data.filter((item) => item?.users?.includes(id)).map((course) => (
-                <CourseCard
-                  key={course._id}
-                  name={course.name}
-                  openModal={setWorkout}
-                />
-              ))
+              data
+                .filter((item) => item?.users?.includes(id))
+                .map((course) => (
+                  <CourseCard
+                    key={course._id}
+                    name={course.name}
+                    openModal={setWorkout}
+                  />
+                ))
             ) : (
-              <div>Вы еще не приобрели ни одного курса</div>
-            )}
+              <S.profileTitle>Вы еще не приобрели ни одного курса</S.profileTitle>
+            )}</>}
           </S.coursesList>
         </S.userCourses>
         {workout && (

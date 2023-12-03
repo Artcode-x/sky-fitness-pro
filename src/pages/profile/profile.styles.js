@@ -2,10 +2,12 @@ import styled from 'styled-components'
 import { MButton } from '../../index.styles'
 
 export const profileWrapper = styled.div`
-  width: 100%;
+  width: 100vw;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  background-color: #fafafa;
+  min-height: 100vh;
 `
 export const profileDiv = styled.div`
   display: flex;
@@ -13,7 +15,7 @@ export const profileDiv = styled.div`
   align-items: flex-start;
   gap: 50px;
   background-color: #fafafa;
-  padding: 0 140px;
+  padding: 0 140px 30px 140px;
 `
 export const profileHeader = styled.div`
   width: 100%;
@@ -49,6 +51,7 @@ export const userInfo = styled.div`
   line-height: 32px; /* 133.333% */
   letter-spacing: -0.1px;
   z-index: 999;
+  cursor:pointer;
 `
 export const userImg = styled.div`
   background-color: #d9d9d9;
@@ -71,7 +74,6 @@ export const userInfoPopUp = styled.ul`
 `
 export const popUpItem = styled.li`
   width: inherit;
-  cursor: pointer;
   font-size: 1.5rem;
   line-height: 1.7;
   text-decoration: none;
@@ -80,8 +82,9 @@ export const popUpItem = styled.li`
   &:hover {
     color: rgb(208, 206, 206);
   }
-  &:link {text-decoration: none;}
-
+  &:link {
+    text-decoration: none;
+  }
 `
 
 export const userProfile = styled.div`
@@ -91,6 +94,7 @@ export const userProfile = styled.div`
   align-items: flex-start;
 `
 export const profileTitle = styled.h1`
+  width: 100%;
   color: #000;
   font-variant-numeric: lining-nums proportional-nums;
   font-size: 48px;
@@ -116,14 +120,14 @@ export const userCourses = styled.div`
   margin-top: 25px;
 `
 export const coursesList = styled.ul`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr; */
   margin-top: 60px;
   width: 100%;
-  /* display: flex;
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: flex-start; */
+  align-items: flex-start;
   justify-content: center;
   gap: 40px;
 `
