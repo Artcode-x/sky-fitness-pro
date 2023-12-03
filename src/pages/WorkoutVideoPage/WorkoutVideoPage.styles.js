@@ -163,7 +163,7 @@ export const VisualContainerFirst = styled.div`
 export const InterVisualContainerFirst = styled.div`
   width: ${(props) => props.$percent === 100 ? props.$percent + 1 : props.$percent}%;
     background-color: ${(props) => props.$colors};
-    height: 36px;
+    height: 100%;
   border-radius: 22px;
   position: relative;
   top: -2px;
