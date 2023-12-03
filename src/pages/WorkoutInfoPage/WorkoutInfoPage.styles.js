@@ -155,6 +155,57 @@ export const MotivationItems = styled.ul`
   padding-left: 38px;
 `
 
+export const Progres = styled.div`
+  width: auto;
+
+  position: absolute;
+  border-radius: 12px;
+  padding-left: 44px;
+  padding-right: 43px;
+  position: absolute;
+  top: 45%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  justify-content: center;
+  display: flex;
+  height: 50%;
+`
+export const Popup = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  background: #fff;
+  width: 444px;
+  height: 50%;
+`
+
+export const ProgressPopupX = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 41px;
+  background: #fff;
+  width: 444px;
+`
+export const ProgressPopupTitleX = styled.h1`
+  color: #000;
+  text-align: center;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 48px;
+  width: 268px;
+`
+export const ProgressPopupImgX = styled.img`
+  width: 245px;
+  height: 226px;
+  padding-top: 7px;
+`
+
 export const Contacts = styled.div`
   display: flex;
   margin-top: 75px;
