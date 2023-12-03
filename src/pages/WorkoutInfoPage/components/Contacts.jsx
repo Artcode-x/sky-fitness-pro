@@ -1,4 +1,3 @@
-
 import { useAddCoursesMutation, useGetCoursesQuery } from 'services/courses'
 
 import * as S from '../WorkoutInfoPage.styles'
@@ -52,6 +51,9 @@ export const Contacts = ({ selectedCourse }) => {
         } else {
           // добавляем в базу
           sendUserId(res)
+          setTimeout(() => {
+            window.location.reload()
+          }, 500)
         }
       } catch (error) {
         console.log(error.message)
