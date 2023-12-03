@@ -30,7 +30,6 @@ export const Contacts = ({ selectedCourse }) => {
           const response = await axios.get(
             `https://fitness-pro-21689-default-rtdb.europe-west1.firebasedatabase.app/courses/${selectedCourseID}/users.json`,
           )
-          // console.log(response.data)
           // возвр-ем нужную нам инфо
           return response.data
         }
