@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+   
+  }
+
+  .body {
+    display: flex;
+    width: 366px;
+    height: 401px;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+.center {
+    padding-left: calc(50% - 183px);
+    padding-right: calc(50% - 183px);
+
+}
+
+  .header {
+    display: flex;
+    justify-content: center;
+    padding-top: 33px;
+    &__img {
+    background-image: url(../../../public/img/logo.svg);
+    background-repeat: no-repeat;
+    block-size: 100%;
+    width: 225px;
+    height: 35px;
+    }
+  }
+
+  .input { 
+    display: flex;
+    flex-direction: column;
+    padding: 38px 47px 0px 40px;
+    width: 278.5px;
+    &__txt {
+        color: #000;
+font-variant-numeric: lining-nums proportional-nums;
+font-family: StratosSkyeng;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px; /* 133.333% */
+letter-spacing: -0.05px;
+    }
+    &__pass {
+        padding-top: 20px;
+        display: flex;
+    flex-direction: column;
+    gap: 14px;
+    &-1 {
+        color: #D0CECE;
+font-variant-numeric: lining-nums proportional-nums;
+font-family: StratosSkyeng;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px; /* 133.333% */
+letter-spacing: -0.05px;
+padding-bottom: 8px;
+border: none;
+    border-bottom: 1px solid;
+    stroke: #D0CECE;
+    outline: none;
+    }
+    &-2 {
+        
+        color: #D0CECE;
+font-variant-numeric: lining-nums proportional-nums;
+font-family: StratosSkyeng;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px; /* 133.333% */
+letter-spacing: -0.05px;
+padding-bottom: 8px;
+border: none;
+    border-bottom: 1px solid;
+    stroke: #D0CECE;
+    outline: none;
+    }
+    }
+  }
+
+  .footer { 
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    
+    &__button {    
+        width: 278px;
+height: 52px;
+flex-shrink: 0;
+border-radius: 46px;
+background: var(--palette-purple-90, #580EA2);
+    color: #FFF;
+font-variant-numeric: lining-nums proportional-nums;
+font-family: StratosSkyeng;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px; /* 133.333% */
+letter-spacing: -0.05px;
+
+    }
+  }

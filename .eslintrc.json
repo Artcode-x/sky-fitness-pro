@@ -1,19 +1,25 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "prettier",
+    "plugin:react/jsx-runtime"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended"
-    ],
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react"
-    ],
-    "rules": {
-    }
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "rules": {
+    "react/react-in-jsx-scope": 0, //При использовании JSX <a /> расширяется до React.createElement("a"). Поэтому переменная React должна находиться в области видимости.
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }], //js и jsx будут одинаково работать
+    "react/prop-types": 0,
+    "react/destructuring-assignment": [0]
+  }
 }
