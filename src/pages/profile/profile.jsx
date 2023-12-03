@@ -21,6 +21,7 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth'
 import { Loader } from 'components/loader/Loader'
+import { async } from 'q'
 // import { getDatabase, ref, onValue } from 'firebase/database'
 
 export const Header = ({ main }) => {
@@ -41,7 +42,8 @@ export const Header = ({ main }) => {
         </S.logo>
       </Link>
       {isAuth ? (
-        <S.userInfo onMouseLeave={() => setVisible(false)} $main={main}>
+        <S.userInfo onMouseLeave={() => setVisible(false)} $main={main} onClick={() => setVisible(!visible)}
+        >
           <S.userImg />
           {email}
           <S.svg
@@ -51,7 +53,6 @@ export const Header = ({ main }) => {
             height="9"
             viewBox="0 0 14 9"
             fill="none"
-            onClick={() => setVisible(!visible)}
           >
             <path
               d="M12.3552 1.03308L6.67761 6.7107L0.999999 1.03308"
@@ -88,10 +89,11 @@ export const Profile = () => {
   const [workout, setWorkout] = useState('')
   const { isAuth, email, token, id } = useAuth()
   const { data, isLoading, isError } = useGetCoursesQuery()
-  const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
   const [authErrors, setAuthErrors] = useState(null)
   const [newCredentials, setNewCredentials] = useState(null)
+  const dispatch = useDispatch()
+  const auth = getAuth()
 
   // console.log(data);
   // const db = getDatabase();
@@ -103,39 +105,37 @@ export const Profile = () => {
   // });
 // const data = []
 
-  const auth = getAuth()
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      dispatch(
-        setUser({
-          email: user.email,
-          id: user.uid,
-          token: user.accessToken,
-        }),
-      )
-    } else {
-      console.log('User is signed out')
-    }
-  })
-  const changeCredentials = (newCredential, confirm) => {
+  const changeCredentials = async(newCredential, confirm) => {
     setLoading(true)
+  
     const credential = EmailAuthProvider.credential(
-      auth.currentUser.email,
+      auth?.currentUser?.email,
       confirm,
     )
-    reauthenticateWithCredential(auth.currentUser, credential)
+    reauthenticateWithCredential(auth?.currentUser, credential)
       .then(() => {
         if (modal == 'changeLog') {
-          updateEmail(auth.currentUser, newCredential)
+          updateEmail(auth?.currentUser, newCredential)
         }
         if (modal == 'changePass') {
-          updatePassword(auth.currentUser, newCredential)
+          updatePassword(auth?.currentUser, newCredential)
         }
       })
       .then(() => {
         setLoading(false)
         setModal('')
         console.log('Credential successfully changed')
+        onAuthStateChanged(auth, (user) => {
+            console.log(user);
+            dispatch(
+              setUser({
+                email: user?.email,
+                id: user?.uid,
+                token: user?.accessToken,
+              }),
+            )
+        })
+    
         // dispatch(
         //   setUser({
         //     email: auth.currentUser.email,
