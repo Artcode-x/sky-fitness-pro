@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# Приложение для онлайн школы тренировок "Sky Fitness Pro". 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Разработан в рамках курса Онлайн-университета SkyPro "Командная разработка" студентами 13 потока:
+-Шевелев Руслан https://github.com/RuslanShevelev
+-Бутылев Александр https://github.com/Artcode-x
+-Тагаров Владимир https://github.com/VladimirTagarov
+-Кочеватов Александр https://github.com/Alex-Viet
 
-## Available Scripts
+Проект состоит из: 
+- Главной страницы, на которой отображены все курсы, имеющиеся в базе данных, по клику на карточку с выбранным курсом пользователь попадает на страницу, где может ознакомиться с его описанием .
+- Страница с отображением курсов содержит данные о курсе из БД, кликая по страницам курсов у авторизованных пользователей есть возможность записаться на курс, тем самым карточка с курсом будет отображена на странице "Мой профиль", неавторизованного пользователя будет редиректить на страницу авторизации
+- Страниц авторизации, на ней пользователь может войти в свой аккаунт или зарегистрироваться
+- После авторизации/регистрации пользователь попадает на страницу "Мой профиль",  в которой он имеет возможность редактировать логин и пароль. На страницы профиля пользователь может просматривать приобретенные курсы. Кликая на карточку курсов пользователю показывается всплывающее окно, в котором ему предлагается выбрать тренировку. Пройденные тренировки закрашиваются зеленым цветом и помечаются галочкой.
+- Страница с тренировками содержит определённые задания, с видеоуроками с правильным их исполнением. Также внизу страницы есть возможность заполнить свой прогресс по каждому упражнению. После заполнения всех значений в БД заносится прогресс и приложение высчитывает процент выполнения тренировки и визуально показывает его.
 
-In the project directory, you can run:
+Инструкция по запуску проекта для разработки:
 
-### `npm start`
+Для клонирования репозитория выполните команду:
+git clone https://github.com/Artcode-x/sky-fitness-pro
+При разработке рекомендуется использование пакетного менеджера npm.
+Перед открытием проекта необходимо установить библиотеки.
+npm install
+Запуск локального сервера с проектом осуществляется командой:
+npm start
+Проект будет запущен по адресу: http://localhost:3000
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Стэк библиотек проекта:
+React
+Redux
+React Router
+Firebase
+Axios
+Styled Components
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Назначение папок проекта:
+/pages  - страницы приложения
+/components  - переиспользуемые общие компоненты для всего проекта
+/services  - функционал для взаимодействия с базой данных  firebase
+/store  - хранилище redux
+/hooks - хуки неоднократно используемые по всему проекту
+/public- картинки, иконки, шрифты
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Ссылка на деплой проекта: https://sky-fitness-pro.netlify.app/
