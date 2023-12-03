@@ -51,6 +51,7 @@ export const userInfo = styled.div`
   line-height: 32px; /* 133.333% */
   letter-spacing: -0.1px;
   z-index: 999;
+  cursor:pointer;
 `
 export const userImg = styled.div`
   background-color: #d9d9d9;
@@ -73,7 +74,6 @@ export const userInfoPopUp = styled.ul`
 `
 export const popUpItem = styled.li`
   width: inherit;
-  cursor: pointer;
   font-size: 1.5rem;
   line-height: 1.7;
   text-decoration: none;
