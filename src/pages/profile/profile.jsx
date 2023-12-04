@@ -90,11 +90,13 @@ export const Profile = () => {
   const [workout, setWorkout] = useState('')
   const { isAuth, email, token, id } = useAuth()
   const { data, isLoading, isError } = useGetCoursesQuery()
-  const [loading, setLoading] = useState(false)
+  const sortedArr = data?.filter((item) => item?.users?.includes(id))
+    const [loading, setLoading] = useState(false)
   const [authErrors, setAuthErrors] = useState(null)
   const [newCredentials, setNewCredentials] = useState(null)
   const dispatch = useDispatch()
   const auth = getAuth()
+  
   onAuthStateChanged(auth, (user) => {
     if (user) {
       dispatch(
@@ -203,13 +205,10 @@ export const Profile = () => {
         <S.userCourses>
           <S.profileTitle>Мои курсы</S.profileTitle>
           <S.coursesList>
-            {isLoading ? (
-              <Loader />
-            ) : (
+            {isLoading? <Loader /> : 
               <>
-                {data?.length > 0 ? (
-                  data
-                    .filter((item) => item?.users?.includes(id))
+                {(sortedArr?.length > 0)? (
+                  sortedArr
                     .map((course) => (
                       <CourseCard
                         key={course._id}
@@ -217,13 +216,11 @@ export const Profile = () => {
                         openModal={setWorkout}
                       />
                     ))
-                ) : (
-                  <S.profileTitle>
-                    Вы еще не приобрели ни одного курса
-                  </S.profileTitle>
-                )}
+                ) : 
+                  <S.profileTitle>Вы еще не приобрели ни одного курса</S.profileTitle>
+                }
               </>
-            )}
+            }
           </S.coursesList>
         </S.userCourses>
         {workout && (
