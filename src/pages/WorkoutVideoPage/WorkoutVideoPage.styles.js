@@ -180,6 +180,7 @@ export const MainTextPercent = styled.p`
   padding: 0px;
   text-align: right;
   padding-right: 10px;
+  padding-left: 10px;
 `
 export const li = styled.li`
   display: flex;
