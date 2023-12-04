@@ -159,6 +159,7 @@ export const VisualContainerFirst = styled.div`
   background: #edecff;
   border-color: ${(props) => props.$colors};
 flex-shrink: 0;
+margin-left: 15px;
 `
 
 export const InterVisualContainerFirst = styled.div`
@@ -180,6 +181,7 @@ export const MainTextPercent = styled.p`
   padding: 0px;
   text-align: right;
   padding-right: 10px;
+  padding-left: 10px;
 `
 export const li = styled.li`
   display: flex;

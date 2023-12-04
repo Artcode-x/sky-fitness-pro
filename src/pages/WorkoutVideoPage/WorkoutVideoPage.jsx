@@ -26,7 +26,18 @@ export const WorkoutVideoPage = () => {
   const youtubeLink = selectedWorkout?.link_addition
   const link = `https://www.youtube.com/embed/${youtubeLink}`
 
-  let numberPattern = /\d+/g;
+  const getLastNumbersFromString = (string) => {
+    
+    let numberPattern = /\d+/g;
+    let matches = string.match(numberPattern);
+    if (matches.length > 1) {
+      const integers = matches[matches.length - 1];
+      return integers;
+    }
+    return matches;
+  }
+
+  
 
   const [open, setOpen] = useState(false)
 
@@ -95,7 +106,7 @@ export const WorkoutVideoPage = () => {
               </S.Exercise>
               <S.MainProgress>
                 <S.ExerciseHeading>
-                  Мой прогресс по тренировке {selectedWorkout?.title.match( numberPattern )}:
+                  Мой прогресс по тренировке {getLastNumbersFromString(selectedWorkout?.title)}:
                 </S.ExerciseHeading>
                 <S.ProgressVisual>
                   {

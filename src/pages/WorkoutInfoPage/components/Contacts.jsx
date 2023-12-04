@@ -5,6 +5,8 @@ import { useAuth } from 'hooks/use-auth'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
+import { MyProgressPopup } from 'pages/ProgressPage/MyProgressPopup'
+import { PopupMessage } from './Popup'
 
 export const Contacts = ({ selectedCourse }) => {
   const { data, isLoading, isError } = useGetCoursesQuery()
@@ -15,6 +17,7 @@ export const Contacts = ({ selectedCourse }) => {
   const navigate = useNavigate()
   const [disabled, setDisabled] = useState(false)
   const [hide, setHide] = useState(true)
+  const [Popup, setPopup] = useState(false)
   const signUpForTraining = async () => {
     if (!userID) {
       navigate('/auth')
@@ -27,7 +30,6 @@ export const Contacts = ({ selectedCourse }) => {
           const response = await axios.get(
             `https://fitness-pro-21689-default-rtdb.europe-west1.firebasedatabase.app/courses/${selectedCourseID}/users.json`,
           )
-          // console.log(response.data)
           // возвр-ем нужную нам инфо
           return response.data
         }
@@ -51,12 +53,12 @@ export const Contacts = ({ selectedCourse }) => {
         } else {
           // добавляем в базу
           sendUserId(res)
+          setPopup(true)
           setTimeout(() => {
             window.location.reload()
-          }, 500)
+          }, 2500)
         }
       } catch (error) {
-        console.log(error.message)
         if (error.message === 'Вы уже были записаны на тренировку') {
           alert('Вы уже записаны')
           setHide(false)
@@ -68,23 +70,35 @@ export const Contacts = ({ selectedCourse }) => {
   }
 
   return (
-    <S.Contacts>
-      <S.ContactsContainer>
-        <S.ContactsText>
-          Оставьте заявку на пробное занятие, мы свяжемся с вами, поможем с
-          выбором направления и тренера, с которым тренировки принесут здоровье
-          и радость!
-        </S.ContactsText>
+    <>
+      {Popup ? (
+        <>
+          <S.Progres>
+            <S.Popup>
+              <PopupMessage />
+            </S.Popup>
+          </S.Progres>
+        </>
+      ) : (
+        <S.Contacts>
+          <S.ContactsContainer>
+            <S.ContactsText>
+              Оставьте заявку на пробное занятие, мы свяжемся с вами, поможем с
+              выбором направления и тренера, с которым тренировки принесут
+              здоровье и радость!
+            </S.ContactsText>
 
-        {hide ? (
-          <S.ContactsButton disabled={disabled} onClick={signUpForTraining}>
-            Записаться на тренировку
-          </S.ContactsButton>
-        ) : (
-          ''
-        )}
-      </S.ContactsContainer>
-      <S.ContactsImg src="/img/handset.svg" alt="contact" />
-    </S.Contacts>
+            {hide ? (
+              <S.ContactsButton disabled={disabled} onClick={signUpForTraining}>
+                Записаться на тренировку
+              </S.ContactsButton>
+            ) : (
+              ''
+            )}
+          </S.ContactsContainer>
+          <S.ContactsImg src="/img/handset.svg" alt="contact" />
+        </S.Contacts>
+      )}
+    </>
   )
 }

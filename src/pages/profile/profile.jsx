@@ -21,8 +21,6 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth'
 import { Loader } from 'components/loader/Loader'
-import { async } from 'q'
-// import { getDatabase, ref, onValue } from 'firebase/database'
 
 export const Header = ({ main }) => {
   const [visible, setVisible] = useState(false)
@@ -42,7 +40,10 @@ export const Header = ({ main }) => {
         </S.logo>
       </Link>
       {isAuth ? (
-        <S.userInfo onMouseLeave={() => setVisible(false)} $main={main} onClick={() => setVisible(!visible)}
+        <S.userInfo
+          onMouseLeave={() => setVisible(false)}
+          $main={main}
+          onClick={() => setVisible(!visible)}
         >
           <S.userImg />
           {email}
@@ -89,73 +90,83 @@ export const Profile = () => {
   const [workout, setWorkout] = useState('')
   const { isAuth, email, token, id } = useAuth()
   const { data, isLoading, isError } = useGetCoursesQuery()
-  const [loading, setLoading] = useState(false)
+  const sortedArr = data?.filter((item) => item?.users?.includes(id))
+    const [loading, setLoading] = useState(false)
   const [authErrors, setAuthErrors] = useState(null)
   const [newCredentials, setNewCredentials] = useState(null)
   const dispatch = useDispatch()
   const auth = getAuth()
-
-  // console.log(data);
-  // const db = getDatabase();
-  // const coursesRef = ref(db, 'courses/0/users');
-  // onValue(coursesRef, (snapshot) => {
-  //   const data = snapshot.val();
-  //   // updateStarCount(postElement, data);
-  //   console.log(data);
-  // });
-// const data = []
-
-  const changeCredentials = async(newCredential, confirm) => {
-    setLoading(true)
   
-    const credential = EmailAuthProvider.credential(
-      auth?.currentUser?.email,
-      confirm,
-    )
-    reauthenticateWithCredential(auth?.currentUser, credential)
-      .then(() => {
-        if (modal == 'changeLog') {
-          updateEmail(auth?.currentUser, newCredential)
-        }
-        if (modal == 'changePass') {
-          updatePassword(auth?.currentUser, newCredential)
-        }
-      })
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      dispatch(
+        setUser({
+          email: user.email,
+          id: user.uid,
+          token: user.accessToken,
+        }),
+      )
+    } else {
+      console.log('User is signed out')
+    }
+  })
+
+  const changeLogin = (newCredential) => {
+    setLoading(true)
+    updateEmail(auth?.currentUser, newCredential?.email)
       .then(() => {
         setLoading(false)
         setModal('')
-        console.log('Credential successfully changed')
-        onAuthStateChanged(auth, (user) => {
-            console.log(user);
-            dispatch(
-              setUser({
-                email: user?.email,
-                id: user?.uid,
-                token: user?.accessToken,
-              }),
-            )
-        })
-    
-        // dispatch(
-        //   setUser({
-        //     email: auth.currentUser.email,
-        //     id: auth.currentUser.uid,
-        //     token: auth.currentUser.accessToken,
-        //   }),
-        // )
+        console.log('Login successfully changed')
       })
       .catch((error) => {
-        setAuthErrors(error.message)
+        if (error.message == 'Firebase: Error (auth/requires-recent-login).') {
+          const credential = EmailAuthProvider.credential(
+            auth?.currentUser?.email,
+            newCredentials.confirm,
+          )
+          reauthenticateWithCredential(auth?.currentUser, credential).then(
+            console.log('reauthenticated'),
+          )
+          changeLogin(newCredential)
+        } else {
+          setAuthErrors(error.message)
+          setLoading(false)
+        }
+      })
+  }
+
+  const changePassword = (newCredential) => {
+    setLoading(true)
+    updatePassword(auth?.currentUser, newCredential?.password)
+      .then(() => {
         setLoading(false)
+        setModal('')
+        console.log('Password successfully changed')
+      })
+      .catch((error) => {
+        if (error.message == 'Firebase: Error (auth/requires-recent-login).') {
+          const credential = EmailAuthProvider.credential(
+            auth?.currentUser?.email,
+            newCredentials.confirm,
+          )
+          reauthenticateWithCredential(auth?.currentUser, credential).then(
+            console.log('reauthenticated'),
+          )
+          changePassword(newCredential)
+        } else {
+          setAuthErrors(error.message)
+          setLoading(false)
+        }
       })
   }
 
   useEffect(() => {
     if (newCredentials && modal == 'changeLog') {
-      changeCredentials(newCredentials.email, newCredentials.confirm)
+      changeLogin(newCredentials)
     }
     if (newCredentials && modal == 'changePass') {
-      changeCredentials(newCredentials.password, newCredentials.confirm)
+      changePassword(newCredentials)
     }
   }, [newCredentials, setNewCredentials])
 
@@ -194,20 +205,22 @@ export const Profile = () => {
         <S.userCourses>
           <S.profileTitle>Мои курсы</S.profileTitle>
           <S.coursesList>
-          { ( isLoading)? <Loader/> :<>
-            {data?.length > 0 ? (
-              data
-                .filter((item) => item?.users?.includes(id))
-                .map((course) => (
-                  <CourseCard
-                    key={course._id}
-                    name={course.name}
-                    openModal={setWorkout}
-                  />
-                ))
-            ) : (
-              <S.profileTitle>Вы еще не приобрели ни одного курса</S.profileTitle>
-            )}</>}
+            {isLoading? <Loader /> : 
+              <>
+                {(sortedArr?.length > 0)? (
+                  sortedArr
+                    .map((course) => (
+                      <CourseCard
+                        key={course._id}
+                        name={course.name}
+                        openModal={setWorkout}
+                      />
+                    ))
+                ) : 
+                  <S.profileTitle>Вы еще не приобрели ни одного курса</S.profileTitle>
+                }
+              </>
+            }
           </S.coursesList>
         </S.userCourses>
         {workout && (
