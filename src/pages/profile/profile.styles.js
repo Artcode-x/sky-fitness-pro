@@ -24,6 +24,7 @@ export const profileHeader = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  gap: 40px;
 `
 export const logo = styled.div`
   width: 220px;
