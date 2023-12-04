@@ -159,6 +159,7 @@ export const VisualContainerFirst = styled.div`
   background: #edecff;
   border-color: ${(props) => props.$colors};
 flex-shrink: 0;
+margin-left: 15px;
 `
 
 export const InterVisualContainerFirst = styled.div`
